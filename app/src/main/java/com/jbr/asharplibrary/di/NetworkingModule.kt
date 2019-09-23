@@ -1,18 +1,15 @@
 package com.jbr.asharplibrary.di
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.jbr.asharplibrary.musicbrainz.api.MBArtistAPI
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.*
-
+import retrofit2.converter.gson.GsonConverterFactory
 
 val networkingModule = module {
 
@@ -23,19 +20,16 @@ val networkingModule = module {
     single<Retrofit> {
         Retrofit.Builder()
             .baseUrl("https://musicbrainz.org/ws/2/")
-            .addConverterFactory(MoshiConverterFactory.create(get()))
+            .addConverterFactory(GsonConverterFactory.create(get()))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .apply {
-                client(get())
-            }
+            .client(get())
             .build()
     }
 
-    single<Moshi> {
-        Moshi.Builder()
-            .add(Date::class.java, Rfc3339DateJsonAdapter())
-            .add(KotlinJsonAdapterFactory())
-            .build()
+    single<Gson> {
+        GsonBuilder()
+            .setPrettyPrinting()
+            .create()
     }
 
     single<OkHttpClient> {

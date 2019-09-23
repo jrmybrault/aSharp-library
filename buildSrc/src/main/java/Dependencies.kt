@@ -29,13 +29,13 @@ object DependencyVersions {
 
     val retrofit = "2.6.1"
     val retrofitLogging = "4.2.0"
-    val moshi = "1.8.0"
+    val gson = "2.8.5"
     val coroutinesAdapter = "0.9.2"
 
     // LOGGING
 
     val timber = "4.7.1"
-    
+
     // MISCELLANEOUS
 
     val appCompat = "1.1.0"
@@ -78,12 +78,11 @@ object AndroidLibraries {
 
     // NETWORKING
 
-    val moshi = "com.squareup.moshi:moshi:${DependencyVersions.moshi}"
-    val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${DependencyVersions.moshi}"
-    val moshiAdapters = "com.squareup.moshi:moshi-adapters:${DependencyVersions.moshi}"
+    val gson = "com.google.code.gson:gson:${DependencyVersions.gson}"
+
     val retrofit = "com.squareup.retrofit2:retrofit:${DependencyVersions.retrofit}"
     val retrofitLogging = "com.squareup.okhttp3:logging-interceptor:${DependencyVersions.retrofitLogging}"
-    val retrofitMoshi = "com.squareup.retrofit2:converter-moshi:${DependencyVersions.retrofit}"
+    val retrofitGsonAdapter = "com.squareup.retrofit2:converter-gson:${DependencyVersions.retrofit}"
     val retrofitCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${DependencyVersions.coroutines}"
     val retrofitCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${DependencyVersions.coroutines}"
     val retrofitCoroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${DependencyVersions.coroutinesAdapter}"

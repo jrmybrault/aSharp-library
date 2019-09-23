@@ -60,12 +60,10 @@ dependencies {
 
     // NETWORKING
 
-    implementation AndroidLibraries.moshi
-    implementation AndroidLibraries.moshiKotlin
-    implementation AndroidLibraries.moshiAdapters
+    implementation AndroidLibraries.gson
     implementation AndroidLibraries.retrofit
     implementation AndroidLibraries.retrofitLogging
-    implementation AndroidLibraries.retrofitMoshi
+    implementation AndroidLibraries.retrofitGsonAdapter
     implementation AndroidLibraries.retrofitCoroutinesCore
     implementation AndroidLibraries.retrofitCoroutinesAndroid
     implementation AndroidLibraries.retrofitCoroutinesAdapter

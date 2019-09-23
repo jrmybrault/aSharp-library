@@ -1,47 +1,46 @@
 package com.jbr.asharplibrary.musicbrainz.dto
 
+import com.google.gson.annotations.SerializedName
 import com.jbr.asharplibrary.searchartist.domain.Artist
-import com.squareup.moshi.Json
 
 data class MBArtist(
-    @Json(name = "id") val identifier: String,
+    @SerializedName("id") val identifier: String,
     val type: MBArtistType?,
     val name: String,
-    @Json(name = "sort-name") val sortName: String,
+    @SerializedName("sort-name") val sortName: String,
     val gender: MBArtistGender?,
-    @Json(name = "country") val countryCode: String?,
-    @Json(name = "life-span") val lifeSpan: MBArtistLifeSpan,
+    @SerializedName("country") val countryCode: String?,
+    @SerializedName("life-span") val lifeSpan: MBArtistLifeSpan,
     val tags: List<MBArtistTag> = emptyList()
 )
 
 enum class MBArtistType {
 
-    @Json(name = "Person")
+    @SerializedName("Person")
     PERSON,
-    @Json(name = "Group")
+    @SerializedName("Group")
     GROUP,
-    @Json(name = "Orchestra")
+    @SerializedName("Orchestra")
     ORCHESTRA,
-    @Json(name = "Choir")
+    @SerializedName("Choir")
     CHOIR,
-    @Json(name = "Character")
+    @SerializedName("Character")
     CHARACTER,
-    @Json(name = "Other")
+    @SerializedName("Other")
     OTHER
 }
 
 enum class MBArtistGender {
 
-    @Json(name = "male")
+    @SerializedName("male")
     MALE,
-    @Json(name = "female")
+    @SerializedName("female")
     FEMALE
 }
 
 data class MBArtistLifeSpan(val begin: String?, val end: String?)
 
 data class MBArtistTag(val name: String)
-
 
 fun MBArtist.asDomain(): Artist {
     return Artist(name = name)
