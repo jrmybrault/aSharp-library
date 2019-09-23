@@ -76,6 +76,8 @@ object AndroidLibraries {
     val navigationUI = "androidx.navigation:navigation-ui-ktx:${DependencyVersions.navigation}"
     val lifecycle = "androidx.lifecycle:lifecycle-extensions:${DependencyVersions.lifecycle}"
 
+    var cardView = "com.android.support:cardview-v7:28.0.0"
+
     // NETWORKING
 
     val gson = "com.google.code.gson:gson:${DependencyVersions.gson}"

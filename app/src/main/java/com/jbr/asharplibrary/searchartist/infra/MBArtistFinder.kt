@@ -45,7 +45,6 @@ class MBArtistFinder(private val artistAPI: MBArtistAPI) : ArtistRemoteFinder {
                 val result = searchArtistPromise.await()
 
                 _results.value = result.artists
-
             } catch (exception: Exception) {
                 Timber.e(exception)
             }

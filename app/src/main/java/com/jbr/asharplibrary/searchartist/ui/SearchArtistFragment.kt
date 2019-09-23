@@ -7,7 +7,6 @@ import androidx.core.view.MenuItemCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_search_artist.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -71,8 +70,6 @@ class SearchArtistFragment : Fragment() {
         foundArtistsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = foundArtistsListAdapter
-
-            addItemDecoration(DividerItemDecoration(context, (layoutManager as LinearLayoutManager).orientation))
         }
     }
 

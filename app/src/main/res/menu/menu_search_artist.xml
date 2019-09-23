@@ -4,8 +4,8 @@
 
     <item
         android:id="@+id/action_search"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="Search Waste Items"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search_artist_menu_title"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
 </menu>

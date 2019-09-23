@@ -15,11 +15,13 @@ class FoundArtistsListAdapter : RecyclerView.Adapter<FoundArtistsListAdapter.Vie
         //region - Properties
 
         private val nameTextView: TextView = rootView.nameTextView
+        private val typeTextView: TextView = rootView.typeTextView
 
         //region - Functions
 
         fun bind(item: DisplayableFoundArtistItem) {
             nameTextView.text = item.name
+            typeTextView.text = itemView.context.getString(item.typeStringId)
         }
     }
 

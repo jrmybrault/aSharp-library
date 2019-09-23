@@ -3,23 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <ProgressBar
         android:id="@+id/searchProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true" />
 
     <TextView
         android:id="@+id/resultTextView"
+        style="@style/InfoText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/default_padding"
+        android:paddingBottom="@dimen/item_padding"
         tools:text="We found 3 artists matching your search." />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/foundArtistsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/default_margin"
         tools:itemCount="3"
         tools:listitem="@layout/item_found_artist" />
 </LinearLayout>

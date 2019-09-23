@@ -34,12 +34,16 @@ class SearchArtistViewModel(application: Application, private val finder: IArtis
         get() = _isSearching
 
     val searchResultText: LiveData<String> = Transformations.map(foundArtists) { artists ->
-        application.resources.getQuantityString(
-            R.plurals.search_artist_number_of_results,
-            artists.size,
-            searchText ?: "",
-            artists.size
-        )
+        if (searchText.isNullOrEmpty()) {
+            ""
+        } else {
+            application.resources.getQuantityString(
+                R.plurals.search_artist_number_of_results,
+                artists.size,
+                searchText ?: "",
+                artists.size
+            )
+        }
     }
 
 

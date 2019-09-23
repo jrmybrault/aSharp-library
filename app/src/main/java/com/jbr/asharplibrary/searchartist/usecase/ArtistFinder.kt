@@ -3,10 +3,10 @@ package com.jbr.asharplibrary.searchartist.usecase
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jbr.asharplibrary.searchartist.domain.Artist
+import com.jbr.asharplibrary.searchartist.domain.ArtistType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.random.Random
-import kotlin.random.nextUInt
 
 interface IArtistFinder {
 
@@ -29,8 +29,8 @@ class FakeArtistFinder : IArtistFinder {
         withContext(Dispatchers.IO) {
             Thread.sleep(1500)
 
-            val numberOfFakes = Random.nextUInt(4U)
-            val fakeResults = (0U..numberOfFakes).map { Artist(name = "$text $it") }
+            val numberOfFakes = Random.nextInt(0, 4)
+            val fakeResults = (0..numberOfFakes).map { Artist(name = "$text $it", type = ArtistType.SOLO) }
 
             results.postValue(fakeResults)
         }

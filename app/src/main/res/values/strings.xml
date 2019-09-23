@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">aSharpLibrary</string>
+    <string name="app_name">a#Library</string>
+
+    <string name="artist_type_solo">Artist</string>
+    <string name="artist_type_band">Band</string>
+    <string name="artist_type_other">Other</string>
 </resources>
