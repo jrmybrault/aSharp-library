@@ -18,9 +18,9 @@
         style="@style/InfoText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_margin"
+        android:layout_marginBottom="@dimen/large_margin"
         android:gravity="center"
-        android:paddingTop="@dimen/default_padding"
-        android:paddingBottom="@dimen/item_padding"
         tools:text="We found 3 artists matching your search." />
 
     <androidx.recyclerview.widget.RecyclerView
