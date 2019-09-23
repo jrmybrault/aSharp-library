@@ -1,0 +1,10 @@
+apply plugin: "io.gitlab.arturbosch.detekt"
+
+detekt {
+    toolVersion = "${DependencyVersions.detekt}"
+    input = files(file("src/main/java"), file("src/androidTest/java"), file("src/test/java"))
+}
+
+dependencies {
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:${DependencyVersions.detekt}"
+}

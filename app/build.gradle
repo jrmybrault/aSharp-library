@@ -5,6 +5,12 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'androidx.navigation.safeargs'
 
+ext {
+    qualimetryDirectory = "$rootDir/qualimetry"
+}
+
+apply from: "$qualimetryDirectory/detekt.gradle"
+
 android {
     compileSdkVersion DependencyVersions.compileSdk
 
