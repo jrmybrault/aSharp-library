@@ -30,7 +30,7 @@ class MBArtistFinder(private val artistAPI: MBArtistAPI) : ArtistRemoteFinder {
 
     //endregion
 
-    //region - Funcs
+    //region - Functions
 
     override suspend fun search(text: String?) {
         coroutineScope.launch {
