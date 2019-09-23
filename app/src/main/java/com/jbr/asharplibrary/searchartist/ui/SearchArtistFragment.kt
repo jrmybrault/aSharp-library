@@ -8,17 +8,27 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jbr.asharplibrary.shared.ui.DEFAULT_TEXT_EDITION_THROTTLE_DELAY
 import kotlinx.android.synthetic.main.fragment_search_artist.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
+import kotlin.coroutines.CoroutineContext
 
 
-class SearchArtistFragment : Fragment() {
+class SearchArtistFragment : Fragment(), CoroutineScope {
 
     //region - Properties
 
     private val viewModel: SearchArtistViewModel by viewModel()
 
     private val foundArtistsListAdapter: FoundArtistsListAdapter by lazyOf(FoundArtistsListAdapter())
+
+    override val coroutineContext: CoroutineContext = Dispatchers.Main
+
+    private var editedSearchText: String? = null
 
     //endregion
 
@@ -42,7 +52,13 @@ class SearchArtistFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
+    }
 
+    private fun setupRecyclerView() {
+        foundArtistsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = foundArtistsListAdapter
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -60,16 +76,24 @@ class SearchArtistFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                viewModel.searchText = newText
+                throttleSearch(newText)
+
                 return true
             }
         })
     }
 
-    private fun setupRecyclerView() {
-        foundArtistsRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = foundArtistsListAdapter
+    private fun throttleSearch(text: String) {
+        editedSearchText = text
+
+        launch {
+            delay(DEFAULT_TEXT_EDITION_THROTTLE_DELAY)
+
+            if (text != editedSearchText) {
+                return@launch
+            }
+
+            viewModel.searchText = text
         }
     }
 
