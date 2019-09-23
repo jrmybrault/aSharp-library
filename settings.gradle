@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':buildsrc'
 rootProject.name='aSharpLibrary'

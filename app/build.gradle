@@ -1,19 +1,25 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'androidx.navigation.safeargs'
+
 android {
-    compileSdkVersion 29
+    compileSdkVersion DependencyVersions.compileSdk
+
     defaultConfig {
         applicationId "com.jbr.asharplibrary"
-        minSdkVersion 19
-        targetSdkVersion 29
+
+        minSdkVersion DependencyVersions.minSdk
+        targetSdkVersion DependencyVersions.targetSdk
+
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -24,11 +30,33 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // KOTLIN
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${DependencyVersions.kotlin}"
+
+    implementation KotlinLibraries.coroutines
+
+    // ANDROID
+    implementation AndroidLibraries.coroutines
+
+    // ANDROID X
+    implementation AndroidLibraries.appCompat
+    implementation AndroidLibraries.recyclerView
+    implementation AndroidLibraries.ktx
+    implementation AndroidLibraries.constraintLayout
+    implementation AndroidLibraries.navigationFragment
+    implementation AndroidLibraries.navigationUI
+    implementation AndroidLibraries.lifecycle
+
+    // DEPENDENCY INJECTION
+    implementation AndroidLibraries.koinCore
+    implementation AndroidLibraries.koinScope
+    implementation AndroidLibraries.koinViewModel
+
+    // UNIT TEST
+    testImplementation TestLibraries.junit
+
+    // INSTRUMENTED Test
+    androidTestImplementation TestLibraries.runner
+    androidTestImplementation TestLibraries.espresso
 }
