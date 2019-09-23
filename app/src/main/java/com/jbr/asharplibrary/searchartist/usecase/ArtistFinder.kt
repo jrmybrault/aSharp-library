@@ -30,7 +30,7 @@ class FakeArtistFinder : IArtistFinder {
             Thread.sleep(1500)
 
             val numberOfFakes = Random.nextInt(0, 4)
-            val fakeResults = (0..numberOfFakes).map { Artist(name = "$text $it", type = ArtistType.SOLO) }
+            val fakeResults = (0..numberOfFakes).map { Artist(name = "$text $it", type = ArtistType.SOLO, sortName = "$text $it", score = 100) }
 
             results.postValue(fakeResults)
         }

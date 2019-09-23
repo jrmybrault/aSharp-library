@@ -26,7 +26,9 @@ class SearchArtistViewModel(application: Application, private val finder: IArtis
     private val foundArtists = finder.results
 
     val displayableFoundArtists: LiveData<List<DisplayableFoundArtistItem>> = Transformations.map(foundArtists) { artists ->
-        artists.map { DisplayableFoundArtistItem(it) }
+        artists
+            .sortedWith(ArtistSortComparator())
+            .map { DisplayableFoundArtistItem(it) }
     }
 
     private val _isSearching = MutableLiveData(false)

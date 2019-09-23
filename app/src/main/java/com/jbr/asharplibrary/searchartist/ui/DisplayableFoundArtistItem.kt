@@ -6,5 +6,5 @@ import com.jbr.asharplibrary.shared.ui.displayTextId
 data class DisplayableFoundArtistItem(val name: String, val typeStringId: Int) {
 
 
-    constructor(artist: Artist) : this(name = artist.name, typeStringId = artist.type.displayTextId())
+    constructor(artist: Artist) : this(name = artist.sortName, typeStringId = artist.type.displayTextId())
 }

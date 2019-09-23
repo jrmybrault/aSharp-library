@@ -6,6 +6,7 @@ import com.jbr.asharplibrary.searchartist.domain.ArtistType
 
 data class MBArtist(
     @SerializedName("id") val identifier: String,
+    val score: Int,
     val type: MBArtistType?,
     val name: String,
     @SerializedName("sort-name") val sortName: String,
@@ -44,7 +45,7 @@ data class MBArtistLifeSpan(val begin: String?, val end: String?)
 data class MBArtistTag(val name: String)
 
 fun MBArtist.asDomain(): Artist {
-    return Artist(name = name, type = type?.asDomain() ?: ArtistType.OTHER)
+    return Artist(name = name, type = type?.asDomain() ?: ArtistType.OTHER, sortName = sortName, score = score)
 }
 
 fun MBArtistType.asDomain(): ArtistType {
