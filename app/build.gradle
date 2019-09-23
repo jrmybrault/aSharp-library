@@ -28,35 +28,63 @@ android {
     }
 }
 
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // KOTLIN
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${DependencyVersions.kotlin}"
 
     implementation KotlinLibraries.coroutines
-
-    // ANDROID
     implementation AndroidLibraries.coroutines
 
-    // ANDROID X
-    implementation AndroidLibraries.appCompat
+    // UI
+
     implementation AndroidLibraries.recyclerView
-    implementation AndroidLibraries.ktx
     implementation AndroidLibraries.constraintLayout
     implementation AndroidLibraries.navigationFragment
     implementation AndroidLibraries.navigationUI
     implementation AndroidLibraries.lifecycle
 
     // DEPENDENCY INJECTION
+
     implementation AndroidLibraries.koinCore
     implementation AndroidLibraries.koinScope
     implementation AndroidLibraries.koinViewModel
 
+    // NETWORKING
+
+    implementation AndroidLibraries.moshi
+    implementation AndroidLibraries.moshiKotlin
+    implementation AndroidLibraries.moshiAdapters
+    implementation AndroidLibraries.retrofit
+    implementation AndroidLibraries.retrofitLogging
+    implementation AndroidLibraries.retrofitMoshi
+    implementation AndroidLibraries.retrofitCoroutinesCore
+    implementation AndroidLibraries.retrofitCoroutinesAndroid
+    implementation AndroidLibraries.retrofitCoroutinesAdapter
+
+    // LOGGING
+
+    implementation AndroidLibraries.timber
+
+    // MISCELLANEOUS
+
+    implementation AndroidLibraries.appCompat
+    implementation AndroidLibraries.ktx
+
     // UNIT TEST
+
     testImplementation TestLibraries.junit
 
     // INSTRUMENTED Test
+
     androidTestImplementation TestLibraries.runner
     androidTestImplementation TestLibraries.espresso
 }

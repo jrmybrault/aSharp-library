@@ -13,20 +13,33 @@ object DependencyVersions {
 
     val coroutines = "1.0.1"
 
-    // ANDROID X
+    // DEPENDENCY INJECTION
+
+    val koin = "2.0.1"
+
+    // UI
 
     val safeArgs = "2.0.0"
-
-    val appCompat = "1.1.0"
     val recyclerView = "1.0.0"
-    val ktx = "1.1.0"
     val constraintLayout = "1.1.3"
     val navigation = "2.1.0"
     val lifecycle = "2.1.0"
 
-    // DEPENDENCY INJECTION
+    // NETWORKING
 
-    val koin = "2.0.1"
+    val retrofit = "2.6.1"
+    val retrofitLogging = "4.2.0"
+    val moshi = "1.8.0"
+    val coroutinesAdapter = "0.9.2"
+
+    // LOGGING
+
+    val timber = "4.7.1"
+    
+    // MISCELLANEOUS
+
+    val appCompat = "1.1.0"
+    val ktx = "1.1.0"
 
     // UNIT TEST
 
@@ -45,19 +58,43 @@ object KotlinLibraries {
 
 object AndroidLibraries {
 
+    // KOTLIN
+
     val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${DependencyVersions.coroutines}"
+
+    // DEPENDENCY INJECTION
 
     val koinCore = "org.koin:koin-android:${DependencyVersions.koin}"
     val koinScope = "org.koin:koin-android-scope:${DependencyVersions.koin}"
     val koinViewModel = "org.koin:koin-android-viewmodel:${DependencyVersions.koin}"
 
-    val appCompat = "androidx.appcompat:appcompat:${DependencyVersions.appCompat}"
+    // UI
+
     val recyclerView = "androidx.recyclerview:recyclerview:${DependencyVersions.recyclerView}"
-    val ktx = "androidx.core:core-ktx:${DependencyVersions.ktx}"
     val constraintLayout = "androidx.constraintlayout:constraintlayout:${DependencyVersions.constraintLayout}"
     val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${DependencyVersions.navigation}"
     val navigationUI = "androidx.navigation:navigation-ui-ktx:${DependencyVersions.navigation}"
     val lifecycle = "androidx.lifecycle:lifecycle-extensions:${DependencyVersions.lifecycle}"
+
+    // NETWORKING
+
+    val moshi = "com.squareup.moshi:moshi:${DependencyVersions.moshi}"
+    val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${DependencyVersions.moshi}"
+    val moshiAdapters = "com.squareup.moshi:moshi-adapters:${DependencyVersions.moshi}"
+    val retrofit = "com.squareup.retrofit2:retrofit:${DependencyVersions.retrofit}"
+    val retrofitLogging = "com.squareup.okhttp3:logging-interceptor:${DependencyVersions.retrofitLogging}"
+    val retrofitMoshi = "com.squareup.retrofit2:converter-moshi:${DependencyVersions.retrofit}"
+    val retrofitCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${DependencyVersions.coroutines}"
+    val retrofitCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${DependencyVersions.coroutines}"
+    val retrofitCoroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${DependencyVersions.coroutinesAdapter}"
+
+    // LOGGING
+
+    val timber = "com.jakewharton.timber:timber:${DependencyVersions.timber}"
+
+    // MISCELLANEOUS
+    val appCompat = "androidx.appcompat:appcompat:${DependencyVersions.appCompat}"
+    val ktx = "androidx.core:core-ktx:${DependencyVersions.ktx}"
 }
 
 object TestLibraries {
