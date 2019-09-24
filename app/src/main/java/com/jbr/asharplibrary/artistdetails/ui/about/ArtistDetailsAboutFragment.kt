@@ -1,4 +1,4 @@
-package com.jbr.asharplibrary.artistdetails.ui
+package com.jbr.asharplibrary.artistdetails.ui.about
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.jbr.asharplibrary.R
+import com.jbr.asharplibrary.artistdetails.ui.ArtistDetailsViewModel
 import kotlinx.android.synthetic.main.fragment_artist_details_about.*
 import org.koin.android.viewmodel.ext.android.viewModel
 

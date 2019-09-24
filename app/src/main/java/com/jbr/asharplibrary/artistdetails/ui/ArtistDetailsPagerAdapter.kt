@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.jbr.asharplibrary.R
+import com.jbr.asharplibrary.artistdetails.ui.about.ArtistDetailsAboutFragment
+import com.jbr.asharplibrary.artistdetails.ui.discography.ArtistDetailsDiscographyFragment
 
 class ArtistDetailsPagerAdapter(
     manager: FragmentManager,

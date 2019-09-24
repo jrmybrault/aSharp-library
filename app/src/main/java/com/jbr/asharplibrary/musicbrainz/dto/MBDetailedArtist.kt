@@ -12,9 +12,9 @@ data class MBDetailedArtist(
     val gender: Gender?,
     @SerializedName("ipis") val ipiCodes: List<String> = emptyList(),
     @SerializedName("isnis") val isniCodes: List<String> = emptyList(),
-    val area: Area,
+    val area: Area?,
     @SerializedName("begin_area")
-    val beginningArea: BeginArea,
+    val beginningArea: BeginArea?,
     @SerializedName("life-span")
     val lifeSpan: LifeSpan,
     @SerializedName("release-groups")
@@ -33,7 +33,7 @@ data class MBDetailedArtist(
 
     data class BeginArea(val name: String)
 
-    data class LifeSpan(@SerializedName("begin") val beginning: Date, val end: Date?)
+    data class LifeSpan(@SerializedName("begin") val beginning: Date?, val end: Date?)
 }
 
 fun MBDetailedArtist.asDomain(): DetailedArtist {
@@ -45,10 +45,11 @@ fun MBDetailedArtist.asDomain(): DetailedArtist {
         gender = gender?.asDomain(),
         ipiCodes = ipiCodes,
         isniCodes = isniCodes,
-        countryName = area.name,
-        beginningArea = beginningArea.name,
+        countryName = area?.name,
+        beginningArea = beginningArea?.name,
         lifeSpanBeginning = lifeSpan.beginning,
-        lifeSpanEnd = lifeSpan.end
+        lifeSpanEnd = lifeSpan.end,
+        releases = releaseGroups.map { it.asDomain() }
     )
 }
 

@@ -12,11 +12,12 @@ data class DetailedArtist(
     val gender: Gender?,
     val ipiCodes: List<String>,
     val isniCodes: List<String>,
-    val countryName: String,
+    val countryName: String?,
     val beginningArea: String?,
-    val lifeSpanBeginning: Date,
+    val lifeSpanBeginning: Date?,
     val lifeSpanEnd: Date?,
-    var wikipediaExtract: String? = null
+    var wikipediaExtract: String? = null,
+    val releases: List<Release> = emptyList()
 ) {
 
     enum class Gender {
