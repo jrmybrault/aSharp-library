@@ -25,7 +25,9 @@ class ArtistDetailsViewModel(application: Application, private val loader: Artis
     }
 
     val displayableArtistReleases: LiveData<List<DisplayableArtistReleaseItem>> = Transformations.map(loadedArtist) { artist ->
-        artist.releases.map { DisplayableArtistReleaseItem(it, application.resources) }
+        artist.releases
+            .sortedByDescending { it.releaseDate }
+            .map { DisplayableArtistReleaseItem(it, application.resources) }
     }
 
     private val _isLoading = MutableLiveData(false)

@@ -28,7 +28,9 @@ class ArtistDetailsDiscographyFragment : Fragment() {
     //region - Functions
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewModel.displayableArtistReleases.observe(viewLifecycleOwner, Observer { artistReleasesListAdapter.releases = it })
+        viewModel.displayableArtistReleases.observe(viewLifecycleOwner, Observer {
+            artistReleasesListAdapter.submitList(it)
+        })
 
         return inflater.inflate(R.layout.fragment_artist_details_discography, container, false)
     }
@@ -42,9 +44,9 @@ class ArtistDetailsDiscographyFragment : Fragment() {
     private fun setupRecyclerView() {
         releasesRecyclerView.apply {
             layoutManager = if (isDeviceTablet(resources)) {
-                LinearLayoutManager(context)
-            } else {
                 GridLayoutManager(activity, 3)
+            } else {
+                LinearLayoutManager(context)
             }
             adapter = artistReleasesListAdapter
         }

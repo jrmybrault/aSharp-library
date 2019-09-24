@@ -17,7 +17,7 @@ data class DisplayableArtistReleaseItem(val identifier: String, val title: Strin
     )
 
     companion object {
-        private val releaseDateFormatter: DateFormat = SimpleDateFormat("YYYY", Locale.getDefault())
+        private val releaseDateFormatter: DateFormat = SimpleDateFormat("yyyy", Locale.getDefault())
     }
 }
 
@@ -26,13 +26,13 @@ fun Release.displayTitle(resources: Resources): String {
     val primaryTypeSuffixText = if (primaryTypeSuffixId != null) {
         " ${resources.getString(primaryTypeSuffixId)} "
     } else {
-        null
+        ""
     }
     val secondaryTypeSuffixId = secondaryTypes.firstOrNull()?.displaySuffixId()
     val secondaryTypeSuffixText = if (secondaryTypeSuffixId != null) {
         " ${resources.getString(secondaryTypeSuffixId)} "
     } else {
-        null
+        ""
     }
 
     return "$title$primaryTypeSuffixText$secondaryTypeSuffixText"

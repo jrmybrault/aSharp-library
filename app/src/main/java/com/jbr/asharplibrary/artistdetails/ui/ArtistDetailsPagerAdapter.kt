@@ -15,16 +15,16 @@ class ArtistDetailsPagerAdapter(
 
     enum class PageType {
 
-        ABOUT,
-        DISCOGRAPHY
+        DISCOGRAPHY,
+        ABOUT
     }
 
     //region - Functions
 
     override fun getItem(position: Int): Fragment {
         return when (pageType(position)) {
-            PageType.ABOUT -> ArtistDetailsAboutFragment()
             PageType.DISCOGRAPHY -> ArtistDetailsDiscographyFragment()
+            PageType.ABOUT -> ArtistDetailsAboutFragment()
         }
     }
 

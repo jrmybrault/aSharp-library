@@ -31,13 +31,6 @@ class ArtistReleasesListAdapter :
         }
     }
 
-    //region - Properties
-
-    var releases: List<DisplayableArtistReleaseItem> = emptyList()
-        set(value) {
-            submitList(value)
-        }
-
     //region - Functions
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -50,9 +43,7 @@ class ArtistReleasesListAdapter :
         )
     }
 
-    override fun getItemCount() = releases.size
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(releases[position])
+        holder.bind(getItem(position))
     }
 }
