@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.jbr.asharplibrary.artistdetails.usecase.ArtistDetailsLoader
 import com.jbr.asharplibrary.shareddomain.ArtistIdentifier
 import kotlinx.coroutines.CoroutineScope
@@ -16,8 +17,16 @@ class ArtistDetailsViewModel(application: Application, private val loader: Artis
     //region - Properties
 
     private val loadedArtist = loader.artist
-    
-    private val _isLoading = MutableLiveData<Boolean>(false)
+
+    val displayableArtistAbout: LiveData<DisplayableArtistAbout> = Transformations.map(loadedArtist) {
+        val a = DisplayableArtistAbout(it, application.resources)
+
+        val b = 0
+
+        a
+    }
+
+    private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 

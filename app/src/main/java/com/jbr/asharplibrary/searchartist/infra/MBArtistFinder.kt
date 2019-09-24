@@ -25,7 +25,6 @@ class MBArtistFinder(private val artistAPI: MBArtistAPI) : ArtistRemoteFinder {
     }
 
     private var viewModelJob = Job()
-
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     //endregion

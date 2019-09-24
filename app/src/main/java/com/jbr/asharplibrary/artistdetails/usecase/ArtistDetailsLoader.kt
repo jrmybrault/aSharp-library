@@ -3,15 +3,15 @@ package com.jbr.asharplibrary.artistdetails.usecase
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jbr.asharplibrary.artistdetails.domain.DetailedArtist
-import com.jbr.asharplibrary.artistdetails.domain.Gender
-import com.jbr.utils.date
+import com.jbr.asharplibrary.searchartist.domain.ArtistType
+import com.jbr.utils.dateFrom
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
 
 interface ArtistDetailsLoader {
 
-    val artist: LiveData<DetailedArtist?>
+    val artist: LiveData<DetailedArtist>
 
     suspend fun loadArtist(identifier: String)
 }
@@ -22,7 +22,7 @@ class FakeArtistDetailsLoader : ArtistDetailsLoader {
 
     private val fakeDelay = 1500L // In milliseconds
 
-    override val artist: MutableLiveData<DetailedArtist?> = MutableLiveData(null)
+    override val artist = MutableLiveData<DetailedArtist>()
 
     //endregion
 
@@ -34,13 +34,16 @@ class FakeArtistDetailsLoader : ArtistDetailsLoader {
 
             val fakeArtist = DetailedArtist(
                 identifier = "artistId",
+                type = ArtistType.SOLO,
                 name = "Ennio Morricone",
+                gender = DetailedArtist.Gender.MALE,
+                ipiCodes = listOf("00021552128"),
+                isniCodes = listOf("0000000121225602", "0000000368638409"),
                 countryName = "Italy",
-                areaBegin = "Rome",
-                lifeSpanBegin = GregorianCalendar().date(1928, 10, 11),
+                beginningArea = "Rome",
+                lifeSpanBeginning = GregorianCalendar().dateFrom(1928, 10, 11),
                 lifeSpanEnd = null,
-                typeDetail = "Composer",
-                gender = Gender.MALE
+                typePrecision = "Composer"
             )
 
             artist.postValue(fakeArtist)

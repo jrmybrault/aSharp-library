@@ -1,7 +1,6 @@
 package com.jbr.asharplibrary.di
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.google.gson.*
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.jbr.asharplibrary.musicbrainz.api.MBArtistAPI
 import okhttp3.Interceptor
@@ -10,6 +9,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.reflect.Type
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 val networkingModule = module {
 
@@ -29,6 +32,7 @@ val networkingModule = module {
     single<Gson> {
         GsonBuilder()
             .setPrettyPrinting()
+            .registerTypeAdapter(Date::class.java, MBDateDeserializer())
             .create()
     }
 
@@ -52,5 +56,23 @@ val networkingModule = module {
 
             chain.proceed(request)
         }
+    }
+}
+
+private class MBDateDeserializer : JsonDeserializer<Date> {
+
+    override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Date {
+        dateFormats.forEach { format ->
+            try {
+                return SimpleDateFormat(format, Locale.getDefault()).parse(json.asString)
+            } catch (_: ParseException) {
+            }
+        }
+
+        throw JsonParseException("Cannot deserialize dateFrom: ${json.asString} : unsupported format.")
+    }
+
+    companion object {
+        private val dateFormats = listOf("yyyy-MM-dd", "yyyy")
     }
 }

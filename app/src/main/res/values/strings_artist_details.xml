@@ -3,4 +3,23 @@
 
     <string name="artist_details_about">About</string>
     <string name="artist_details_discography">Discography</string>
+
+    <string name="artist_details_about_section_info">Artist information</string>
+
+    <string name="artist_details_gender_male">Male</string>
+    <string name="artist_details_gender_female">Female</string>
+
+    <string name="artist_details_country">Country:</string>
+
+    <string name="artist_details_life_span_begin_solo">Birth:</string>
+    <string name="artist_details_life_span_begin_band">Foundation:</string>
+    <string name="artist_details_life_span_begin_value">%1$s, in %2$s</string>
+    <string name="artist_details_life_span_end_solo">Death:</string>
+    <string name="artist_details_life_span_end_band">Dissolution:</string>
+    <string name="artist_details_life_span_duration">(%1$d years)</string>
+
+    <string name="artist_details_ipi_codes">IPI Codes:</string>
+    <string name="artist_details_isni_codes">ISNI Codes:</string>
+
+    <string name="artist_details_about_section_more">Read more…</string>
 </resources>

@@ -7,47 +7,50 @@ import com.jbr.asharplibrary.searchartist.domain.ArtistType
 data class MBArtist(
     @SerializedName("id") val identifier: String,
     val score: Int,
-    val type: MBArtistType?,
+    val type: Type?,
     val name: String,
     @SerializedName("sort-name") val sortName: String,
-    val tags: List<MBArtistTag> = emptyList()
-)
+    val tags: List<Tag> = emptyList()
+) {
 
-enum class MBArtistType {
+    enum class Type {
 
-    @SerializedName("Person")
-    PERSON,
-    @SerializedName("Group")
-    GROUP,
-    @SerializedName("Orchestra")
-    ORCHESTRA,
-    @SerializedName("Choir")
-    CHOIR,
-    @SerializedName("Character")
-    CHARACTER,
-    @SerializedName("Other")
-    OTHER
+        @SerializedName("Person")
+        PERSON,
+        @SerializedName("Group")
+        GROUP,
+        @SerializedName("Orchestra")
+        ORCHESTRA,
+        @SerializedName("Choir")
+        CHOIR,
+        @SerializedName("Character")
+        CHARACTER,
+        @SerializedName("Other")
+        OTHER
+    }
+
+    data class Tag(val name: String)
 }
 
-data class MBArtistTag(val name: String)
 
 fun MBArtist.asDomain(): Artist {
     return Artist(
         identifier = identifier,
         name = name,
-        type = type?.asDomain() ?: ArtistType.OTHER,
+        type = type.asDomain(),
         sortName = sortName,
         score = score
     )
 }
 
-fun MBArtistType.asDomain(): ArtistType {
+fun MBArtist.Type?.asDomain(): ArtistType {
     return when (this) {
-        MBArtistType.PERSON -> ArtistType.SOLO
-        MBArtistType.GROUP -> ArtistType.BAND
-        MBArtistType.ORCHESTRA -> ArtistType.BAND
-        MBArtistType.CHOIR -> ArtistType.BAND
-        MBArtistType.CHARACTER -> ArtistType.SOLO
-        MBArtistType.OTHER -> ArtistType.OTHER
+        MBArtist.Type.PERSON -> ArtistType.SOLO
+        MBArtist.Type.GROUP -> ArtistType.BAND
+        MBArtist.Type.ORCHESTRA -> ArtistType.BAND
+        MBArtist.Type.CHOIR -> ArtistType.BAND
+        MBArtist.Type.CHARACTER -> ArtistType.SOLO
+        MBArtist.Type.OTHER -> ArtistType.OTHER
+        null -> ArtistType.OTHER
     }
 }
