@@ -53,7 +53,6 @@ class SearchArtistViewModel(application: Application, private val finder: IArtis
     var navigator: WeakReference<SearchArtistNavigator>? = null
 
     private val viewModelJob = Job()
-
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     //endregion

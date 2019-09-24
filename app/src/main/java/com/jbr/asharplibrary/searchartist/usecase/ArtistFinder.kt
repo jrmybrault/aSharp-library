@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
-interface IArtistFinder {
+interface IArtistFinder { // FIXME: Rename in ArtistFinder
 
     val results: LiveData<List<Artist>>
 
@@ -19,6 +19,8 @@ class FakeArtistFinder : IArtistFinder {
 
     //region - Properties
 
+    private val fakeDelay = 1500L // In milliseconds
+
     override val results: MutableLiveData<List<Artist>> = MutableLiveData(emptyList())
 
     //endregion
@@ -27,7 +29,7 @@ class FakeArtistFinder : IArtistFinder {
 
     override suspend fun search(text: String?) {
         withContext(Dispatchers.IO) {
-            Thread.sleep(1500)
+            Thread.sleep(fakeDelay)
 
             val numberOfFakes = Random.nextInt(0, 4)
             val fakeResults = (0..numberOfFakes).map {

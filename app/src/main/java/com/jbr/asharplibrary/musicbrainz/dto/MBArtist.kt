@@ -10,9 +10,6 @@ data class MBArtist(
     val type: MBArtistType?,
     val name: String,
     @SerializedName("sort-name") val sortName: String,
-    val gender: MBArtistGender?,
-    @SerializedName("country") val countryCode: String?,
-    @SerializedName("life-span") val lifeSpan: MBArtistLifeSpan,
     val tags: List<MBArtistTag> = emptyList()
 )
 
@@ -31,16 +28,6 @@ enum class MBArtistType {
     @SerializedName("Other")
     OTHER
 }
-
-enum class MBArtistGender {
-
-    @SerializedName("male")
-    MALE,
-    @SerializedName("female")
-    FEMALE
-}
-
-data class MBArtistLifeSpan(val begin: String?, val end: String?)
 
 data class MBArtistTag(val name: String)
 
