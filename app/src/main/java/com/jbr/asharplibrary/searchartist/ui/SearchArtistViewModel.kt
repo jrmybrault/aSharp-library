@@ -7,10 +7,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.searchartist.usecase.IArtistFinder
+import com.jbr.asharplibrary.searchartist.usecase.SearchArtistNavigator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.lang.ref.WeakReference
 
 class SearchArtistViewModel(application: Application, private val finder: IArtistFinder) : AndroidViewModel(application) {
 
@@ -48,6 +50,7 @@ class SearchArtistViewModel(application: Application, private val finder: IArtis
         }
     }
 
+    var navigator: WeakReference<SearchArtistNavigator>? = null
 
     private val viewModelJob = Job()
 
@@ -65,6 +68,12 @@ class SearchArtistViewModel(application: Application, private val finder: IArtis
 
             _isSearching.value = false
         }
+    }
+
+    fun handleSelectionOfArtist(index: Int) {
+        val selectedArtist = displayableFoundArtists.value!![index]
+
+        navigator?.get()?.goToArtistDetails(selectedArtist.identifier)
     }
 
     override fun onCleared() {

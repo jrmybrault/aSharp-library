@@ -7,5 +7,15 @@
     <fragment
         android:id="@+id/searchArtistFragment"
         android:name="com.jbr.asharplibrary.searchartist.ui.SearchArtistFragment"
-        android:label="SearchArtistFragment" />
+        android:label="SearchArtistFragment">
+        <action
+            android:id="@+id/action_searchArtistFragment_to_artistDetailsFragment"
+            app:destination="@id/artistDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistDetailsFragment"
+        android:name="com.jbr.asharplibrary.artistdetails.ui.ArtistDetailsFragment"
+        android:label="ArtistDetailsFragment">
+        <argument android:name="artistIdentifier" />
+    </fragment>
 </navigation>

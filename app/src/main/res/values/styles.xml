@@ -19,7 +19,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/grayish_brown</item>
+        <item name="android:textColor">@color/colorGrayishBrown</item>
     </style>
 
     <style name="InfoText">

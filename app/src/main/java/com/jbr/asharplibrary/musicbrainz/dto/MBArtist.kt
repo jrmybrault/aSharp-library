@@ -45,7 +45,13 @@ data class MBArtistLifeSpan(val begin: String?, val end: String?)
 data class MBArtistTag(val name: String)
 
 fun MBArtist.asDomain(): Artist {
-    return Artist(name = name, type = type?.asDomain() ?: ArtistType.OTHER, sortName = sortName, score = score)
+    return Artist(
+        identifier = identifier,
+        name = name,
+        type = type?.asDomain() ?: ArtistType.OTHER,
+        sortName = sortName,
+        score = score
+    )
 }
 
 fun MBArtistType.asDomain(): ArtistType {

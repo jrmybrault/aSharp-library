@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="artist_details_about">About</string>
+    <string name="artist_details_discography">Discography</string>
+</resources>

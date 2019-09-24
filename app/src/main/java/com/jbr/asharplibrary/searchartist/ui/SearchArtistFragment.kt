@@ -3,22 +3,27 @@ package com.jbr.asharplibrary.searchartist.ui
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
+import androidx.core.util.Consumer
 import androidx.core.view.MenuItemCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jbr.asharplibrary.R
+import com.jbr.asharplibrary.searchartist.usecase.SearchArtistNavigator
 import com.jbr.asharplibrary.shared.ui.DEFAULT_TEXT_EDITION_THROTTLE_DELAY
+import com.jbr.asharplibrary.shareddomain.ArtistIdentifier
 import kotlinx.android.synthetic.main.fragment_search_artist.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.lang.ref.WeakReference
 import kotlin.coroutines.CoroutineContext
 
-
-class SearchArtistFragment : Fragment(), CoroutineScope {
+class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
 
     //region - Properties
 
@@ -45,7 +50,9 @@ class SearchArtistFragment : Fragment(), CoroutineScope {
         viewModel.displayableFoundArtists.observe(viewLifecycleOwner, Observer { foundArtistsListAdapter.artists = it })
         viewModel.searchResultText.observe(viewLifecycleOwner, Observer { resultTextView.text = it })
 
-        return inflater.inflate(com.jbr.asharplibrary.R.layout.fragment_search_artist, container, false)
+        viewModel.navigator = WeakReference(this)
+
+        return inflater.inflate(R.layout.fragment_search_artist, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,15 +66,20 @@ class SearchArtistFragment : Fragment(), CoroutineScope {
             layoutManager = LinearLayoutManager(context)
             adapter = foundArtistsListAdapter
         }
+
+        foundArtistsListAdapter.onArtistSelected = Consumer { viewModel.handleSelectionOfArtist(it) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(com.jbr.asharplibrary.R.menu.menu_search_artist, menu)
-        val searchItem = menu.findItem(com.jbr.asharplibrary.R.id.action_search)
+        inflater.inflate(R.menu.menu_search_artist, menu)
 
+        setupSearchView(menu)
+    }
+
+    private fun setupSearchView(menu: Menu) {
+        val searchItem = menu.findItem(R.id.action_search)
         val searchView = SearchView(activity)
         MenuItemCompat.setActionView(searchItem, searchView)
-
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
@@ -95,6 +107,10 @@ class SearchArtistFragment : Fragment(), CoroutineScope {
 
             viewModel.searchText = text
         }
+    }
+
+    override fun goToArtistDetails(identifier: ArtistIdentifier) {
+        findNavController().navigate(SearchArtistFragmentDirections.actionSearchArtistFragmentToArtistDetailsFragment(identifier))
     }
 
     //endregion
