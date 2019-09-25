@@ -18,7 +18,8 @@ data class MBDetailedArtist(
     @SerializedName("life-span")
     val lifeSpan: LifeSpan,
     @SerializedName("release-groups")
-    val releaseGroups: List<MBReleaseGroup> = emptyList()
+    val releaseGroups: List<MBReleaseGroup> = emptyList(),
+    val rating: Rating?
 ) {
 
     enum class Gender {
@@ -34,6 +35,8 @@ data class MBDetailedArtist(
     data class BeginArea(val name: String)
 
     data class LifeSpan(@SerializedName("begin") val beginning: Date?, val end: Date?)
+
+    data class Rating(val value: Float, @SerializedName("votes-count") val count: Int)
 }
 
 fun MBDetailedArtist.asDomain(): DetailedArtist {
@@ -49,7 +52,8 @@ fun MBDetailedArtist.asDomain(): DetailedArtist {
         beginningArea = beginningArea?.name,
         lifeSpanBeginning = lifeSpan.beginning,
         lifeSpanEnd = lifeSpan.end,
-        releases = releaseGroups.map { it.asDomain() }
+        releases = releaseGroups.map { it.asDomain() },
+        rating = rating?.asDomain()
     )
 }
 
@@ -58,4 +62,8 @@ fun MBDetailedArtist.Gender.asDomain(): DetailedArtist.Gender {
         MBDetailedArtist.Gender.MALE -> DetailedArtist.Gender.MALE
         MBDetailedArtist.Gender.FEMALE -> DetailedArtist.Gender.FEMALE
     }
+}
+
+fun MBDetailedArtist.Rating.asDomain(): DetailedArtist.Rating {
+    return DetailedArtist.Rating(averageValue = value, count = count)
 }

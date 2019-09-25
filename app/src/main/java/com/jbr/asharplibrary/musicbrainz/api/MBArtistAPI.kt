@@ -14,7 +14,7 @@ interface MBArtistAPI {
     @GET("ws/2/artist")
     fun searchAsync(@Query("query") searchText: String): Deferred<MBSearchArtistResult>
 
-    @GET("ws/2/artist/{artistId}?inc=releases+release-groups")
+    @GET("ws/2/artist/{artistId}?inc=releases+release-groups+ratings")
     fun getDetailsAsync(@Path("artistId") artistId: ArtistIdentifier): Deferred<MBDetailedArtist>
 
     @GET("artist/{artistId}/wikipedia-extract")
