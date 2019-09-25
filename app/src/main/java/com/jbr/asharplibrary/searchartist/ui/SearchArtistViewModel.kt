@@ -39,7 +39,7 @@ class SearchArtistViewModel(
     val displayableFoundArtists: LiveData<List<DisplayableFoundArtistItem>> = Transformations.map(foundArtists) { artists ->
         artists
             .sortedWith(ArtistSortComparator())
-            .map { DisplayableFoundArtistItem(it) }
+            .map { DisplayableFoundArtistItem(it, application.resources) }
     }
 
     private val _isSearching = MutableLiveData(false)
@@ -72,7 +72,7 @@ class SearchArtistViewModel(
     val displayableSearchedArtists: LiveData<List<DisplayableFoundArtistItem>> = Transformations.map(previousSearchesArtists) { searches ->
         searches
             .sortedByDescending { it.date }
-            .map { DisplayableFoundArtistItem(it.artist) }
+            .map { DisplayableFoundArtistItem(it.artist, application.resources) }
     }
 
     //endregion

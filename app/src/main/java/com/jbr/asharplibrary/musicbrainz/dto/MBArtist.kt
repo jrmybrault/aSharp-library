@@ -8,6 +8,7 @@ data class MBArtist(
     @SerializedName("id") val identifier: String,
     val score: Int,
     val type: Type?,
+    val disambiguation: String?,
     val name: String,
     @SerializedName("sort-name") val sortName: String,
     val tags: List<Tag> = emptyList()
@@ -38,6 +39,7 @@ fun MBArtist.asDomain(): Artist {
         identifier = identifier,
         name = name,
         type = type.asDomain(),
+        disambiguation = disambiguation,
         sortName = sortName,
         score = score
     )

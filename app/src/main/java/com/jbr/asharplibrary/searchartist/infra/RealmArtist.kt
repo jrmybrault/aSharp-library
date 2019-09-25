@@ -17,6 +17,7 @@ open class RealmArtist : RealmObject() {
     private var sortName: String = ""
 
     private var type: String = ""
+    private var disambiguation: String? = null
 
     private var score: Int = 0
 
@@ -29,6 +30,7 @@ open class RealmArtist : RealmObject() {
             identifier = identifier,
             name = name,
             type = ArtistType.valueOf(type),
+            disambiguation = disambiguation,
             sortName = sortName,
             score = score
         )
@@ -45,6 +47,7 @@ open class RealmArtist : RealmObject() {
             realmArtist.name = artist.name
             realmArtist.sortName = artist.sortName
             realmArtist.type = artist.type.toString()
+            realmArtist.disambiguation = artist.disambiguation
             realmArtist.score = artist.score
 
             return realmArtist
