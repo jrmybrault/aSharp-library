@@ -5,7 +5,7 @@ import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearch
 import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearchMappable
 import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearchesLocalProvider
 import com.jbr.asharplibrary.searchartist.infra.RealmPreviousArtistSearch.Companion.PRIMARY_KEY_NAME
-import com.jbr.asharplibrary.shareddomain.ArtistIdentifier
+import com.jbr.asharplibrary.shareddomain.SearchIdentifier
 import com.jbr.asharplibrary.sharedinfra.asLiveData
 import io.realm.Realm
 
@@ -42,7 +42,7 @@ class RealmPreviousArtistSearchesDao : PreviousArtistSearchesLocalProvider {
         }
     }
 
-    private fun get(identifier: ArtistIdentifier, realm: Realm): RealmPreviousArtistSearch? {
+    private fun get(identifier: SearchIdentifier, realm: Realm): RealmPreviousArtistSearch? {
         return realm.where(RealmPreviousArtistSearch::class.java)
             .equalTo(PRIMARY_KEY_NAME, identifier)
             .findFirst()

@@ -2,7 +2,7 @@ package com.jbr.asharplibrary.searchartist.infra
 
 import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearch
 import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearchMappable
-import com.jbr.asharplibrary.shareddomain.ArtistIdentifier
+import com.jbr.asharplibrary.shareddomain.SearchIdentifier
 import io.realm.RealmObject
 import io.realm.annotations.Index
 import io.realm.annotations.PrimaryKey
@@ -13,7 +13,7 @@ open class RealmPreviousArtistSearch : RealmObject(), PreviousArtistSearchMappab
     //region - Properties
 
     @PrimaryKey
-    private var identifier: ArtistIdentifier = ""
+    private var identifier: SearchIdentifier = ""
 
     private lateinit var artist: RealmArtist
 
