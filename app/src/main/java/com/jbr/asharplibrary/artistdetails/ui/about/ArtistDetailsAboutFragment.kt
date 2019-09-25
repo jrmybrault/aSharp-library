@@ -49,6 +49,8 @@ class ArtistDetailsAboutFragment : Fragment() {
         detailsIsniCodesLayout.isVisible = displayableArtistAbout.shouldDisplayIsniCodes
         detailsIsniCodesTextView.text = displayableArtistAbout.isniCodesText
 
+        detailsRatingsExtractTextView.text = displayableArtistAbout.ratingsText
+        
         detailsWikipediaExtractTextView.text = displayableArtistAbout.wikipediaExtractText
     }
 

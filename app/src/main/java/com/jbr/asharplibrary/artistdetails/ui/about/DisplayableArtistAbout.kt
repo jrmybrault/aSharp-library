@@ -1,6 +1,8 @@
 package com.jbr.asharplibrary.artistdetails.ui.about
 
 import android.content.res.Resources
+import android.text.Spanned
+import androidx.core.text.parseAsHtml
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.artistdetails.domain.DetailedArtist
 import com.jbr.asharplibrary.searchartist.domain.ArtistType
@@ -21,25 +23,21 @@ data class DisplayableArtistAbout(
     val shouldDisplayIpiCodes: Boolean = ipiCodesText.isNotEmpty(),
     val isniCodesText: String,
     val shouldDisplayIsniCodes: Boolean = isniCodesText.isNotEmpty(),
-    val wikipediaExtractText: String?
+    val wikipediaExtractText: Spanned?,
+    val ratingsText: String?
 ) {
 
     constructor(artist: DetailedArtist, resources: Resources) : this(
         genderText = artist.gender.displayText(resources),
         lifeSpanBeginningTitleText = artist.lifeSpanBeginningTitleDisplayText(resources),
-        lifeSpanBeginningText = artist.lifeSpanBeginningDisplayText(
-            resources,
-            lifeSpanBeginningFormatter
-        ),
+        lifeSpanBeginningText = artist.lifeSpanBeginningDisplayText(resources, lifeSpanBeginningFormatter),
         lifeSpanEndTitleText = artist.lifeSpanEndTitleDisplayText(resources),
-        lifeSpanEndText = artist.lifeSpanEndDisplayText(
-            resources,
-            lifeSpanBeginningFormatter
-        ),
+        lifeSpanEndText = artist.lifeSpanEndDisplayText(resources, lifeSpanBeginningFormatter),
         countryText = artist.countryName ?: "-",
         ipiCodesText = artist.ipiCodes.joinToString("\n"),
         isniCodesText = artist.isniCodes.joinToString("\n"),
-        wikipediaExtractText = artist.wikipediaExtract
+        wikipediaExtractText = artist.wikipediaExtract?.parseAsHtml(),
+        ratingsText = artist.ratingsDisplayText(resources)
     )
 
     companion object {
@@ -112,5 +110,13 @@ fun DetailedArtist.lifeSpanEndDisplayText(resources: Resources, dateFormatter: D
         "$lifeSpanEndText ${resources.getString(R.string.artist_details_life_span_duration, lifeSpanDuration)}"
     } else {
         lifeSpanEndText
+    }
+}
+
+fun DetailedArtist.ratingsDisplayText(resources: Resources): String? {
+    return if (rating == null || rating.count == 0) {
+        resources.getString(R.string.artist_details_ratings_none)
+    } else {
+        resources.getString(R.string.artist_details_ratings_value, String.format("%.1f", rating.averageValue), rating.count)
     }
 }

@@ -102,7 +102,8 @@ class FakeArtistDetailsLoader : ArtistDetailsLoader {
                         primaryType = Release.PrimaryType.ALBUM,
                         secondaryTypes = listOf(Release.SecondaryType.COMPILATION)
                     )
-                )
+                ),
+                rating = DetailedArtist.Rating(averageValue = 4.9f, count = 11)
             )
 
             artist.postValue(fakeArtist)

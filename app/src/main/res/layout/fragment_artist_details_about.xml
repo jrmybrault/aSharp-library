@@ -1,169 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     android:padding="@dimen/content_padding">
 
-    <TextView
-        android:id="@+id/detailsInformationSectionTextView"
-        style="@style/SectionTitleText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/artist_details_about_section_info"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/detailsInformationSectionSeparatorView"
-        style="@style/HorizontalSeparatorView" />
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/section_top_padding"
-        android:paddingBottom="@dimen/section_bottom_padding">
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/detailsGenderTextView"
-            style="@style/DetailsText.Value"
+            android:id="@+id/detailsInformationSectionTextView"
+            style="@style/SectionTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_gender"
-            android:drawablePadding="4dp"
-            tools:text="Male" />
+            android:text="@string/artist_details_about_section_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/detailsInformationSectionSeparatorView"
+            style="@style/HorizontalSeparatorView" />
 
         <LinearLayout
-            android:id="@+id/detailsLifeSpanBeginLayout"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin">
+            android:orientation="vertical"
+            android:paddingTop="@dimen/section_top_padding"
+            android:paddingBottom="@dimen/section_bottom_padding">
 
             <TextView
-                android:id="@+id/detailsLifeSpanBeginTitleTextView"
-                style="@style/DetailsText.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Birth:" />
-
-            <TextView
-                android:id="@+id/detailsLifeSpanBeginTextView"
+                android:id="@+id/detailsGenderTextView"
                 style="@style/DetailsText.Value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin"
-                tools:text="1928-11-10, in Rome" />
-        </LinearLayout>
+                android:drawableStart="@drawable/ic_gender"
+                android:drawablePadding="4dp"
+                tools:text="Male" />
 
-        <LinearLayout
-            android:id="@+id/detailsLifeSpanEndLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin">
-
-            <TextView
-                android:id="@+id/detailsLifeSpanEndTitleTextView"
-                style="@style/DetailsText.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Death:" />
-
-            <TextView
-                android:id="@+id/detailsLifeSpanEndTextView"
-                style="@style/DetailsText.Value"
+            <LinearLayout
+                android:id="@+id/detailsLifeSpanBeginLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin"
-                tools:text="Not yet" />
-        </LinearLayout>
+                android:layout_marginTop="@dimen/default_margin">
 
-        <LinearLayout
-            android:id="@+id/detailsCountryLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin">
+                <TextView
+                    android:id="@+id/detailsLifeSpanBeginTitleTextView"
+                    style="@style/DetailsText.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Birth:" />
 
-            <TextView
-                android:id="@+id/detailsCountryTitleTextView"
-                style="@style/DetailsText.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/artist_details_country" />
+                <TextView
+                    android:id="@+id/detailsLifeSpanBeginTextView"
+                    style="@style/DetailsText.Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    tools:text="1928-11-10, in Rome" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/detailsCountryTextView"
-                style="@style/DetailsText.Value"
+            <LinearLayout
+                android:id="@+id/detailsLifeSpanEndLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin"
-                tools:text="Italy" />
-        </LinearLayout>
+                android:layout_marginTop="@dimen/default_margin">
 
-        <LinearLayout
-            android:id="@+id/detailsIpiCodesLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin">
+                <TextView
+                    android:id="@+id/detailsLifeSpanEndTitleTextView"
+                    style="@style/DetailsText.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Death:" />
 
-            <TextView
-                android:id="@+id/detailsIpiCodesTitleTextView"
-                style="@style/DetailsText.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/artist_details_ipi_codes" />
+                <TextView
+                    android:id="@+id/detailsLifeSpanEndTextView"
+                    style="@style/DetailsText.Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    tools:text="Not yet" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/detailsIpiCodesTextView"
-                style="@style/DetailsText.Value"
+            <LinearLayout
+                android:id="@+id/detailsCountryLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin"
-                tools:text="Italy" />
-        </LinearLayout>
+                android:layout_marginTop="@dimen/default_margin">
 
-        <LinearLayout
-            android:id="@+id/detailsIsniCodesLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin">
+                <TextView
+                    android:id="@+id/detailsCountryTitleTextView"
+                    style="@style/DetailsText.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/artist_details_country" />
 
-            <TextView
-                android:id="@+id/detailsIsniCodesTitleTextView"
-                style="@style/DetailsText.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/artist_details_isni_codes" />
+                <TextView
+                    android:id="@+id/detailsCountryTextView"
+                    style="@style/DetailsText.Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    tools:text="Italy" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/detailsIsniCodesTextView"
-                style="@style/DetailsText.Value"
+            <LinearLayout
+                android:id="@+id/detailsIpiCodesLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin"
-                tools:text="Italy" />
+                android:layout_marginTop="@dimen/default_margin">
+
+                <TextView
+                    android:id="@+id/detailsIpiCodesTitleTextView"
+                    style="@style/DetailsText.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/artist_details_ipi_codes" />
+
+                <TextView
+                    android:id="@+id/detailsIpiCodesTextView"
+                    style="@style/DetailsText.Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    tools:text="00021552128" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detailsIsniCodesLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin">
+
+                <TextView
+                    android:id="@+id/detailsIsniCodesTitleTextView"
+                    style="@style/DetailsText.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/artist_details_isni_codes" />
+
+                <TextView
+                    android:id="@+id/detailsIsniCodesTextView"
+                    style="@style/DetailsText.Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    tools:text="0000 0001 2122 5602" />
+            </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/detailsRatingSectionTextView"
+            style="@style/SectionTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/artist_details_about_section_ratings" />
+
+        <View
+            android:id="@+id/detailsRatingSectionSeparatorView"
+            style="@style/HorizontalSeparatorView" />
+
+        <TextView
+            android:id="@+id/detailsRatingsExtractTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/section_top_padding"
+            tools:text="4.9 (11 votes)" />
+
+        <TextView
+            android:id="@+id/detailsMoreSectionTextView"
+            style="@style/SectionTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/section_bottom_padding"
+            android:text="@string/artist_details_about_section_more" />
+
+        <View
+            android:id="@+id/detailsMoreSectionSeparatorView"
+            style="@style/HorizontalSeparatorView" />
+
+        <TextView
+            android:id="@+id/detailsWikipediaExtractTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/section_top_padding"
+            android:paddingBottom="@dimen/section_bottom_padding"
+            android:textSize="16sp"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/detailsMoreSectionTextView"
-        style="@style/SectionTitleText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/large_margin"
-        android:text="@string/artist_details_about_section_more" />
-
-    <View
-        android:id="@+id/detailsMoreSectionSeparatorView"
-        style="@style/HorizontalSeparatorView" />
-
-    <TextView
-        android:id="@+id/detailsWikipediaExtractTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/section_top_padding"
-        android:paddingBottom="@dimen/section_bottom_padding"
-        tools:text="Lorem ipsum dolor sit amet, consectetur adipicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" />
-</LinearLayout>
+</ScrollView>

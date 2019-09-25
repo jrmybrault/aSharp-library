@@ -117,9 +117,10 @@ class SearchArtistViewModel(
     }
 
     fun handleSelectionOfPreviousSearch(index: Int) {
-        val selectedArtistIdentifier = displayablePreviousSearches.value!![index].identifier
+        val selectedSearchIdentifier = displayablePreviousSearches.value!![index].identifier
+        val selectedSearch = previousSearches.value?.first { it.identifier == selectedSearchIdentifier }!!
 
-        navigator?.get()?.goToArtistDetails(selectedArtistIdentifier)
+        navigator?.get()?.goToArtistDetails(selectedSearch.artist.identifier)
     }
 
     fun handleTapOnClearPreviousSearch(index: Int) {

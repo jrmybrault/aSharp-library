@@ -31,7 +31,7 @@ class ArtistDetailsViewModel(application: Application, private val loader: Artis
     }
 
     val displayableArtistReleases: LiveData<List<DisplayableArtistReleaseItemType>> = Transformations.map(loadedArtist) { artist ->
-        val results = mutableListOf<DisplayableArtistReleaseItemType>()
+        val items = mutableListOf<DisplayableArtistReleaseItemType>()
 
         val groupedReleases = artist.releases
             .sortedByDescending { it.releaseDate }
@@ -39,11 +39,11 @@ class ArtistDetailsViewModel(application: Application, private val loader: Artis
             .toSortedMap(ReleasePrimaryTypeComparator())
 
         groupedReleases.forEach { entry ->
-            results.add(DisplayableReleaseCategoryItem(entry.key))
-            results.addAll(entry.value.map { DisplayableReleaseInfoItem(it, application.resources) })
+            items.add(DisplayableReleaseCategoryItem(entry.key))
+            items.addAll(entry.value.map { DisplayableReleaseInfoItem(it, application.resources) })
         }
 
-        results
+        items
     }
 
     val randomReleaseCoverUri: LiveData<Uri?> = Transformations.map(loadedArtist) { artist ->

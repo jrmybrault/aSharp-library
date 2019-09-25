@@ -17,7 +17,8 @@ data class DetailedArtist(
     val lifeSpanBeginning: Date?,
     val lifeSpanEnd: Date?,
     var wikipediaExtract: String? = null,
-    val releases: List<Release> = emptyList()
+    val releases: List<Release> = emptyList(),
+    val rating: Rating?
 ) {
 
     enum class Gender {
@@ -25,4 +26,6 @@ data class DetailedArtist(
         MALE,
         FEMALE
     }
+
+    data class Rating(val averageValue: Float, val count: Int)
 }
