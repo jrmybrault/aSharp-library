@@ -25,14 +25,27 @@
 
         <TextView
             android:id="@+id/itemFoundArtistTypeTextView"
+            style="@style/ItemSubTitleText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/itemFoundArtistNameTextView"
             app:layout_constraintStart_toStartOf="@id/itemFoundArtistNameTextView"
             app:layout_constraintTop_toBottomOf="@id/itemFoundArtistNameTextView"
             tools:text="Compositeur" />
+
+        <TextView
+            android:id="@+id/itemFoundArtistTagsTextView"
+            style="@style/ItemDetailsText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/itemFoundArtistNameTextView"
+            app:layout_constraintStart_toStartOf="@id/itemFoundArtistNameTextView"
+            app:layout_constraintTop_toBottomOf="@id/itemFoundArtistTypeTextView"
+            tools:text="#composer #classical" />
 
         <ImageButton
             android:id="@+id/itemFoundArtistClearButton"

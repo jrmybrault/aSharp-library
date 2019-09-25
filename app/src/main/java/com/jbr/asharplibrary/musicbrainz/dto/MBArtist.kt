@@ -11,7 +11,7 @@ data class MBArtist(
     val disambiguation: String?,
     val name: String,
     @SerializedName("sort-name") val sortName: String,
-    val tags: List<Tag> = emptyList()
+    val tags: List<Tag>?
 ) {
 
     enum class Type {
@@ -30,7 +30,7 @@ data class MBArtist(
         OTHER
     }
 
-    data class Tag(val name: String)
+    data class Tag(val name: String, val count: Int)
 }
 
 
@@ -41,7 +41,8 @@ fun MBArtist.asDomain(): Artist {
         type = type.asDomain(),
         disambiguation = disambiguation,
         sortName = sortName,
-        score = score
+        score = score,
+        tags = tags?.map { it.asDomain() }
     )
 }
 
@@ -55,4 +56,8 @@ fun MBArtist.Type?.asDomain(): ArtistType {
         MBArtist.Type.OTHER -> ArtistType.OTHER
         null -> ArtistType.OTHER
     }
+}
+
+fun MBArtist.Tag.asDomain(): Artist.Tag {
+    return Artist.Tag(name = name, count = count)
 }

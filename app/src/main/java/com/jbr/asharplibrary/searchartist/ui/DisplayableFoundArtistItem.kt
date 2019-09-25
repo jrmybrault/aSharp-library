@@ -9,14 +9,21 @@ import com.jbr.asharplibrary.shareddomain.ArtistIdentifier
 data class DisplayableFoundArtistItem(
     val identifier: ArtistIdentifier,
     val name: String,
-    val disambiguatedTypeText: String
+    val disambiguatedTypeText: String,
+    val tagsText: String?,
+    val shouldDisplayTags: Boolean = !tagsText.isNullOrEmpty()
 ) {
 
     constructor(artist: Artist, resources: Resources) : this(
         identifier = artist.identifier,
         name = artist.sortName,
-        disambiguatedTypeText = artist.disambiguatedTypeDisplayText(resources)
+        disambiguatedTypeText = artist.disambiguatedTypeDisplayText(resources),
+        tagsText = artist.tagsDisplayText(MAX_TAG_NUMBER)
     )
+
+    companion object {
+        private const val MAX_TAG_NUMBER = 3
+    }
 }
 
 class DisplayableFoundArtistItemDiffCallback : DiffUtil.ItemCallback<DisplayableFoundArtistItem>() {
@@ -39,4 +46,8 @@ private fun Artist.disambiguatedTypeDisplayText(resources: Resources): String {
     } else {
         typeStringText
     }
+}
+
+private fun Artist.tagsDisplayText(maxTagNumber: Int): String? {
+    return tags?.sortedByDescending { it.count }?.map { "#${it.name}" }?.take(maxTagNumber)?.joinToString(" ")
 }

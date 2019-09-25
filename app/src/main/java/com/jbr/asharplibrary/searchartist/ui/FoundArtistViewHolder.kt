@@ -13,6 +13,7 @@ class FoundArtistViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView) 
 
     private val nameTextView: TextView = rootView.itemFoundArtistNameTextView
     private val typeTextView: TextView = rootView.itemFoundArtistTypeTextView
+    private val tagsTextView: TextView = rootView.itemFoundArtistTagsTextView
     private val clearButton: ImageButton = rootView.itemFoundArtistClearButton
 
     //region - Functions
@@ -20,6 +21,8 @@ class FoundArtistViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView) 
     fun bind(item: DisplayableFoundArtistItem, onClear: Runnable? = null) {
         nameTextView.text = item.name
         typeTextView.text = item.disambiguatedTypeText
+        tagsTextView.isVisible = item.shouldDisplayTags
+        tagsTextView.text = item.tagsText
 
         if (onClear != null) {
             clearButton.isVisible = true
