@@ -38,7 +38,7 @@ class MBArtistDetailsLoader(private val artistAPI: MBArtistAPI) : ArtistDetailsR
                 val artistWikipediaExtractContainer = loadArtistWikipediaExtractPromise.await()
 
                 val detailedArtist = artistDetails.asDomain()
-                detailedArtist.wikipediaExtract = artistWikipediaExtractContainer.wikipediaExtract.content
+                detailedArtist.wikipediaExtract = artistWikipediaExtractContainer.wikipediaExtract?.content
 
                 _artist.postValue(detailedArtist)
             } catch (exception: Exception) {
