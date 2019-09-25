@@ -1,6 +1,7 @@
 package com.jbr.asharplibrary.artistdetails.ui
 
 import android.app.Application
+import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,6 +21,8 @@ class ArtistDetailsViewModel(application: Application, private val loader: Artis
 
     private val loadedArtist = loader.artist
 
+    val displayableArtistName: LiveData<String> = Transformations.map(loadedArtist) { it.name }
+
     val displayableArtistAbout: LiveData<DisplayableArtistAbout> = Transformations.map(loadedArtist) {
         DisplayableArtistAbout(it, application.resources)
     }
@@ -28,6 +31,10 @@ class ArtistDetailsViewModel(application: Application, private val loader: Artis
         artist.releases
             .sortedByDescending { it.releaseDate }
             .map { DisplayableArtistReleaseItem(it, application.resources) }
+    }
+
+    val randomReleaseCoverUri: LiveData<Uri> = Transformations.map(displayableArtistReleases) {
+        it.random().frontCoverUri
     }
 
     private val _isLoading = MutableLiveData(false)
