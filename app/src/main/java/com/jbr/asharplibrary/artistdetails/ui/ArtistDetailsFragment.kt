@@ -35,7 +35,7 @@ class ArtistDetailsFragment : Fragment() {
             detailsCollapsingToolbarLayout.title = it
         })
         viewModel.randomReleaseCoverUri.observe(viewLifecycleOwner, Observer {
-            imageDownloader.downloadImage(it, detailsHeaderImageView, activity as AppCompatActivity)
+            imageDownloader.downloadImage(it, detailsHeaderImageView, activity as AppCompatActivity, null)
         })
 
         return inflater.inflate(R.layout.fragment_artist_details, container, false)
@@ -58,6 +58,6 @@ class ArtistDetailsFragment : Fragment() {
     private fun setupCollapse() {
         detailsCollapsingToolbarLayout.isTitleEnabled = true
     }
-    
+
     //endregion
 }

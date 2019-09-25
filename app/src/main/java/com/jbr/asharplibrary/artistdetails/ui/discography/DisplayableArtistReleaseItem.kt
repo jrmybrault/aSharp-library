@@ -14,23 +14,32 @@ data class DisplayableArtistReleaseItem(
     val identifier: String,
     val title: String,
     val releaseYearText: String,
-    val frontCoverUri: Uri
+    val smallFrontCoverUri: Uri,
+    val largeFrontCoverUri: Uri
 ) {
 
     constructor(release: Release, resources: Resources) : this(
         identifier = release.identifier,
         title = release.displayTitle(resources),
         releaseYearText = releaseDateFormatter.format(release.releaseDate),
-        frontCoverUri = frontCoverUri(release.identifier)
+        smallFrontCoverUri = frontCoverUri(release.identifier, CoverType.SMALL),
+        largeFrontCoverUri = frontCoverUri(release.identifier, CoverType.LARGE)
     )
+
+    enum class CoverType(val size: Int) {
+
+        SMALL(size = 250),
+        LARGE(size = 500)
+    }
 
     companion object {
 
-        private const val frontCoverBaseUrl = "https://coverartarchive.org/release-group/%s/front.jpg-250"
+        private const val frontCoverBaseUrl = "https://coverartarchive.org/release-group/%s/front.jpg-%s"
+
         private val releaseDateFormatter: DateFormat = SimpleDateFormat("yyyy", Locale.getDefault())
 
-        fun frontCoverUri(identifier: String): Uri {
-            return String.format(frontCoverBaseUrl, identifier).toUri()
+        fun frontCoverUri(identifier: String, type: CoverType): Uri {
+            return String.format(frontCoverBaseUrl, identifier, type.size).toUri()
         }
     }
 }

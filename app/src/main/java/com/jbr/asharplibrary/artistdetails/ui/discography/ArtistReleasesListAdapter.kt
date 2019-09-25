@@ -30,7 +30,7 @@ class ArtistReleasesListAdapter(private val imageDownloader: ImageDownloader) :
             titleTextView.text = item.title
             releaseYearTextView.text = item.releaseYearText
 
-            imageDownloader.downloadImage(item.frontCoverUri, frontCoverImageView, itemView.context)
+            imageDownloader.downloadImage(item.smallFrontCoverUri, frontCoverImageView, itemView.context)
         }
     }
 
