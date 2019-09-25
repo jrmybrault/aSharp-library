@@ -30,6 +30,7 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
     private val viewModel: SearchArtistViewModel by viewModel()
 
     private val foundArtistsListAdapter: FoundArtistsListAdapter by lazyOf(FoundArtistsListAdapter())
+    private val previousSearchesListAdapter: FoundArtistsListAdapter by lazyOf(FoundArtistsListAdapter())
 
     override val coroutineContext: CoroutineContext = Dispatchers.Main
 
@@ -46,25 +47,46 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewModel.isSearching.observe(viewLifecycleOwner, Observer { searchProgressBar.isVisible = it })
-        viewModel.displayableFoundArtists.observe(viewLifecycleOwner, Observer { foundArtistsListAdapter.artists = it })
-        viewModel.searchResultText.observe(viewLifecycleOwner, Observer { resultTextView.text = it })
+        setupObservers()
 
         viewModel.navigator = WeakReference(this)
 
         return inflater.inflate(R.layout.fragment_search_artist, container, false)
     }
 
+    private fun setupObservers() {
+        viewModel.isSearching.observe(viewLifecycleOwner, Observer { searchProgressBar.isVisible = it })
+        viewModel.searchResultText.observe(viewLifecycleOwner, Observer { resultTextView.text = it })
+        viewModel.shouldDisplayPreviousSearches.observe(viewLifecycleOwner, Observer {
+            resultTextView.isVisible = !it
+            foundArtistsRecyclerView.isVisible = !it
+            previousSearchesTextView.isVisible = it
+            previousSearchesRecyclerView.isVisible = it
+        })
+        viewModel.displayableFoundArtists.observe(viewLifecycleOwner, Observer { foundArtistsListAdapter.artists = it })
+        viewModel.displayableSearchedArtists.observe(viewLifecycleOwner, Observer { previousSearchesListAdapter.artists = it })
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerView()
+        setupSearchResultsRecyclerView()
+        setupPreviousSearchesRecyclerView()
     }
 
-    private fun setupRecyclerView() {
+    private fun setupSearchResultsRecyclerView() {
         foundArtistsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = foundArtistsListAdapter
+        }
+
+        foundArtistsListAdapter.onArtistSelected = Consumer { viewModel.handleSelectionOfArtist(it) }
+    }
+
+    private fun setupPreviousSearchesRecyclerView() {
+        previousSearchesRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = previousSearchesListAdapter
         }
 
         foundArtistsListAdapter.onArtistSelected = Consumer { viewModel.handleSelectionOfArtist(it) }

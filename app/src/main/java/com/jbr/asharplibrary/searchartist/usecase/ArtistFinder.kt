@@ -8,14 +8,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
-interface IArtistFinder { // FIXME: Rename in ArtistFinder
+interface ArtistFinder {
 
     val results: LiveData<List<Artist>>
 
     suspend fun search(text: String?)
 }
 
-class FakeArtistFinder : IArtistFinder {
+class FakeArtistFinder : ArtistFinder {
 
     //region - Properties
 

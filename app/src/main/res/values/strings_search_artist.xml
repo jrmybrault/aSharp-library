@@ -11,4 +11,6 @@
         <item quantity="one">@string/search_artist_number_of_results_one</item>
         <item quantity="other">@string/search_artist_number_of_results_other</item>
     </plurals>
+
+    <string name="search_artist_previous_searches">Previous searches</string>
 </resources>

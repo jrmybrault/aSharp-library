@@ -1,7 +1,7 @@
 package com.jbr.asharplibrary.searchartist.domain
 
-import com.jbr.asharplibrary.searchartist.usecase.IArtistFinder
+import com.jbr.asharplibrary.searchartist.usecase.ArtistFinder
 
-interface ArtistRemoteFinder : IArtistFinder {
-    
+interface ArtistRemoteFinder : ArtistFinder {
+
 }

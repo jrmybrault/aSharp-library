@@ -6,7 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.jbr.asharplibrary.R
-import com.jbr.asharplibrary.searchartist.usecase.IArtistFinder
+import com.jbr.asharplibrary.searchartist.usecase.ArtistFinder
+import com.jbr.asharplibrary.searchartist.usecase.PreviousSearchesLoader
 import com.jbr.asharplibrary.searchartist.usecase.SearchArtistNavigator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,14 +15,21 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.lang.ref.WeakReference
 
-class SearchArtistViewModel(application: Application, private val finder: IArtistFinder) : AndroidViewModel(application) {
+class SearchArtistViewModel(
+    application: Application,
+    private val finder: ArtistFinder,
+    private val previousSearchesLoader: PreviousSearchesLoader
+) : AndroidViewModel(application) {
 
     //region - Properties
+
+    //region - Search 
 
     var searchText: String? = null
         set(value) {
             field = value
 
+            _shouldDisplayPreviousSearches.value = value.isNullOrEmpty()
             refreshSearch()
         }
 
@@ -50,6 +58,22 @@ class SearchArtistViewModel(application: Application, private val finder: IArtis
         }
     }
 
+    //endregion
+
+    //region - Previous Search
+
+    private val _shouldDisplayPreviousSearches = MutableLiveData<Boolean>()
+    val shouldDisplayPreviousSearches: LiveData<Boolean>
+        get() = _shouldDisplayPreviousSearches
+
+    private val previousSearchesArtists = previousSearchesLoader.searchedArtists
+
+    val displayableSearchedArtists: LiveData<List<DisplayableFoundArtistItem>> = Transformations.map(previousSearchesArtists) { artists ->
+        artists.map { DisplayableFoundArtistItem(it.artist) }
+    }
+
+    //endregion
+
     var navigator: WeakReference<SearchArtistNavigator>? = null
 
     private val viewModelJob = Job()
@@ -57,7 +81,19 @@ class SearchArtistViewModel(application: Application, private val finder: IArtis
 
     //endregion
 
+    //region - Init
+
+    init {
+        loadPreviousSearches()
+    }
+
     //region - Functions
+
+    private fun loadPreviousSearches() {
+        viewModelScope.launch {
+            previousSearchesLoader.load()
+        }
+    }
 
     private fun refreshSearch() {
         _isSearching.value = true

@@ -30,4 +30,24 @@
         android:layout_marginTop="@dimen/default_margin"
         tools:itemCount="3"
         tools:listitem="@layout/item_found_artist" />
+
+    <TextView
+        android:id="@+id/previousSearchesTextView"
+        style="@style/InfoText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_margin"
+        android:layout_marginBottom="@dimen/large_margin"
+        android:gravity="center"
+        android:text="@string/search_artist_previous_searches"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/previousSearchesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/default_margin"
+        android:visibility="gone"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_previously_searched_artist" />
 </LinearLayout>
