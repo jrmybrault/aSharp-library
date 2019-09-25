@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/resultTextView"
-        style="@style/InfoText"
+        style="@style/SectionTitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_margin"
@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/previousSearchesTextView"
-        style="@style/InfoText"
+        style="@style/SectionTitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_margin"

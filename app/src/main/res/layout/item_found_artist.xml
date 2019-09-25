@@ -42,7 +42,7 @@
             style="@style/ItemDetailsText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginTop="@dimen/large_margin"
             android:textStyle="italic"
             app:layout_constraintBottom_toTopOf="@+id/itemFoundArtistNameTextView"
             app:layout_constraintEnd_toEndOf="@id/itemFoundArtistNameTextView"

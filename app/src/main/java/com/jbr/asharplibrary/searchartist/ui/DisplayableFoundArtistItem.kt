@@ -22,7 +22,7 @@ data class DisplayableFoundArtistItem(
     )
 
     companion object {
-        private const val MAX_TAG_NUMBER = 3
+        private const val MAX_TAG_NUMBER = 5
     }
 }
 
