@@ -1,7 +1,7 @@
 package com.jbr.asharplibrary.sharedinfra
 
 import androidx.lifecycle.LiveData
-import com.jbr.asharplibrary.shareddomain.CloseableLiveData
+import com.jbr.asharplibrary.sharedfoundation.CloseableLiveData
 import io.realm.Realm
 import io.realm.RealmChangeListener
 import io.realm.RealmModel

@@ -1,4 +1,4 @@
-package com.jbr.asharplibrary.shareddomain
+package com.jbr.asharplibrary.sharedfoundation
 
 interface CloseableLiveData {
 

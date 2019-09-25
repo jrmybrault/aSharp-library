@@ -12,7 +12,11 @@ import retrofit2.http.Query
 interface MBArtistAPI {
 
     @GET("artist")
-    fun searchAsync(@Query("query") searchText: String): Deferred<MBSearchArtistResult>
+    fun searchAsync(
+        @Query("query") searchText: String,
+        @Query("limit") limit: Int,
+        @Query("offset") offset: Int
+    ): Deferred<MBSearchArtistResult>
 
     @GET("artist/{artistId}?inc=releases+release-groups")
     fun getDetailsAsync(@Path("artistId") artistId: ArtistIdentifier): Deferred<MBDetailedArtist>

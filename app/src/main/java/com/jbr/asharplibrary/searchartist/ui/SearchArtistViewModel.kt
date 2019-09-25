@@ -107,6 +107,16 @@ class SearchArtistViewModel(
         navigator?.get()?.goToArtistDetails(selectedArtistIdentifier)
     }
 
+    fun handleReachingListEnd() {
+        _isSearching.value = true
+
+        viewModelScope.launch {
+            finder.loadNextPage()
+
+            _isSearching.value = false
+        }
+    }
+
     fun handleSelectionOfPreviousSearch(index: Int) {
         val selectedArtistIdentifier = displayableSearchedArtists.value!![index].identifier
 

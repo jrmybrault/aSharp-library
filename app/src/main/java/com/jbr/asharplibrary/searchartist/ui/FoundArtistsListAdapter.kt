@@ -41,6 +41,7 @@ class FoundArtistsListAdapter : RecyclerView.Adapter<FoundArtistsListAdapter.Vie
         }
 
     var onArtistTap: Consumer<Int>? = null
+    var onReachingListEnd: Runnable? = null
 
     //region - Functions
 
@@ -55,5 +56,15 @@ class FoundArtistsListAdapter : RecyclerView.Adapter<FoundArtistsListAdapter.Vie
         holder.itemView.setOnClickListener {
             onArtistTap?.accept(position)
         }
+
+        if (position >= itemCount - NUMBER_OF_ITEMS_BEFORE_END) {
+            onReachingListEnd?.run()
+        }
+    }
+
+    //endregion
+
+    companion object {
+        private const val NUMBER_OF_ITEMS_BEFORE_END = 3
     }
 }

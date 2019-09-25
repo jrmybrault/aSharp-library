@@ -13,6 +13,7 @@ interface ArtistFinder {
     val results: LiveData<List<Artist>>
 
     suspend fun search(text: String?)
+    suspend fun loadNextPage()
 }
 
 class FakeArtistFinder : ArtistFinder {
@@ -44,6 +45,10 @@ class FakeArtistFinder : ArtistFinder {
 
             results.postValue(fakeResults)
         }
+    }
+
+    override suspend fun loadNextPage() {
+        // Do nothing
     }
 
     //endregion

@@ -82,6 +82,7 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
         }
 
         foundArtistsListAdapter.onArtistTap = Consumer { viewModel.handleSelectionOfArtist(it) }
+        foundArtistsListAdapter.onReachingListEnd = Runnable { viewModel.handleReachingListEnd() }
     }
 
     private fun setupPreviousSearchesRecyclerView() {
