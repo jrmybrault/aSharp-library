@@ -3,8 +3,8 @@ package com.jbr.asharplibrary.artistdetails.di
 import com.jbr.asharplibrary.artistdetails.infra.MBArtistDetailsLoader
 import com.jbr.asharplibrary.artistdetails.ui.ArtistDetailsViewModel
 import com.jbr.asharplibrary.artistdetails.usecase.ArtistDetailsLoader
-import com.jbr.asharplibrary.shared.ui.GlideImageDownloader
 import com.jbr.asharplibrary.shared.ui.ImageDownloader
+import com.jbr.asharplibrary.sharedinfra.GlideImageDownloader
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

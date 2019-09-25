@@ -19,7 +19,7 @@ class FakeArtistFinder : ArtistFinder {
 
     //region - Properties
 
-    private val fakeDelay = 1500L // In milliseconds
+    private val fakeDelay = 1500L // In milliseconds // FIXME: Move this into companion
 
     override val results: MutableLiveData<List<Artist>> = MutableLiveData(emptyList())
 

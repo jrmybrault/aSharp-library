@@ -6,8 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.jbr.asharplibrary.R
+import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearch
 import com.jbr.asharplibrary.searchartist.usecase.ArtistFinder
-import com.jbr.asharplibrary.searchartist.usecase.PreviousSearchesLoader
+import com.jbr.asharplibrary.searchartist.usecase.PreviousArtistSearchesRepository
 import com.jbr.asharplibrary.searchartist.usecase.SearchArtistNavigator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +19,7 @@ import java.lang.ref.WeakReference
 class SearchArtistViewModel(
     application: Application,
     private val finder: ArtistFinder,
-    private val previousSearchesLoader: PreviousSearchesLoader
+    private val previousArtistSearchesRepository: PreviousArtistSearchesRepository
 ) : AndroidViewModel(application) {
 
     //region - Properties
@@ -66,10 +67,12 @@ class SearchArtistViewModel(
     val shouldDisplayPreviousSearches: LiveData<Boolean>
         get() = _shouldDisplayPreviousSearches
 
-    private val previousSearchesArtists = previousSearchesLoader.searchedArtists
+    private val previousSearchesArtists = previousArtistSearchesRepository.searches
 
-    val displayableSearchedArtists: LiveData<List<DisplayableFoundArtistItem>> = Transformations.map(previousSearchesArtists) { artists ->
-        artists.map { DisplayableFoundArtistItem(it.artist) }
+    val displayableSearchedArtists: LiveData<List<DisplayableFoundArtistItem>> = Transformations.map(previousSearchesArtists) { searches ->
+        searches
+            .sortedByDescending { it.date }
+            .map { DisplayableFoundArtistItem(it.artist) }
     }
 
     //endregion
@@ -81,19 +84,7 @@ class SearchArtistViewModel(
 
     //endregion
 
-    //region - Init
-
-    init {
-        loadPreviousSearches()
-    }
-
     //region - Functions
-
-    private fun loadPreviousSearches() {
-        viewModelScope.launch {
-            previousSearchesLoader.load()
-        }
-    }
 
     private fun refreshSearch() {
         _isSearching.value = true
@@ -106,9 +97,27 @@ class SearchArtistViewModel(
     }
 
     fun handleSelectionOfArtist(index: Int) {
-        val selectedArtist = displayableFoundArtists.value!![index]
+        val selectedArtist = foundArtists.value!![index]
+
+        viewModelScope.launch {
+            previousArtistSearchesRepository.add(PreviousArtistSearch(selectedArtist))
+        }
 
         navigator?.get()?.goToArtistDetails(selectedArtist.identifier)
+    }
+
+    fun handleSelectionOfPreviousSearch(index: Int) {
+        val selectedArtist = previousSearchesArtists.value!![index].artist
+
+        navigator?.get()?.goToArtistDetails(selectedArtist.identifier)
+    }
+
+    fun handleTapOnClearPreviousSearch(index: Int) {
+        val selectedSearch = previousSearchesArtists.value!![index]
+
+        viewModelScope.launch {
+            previousArtistSearchesRepository.remove(selectedSearch)
+        }
     }
 
     override fun onCleared() {

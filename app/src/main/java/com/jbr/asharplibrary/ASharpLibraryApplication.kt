@@ -2,7 +2,8 @@ package com.jbr.asharplibrary
 
 import android.app.Application
 import com.jbr.asharplibrary.artistdetails.di.artistDetailsModule
-import com.jbr.asharplibrary.di.networkingModule
+import com.jbr.asharplibrary.di.localDataModule
+import com.jbr.asharplibrary.di.remoteDataModule
 import com.jbr.asharplibrary.searchartist.di.searchArtistModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -22,7 +23,8 @@ class ASharpLibraryApplication : Application() {
 
             modules(
                 listOf(
-                    networkingModule,
+                    localDataModule,
+                    remoteDataModule,
                     searchArtistModule,
                     artistDetailsModule
                 )

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.shared.ui.ImageDownloader
-import kotlinx.android.synthetic.main.item_found_artist.view.*
+import kotlinx.android.synthetic.main.item_release_category.view.*
 import kotlinx.android.synthetic.main.item_release_info.view.*
 
 class ArtistReleasesListAdapter(private val imageDownloader: ImageDownloader) :
@@ -24,7 +24,7 @@ class ArtistReleasesListAdapter(private val imageDownloader: ImageDownloader) :
 
             //region - Properties
 
-            private val nameTextView: TextView = rootView.nameTextView
+            private val nameTextView: TextView = rootView.itemReleaseCategoryNameTextView
 
             //region - Functions
 
@@ -37,9 +37,9 @@ class ArtistReleasesListAdapter(private val imageDownloader: ImageDownloader) :
 
             //region - Properties
 
-            private val frontCoverImageView: ImageView = rootView.frontCoverImageView
-            private val titleTextView: TextView = rootView.titleTextView
-            private val releaseYearTextView: TextView = rootView.releaseYearTextView
+            private val frontCoverImageView: ImageView = rootView.itemReleaseInfoFrontCoverImageView
+            private val titleTextView: TextView = rootView.itemReleaseInfoTitleTextView
+            private val releaseYearTextView: TextView = rootView.itemReleaseInfoReleaseYearTextView
 
             //region - Functions
 

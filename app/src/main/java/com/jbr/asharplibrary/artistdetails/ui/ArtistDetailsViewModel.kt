@@ -46,9 +46,13 @@ class ArtistDetailsViewModel(application: Application, private val loader: Artis
         results
     }
 
-    val randomReleaseCoverUri: LiveData<Uri> = Transformations.map(loadedArtist) {
-        val randomRelease = it.releases.random()
-        DisplayableReleaseInfoItem(randomRelease, application.resources).largeFrontCoverUri
+    val randomReleaseCoverUri: LiveData<Uri?> = Transformations.map(loadedArtist) { artist ->
+        if (artist.releases.isEmpty()) {
+            null
+        } else {
+            val randomRelease = artist.releases.random()
+            DisplayableReleaseInfoItem(randomRelease, application.resources).largeFrontCoverUri
+        }
     }
 
     private val _isLoading = MutableLiveData(false)

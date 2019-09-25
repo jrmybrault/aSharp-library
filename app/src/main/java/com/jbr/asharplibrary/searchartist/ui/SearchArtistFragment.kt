@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.searchartist.usecase.SearchArtistNavigator
@@ -30,7 +31,7 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
     private val viewModel: SearchArtistViewModel by viewModel()
 
     private val foundArtistsListAdapter: FoundArtistsListAdapter by lazyOf(FoundArtistsListAdapter())
-    private val previousSearchesListAdapter: FoundArtistsListAdapter by lazyOf(FoundArtistsListAdapter())
+    private val previousSearchesListAdapter: PreviousArtistSearchesListAdapter by lazyOf(PreviousArtistSearchesListAdapter())
 
     override val coroutineContext: CoroutineContext = Dispatchers.Main
 
@@ -80,7 +81,7 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
             adapter = foundArtistsListAdapter
         }
 
-        foundArtistsListAdapter.onArtistSelected = Consumer { viewModel.handleSelectionOfArtist(it) }
+        foundArtistsListAdapter.onArtistTap = Consumer { viewModel.handleSelectionOfArtist(it) }
     }
 
     private fun setupPreviousSearchesRecyclerView() {
@@ -89,7 +90,11 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
             adapter = previousSearchesListAdapter
         }
 
-        foundArtistsListAdapter.onArtistSelected = Consumer { viewModel.handleSelectionOfArtist(it) }
+        previousSearchesListAdapter.onArtistTap = Consumer { viewModel.handleSelectionOfPreviousSearch(it) }
+        previousSearchesListAdapter.onClearArtistTap = Consumer { viewModel.handleTapOnClearPreviousSearch(it) }
+
+        val itemTouchHelper = ItemTouchHelper(previousSearchesListAdapter.swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(previousSearchesRecyclerView)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

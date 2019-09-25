@@ -21,7 +21,7 @@ class FakeArtistDetailsLoader : ArtistDetailsLoader {
 
     //region - Properties
 
-    private val fakeDelay = 1500L // In milliseconds
+    private val fakeDelay = 1500L // In milliseconds // FIXME: Move this into companion
 
     override val artist = MutableLiveData<DetailedArtist>()
 

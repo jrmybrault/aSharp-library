@@ -14,7 +14,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-val networkingModule = module {
+val remoteDataModule = module {
 
     single<MBArtistAPI> {
         get<Retrofit>().create(MBArtistAPI::class.java)

@@ -7,7 +7,7 @@
     android:padding="@dimen/content_padding">
 
     <TextView
-        android:id="@+id/nameTextView"
+        android:id="@+id/itemReleaseCategoryNameTextView"
         style="@style/SectionTitleText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

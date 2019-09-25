@@ -35,6 +35,10 @@ object DependencyVersions {
 
     val glide = "4.10.0"
 
+    // DATABASE
+
+    val realm = "5.15.1"
+
     // LOGGING
 
     val timber = "4.7.1"
@@ -91,7 +95,7 @@ object AndroidLibraries {
     val gson = "com.google.code.gson:gson:${DependencyVersions.gson}"
 
     val glide = "com.github.bumptech.glide:glide:${DependencyVersions.glide}"
-
+    
     // LOGGING
 
     val timber = "com.jakewharton.timber:timber:${DependencyVersions.timber}"

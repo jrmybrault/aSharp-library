@@ -49,5 +49,5 @@
         android:layout_marginTop="@dimen/default_margin"
         android:visibility="gone"
         tools:itemCount="3"
-        tools:listitem="@layout/item_previously_searched_artist" />
+        tools:listitem="@layout/item_found_artist" />
 </LinearLayout>

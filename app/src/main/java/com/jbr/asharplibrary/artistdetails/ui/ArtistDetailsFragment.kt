@@ -34,8 +34,10 @@ class ArtistDetailsFragment : Fragment() {
         viewModel.displayableArtistName.observe(viewLifecycleOwner, Observer {
             detailsCollapsingToolbarLayout.title = it
         })
-        viewModel.randomReleaseCoverUri.observe(viewLifecycleOwner, Observer {
-            imageDownloader.downloadImage(it, detailsHeaderImageView, activity as AppCompatActivity, null)
+        viewModel.randomReleaseCoverUri.observe(viewLifecycleOwner, Observer { coverUri ->
+            if (coverUri != null) {
+                imageDownloader.downloadImage(coverUri, detailsHeaderImageView, activity as AppCompatActivity, null)
+            }
         })
 
         return inflater.inflate(R.layout.fragment_artist_details, container, false)
