@@ -63,6 +63,8 @@ class MBArtistFinder(private val artistAPI: MBArtistAPI) : ArtistRemoteFinder {
                 val newResults = searchArtistPromise.await()
 
                 _results += newResults.artists
+
+                hasMorePage = _results.value?.size ?: 0 < newResults.count
             } catch (exception: Exception) {
                 Timber.e(exception)
             }
