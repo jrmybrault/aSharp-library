@@ -100,6 +100,8 @@ fun DetailedArtist.lifeSpanEndDisplayText(resources: Resources, dateFormatter: D
         return null
     }
 
+    val lifeSpanEndText = dateFormatter.format(lifeSpanEnd)
+
     val lifeSpanDuration = if (lifeSpanBeginning != null) {
         numberOfYearsBetween(lifeSpanBeginning, lifeSpanEnd)
     } else {
@@ -107,8 +109,8 @@ fun DetailedArtist.lifeSpanEndDisplayText(resources: Resources, dateFormatter: D
     }
 
     return if (lifeSpanDuration > 0) {
-        resources.getString(R.string.artist_details_life_span_duration, lifeSpanDuration)
+        "$lifeSpanEndText ${resources.getString(R.string.artist_details_life_span_duration, lifeSpanDuration)}"
     } else {
-        dateFormatter.format(lifeSpanEnd)
+        lifeSpanEndText
     }
 }
