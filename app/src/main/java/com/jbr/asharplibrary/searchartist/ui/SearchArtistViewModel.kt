@@ -97,19 +97,20 @@ class SearchArtistViewModel(
     }
 
     fun handleSelectionOfArtist(index: Int) {
-        val selectedArtist = foundArtists.value!![index]
+        val selectedArtistIdentifier = displayableFoundArtists.value!![index].identifier
+        val matchingSelectedArtist = foundArtists.value!!.first { it.identifier == selectedArtistIdentifier }
 
         viewModelScope.launch {
-            previousArtistSearchesRepository.add(PreviousArtistSearch(selectedArtist))
+            previousArtistSearchesRepository.add(PreviousArtistSearch(matchingSelectedArtist))
         }
 
-        navigator?.get()?.goToArtistDetails(selectedArtist.identifier)
+        navigator?.get()?.goToArtistDetails(selectedArtistIdentifier)
     }
 
     fun handleSelectionOfPreviousSearch(index: Int) {
-        val selectedArtist = previousSearchesArtists.value!![index].artist
+        val selectedArtistIdentifier = displayableSearchedArtists.value!![index].identifier
 
-        navigator?.get()?.goToArtistDetails(selectedArtist.identifier)
+        navigator?.get()?.goToArtistDetails(selectedArtistIdentifier)
     }
 
     fun handleTapOnClearPreviousSearch(index: Int) {
