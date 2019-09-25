@@ -22,7 +22,7 @@ val remoteDataModule = module {
 
     single<Retrofit> {
         Retrofit.Builder()
-            .baseUrl("https://musicbrainz.org/ws/2/")
+            .baseUrl("https://musicbrainz.org/")
             .addConverterFactory(GsonConverterFactory.create(get()))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(get())

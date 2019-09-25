@@ -1,6 +1,8 @@
 package com.jbr.asharplibrary.artistdetails.ui.about
 
 import android.content.res.Resources
+import android.text.Spanned
+import androidx.core.text.parseAsHtml
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.artistdetails.domain.DetailedArtist
 import com.jbr.asharplibrary.searchartist.domain.ArtistType
@@ -21,7 +23,7 @@ data class DisplayableArtistAbout(
     val shouldDisplayIpiCodes: Boolean = ipiCodesText.isNotEmpty(),
     val isniCodesText: String,
     val shouldDisplayIsniCodes: Boolean = isniCodesText.isNotEmpty(),
-    val wikipediaExtractText: String?
+    val wikipediaExtractText: Spanned?
 ) {
 
     constructor(artist: DetailedArtist, resources: Resources) : this(
@@ -39,7 +41,7 @@ data class DisplayableArtistAbout(
         countryText = artist.countryName ?: "-",
         ipiCodesText = artist.ipiCodes.joinToString("\n"),
         isniCodesText = artist.isniCodes.joinToString("\n"),
-        wikipediaExtractText = artist.wikipediaExtract
+        wikipediaExtractText = artist.wikipediaExtract?.parseAsHtml()
     )
 
     companion object {
