@@ -125,7 +125,7 @@ class SearchArtistViewModel(
     fun handleTapOnClearPreviousSearch(index: Int) {
         val selectedSearchIdentifier = displayablePreviousSearches.value!![index].identifier
         val selectedSearch = previousSearches.value?.first { it.identifier == selectedSearchIdentifier }!!
-        
+
         viewModelScope.launch {
             previousArtistSearchesRepository.remove(selectedSearch)
         }

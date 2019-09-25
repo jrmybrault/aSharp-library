@@ -3,19 +3,12 @@ package com.jbr.asharplibrary.searchartist.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.util.Consumer
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import com.jbr.asharplibrary.R
 
-class FoundArtistsListAdapter : RecyclerView.Adapter<FoundArtistViewHolder>() {
-    
+class FoundArtistsListAdapter : ListAdapter<DisplayableFoundArtistItem, FoundArtistViewHolder>(DisplayableFoundArtistItemDiffCallback()) {
+
     //region - Properties
-
-    var artists: List<DisplayableFoundArtistItem> = emptyList()
-        set(value) {
-            field = value
-
-            notifyDataSetChanged()
-        }
 
     var onArtistTap: Consumer<Int>? = null
     var onReachingListEnd: Runnable? = null
@@ -26,10 +19,10 @@ class FoundArtistsListAdapter : RecyclerView.Adapter<FoundArtistViewHolder>() {
         return FoundArtistViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_found_artist, parent, false))
     }
 
-    override fun getItemCount() = artists.size
-
     override fun onBindViewHolder(holder: FoundArtistViewHolder, position: Int) {
-        holder.bind(artists[position])
+        val item = getItem(position)
+
+        holder.bind(item)
         holder.itemView.setOnClickListener {
             onArtistTap?.accept(position)
         }

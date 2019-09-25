@@ -1,6 +1,7 @@
 package com.jbr.asharplibrary.searchartist.ui
 
 import android.content.res.Resources
+import androidx.recyclerview.widget.DiffUtil
 import com.jbr.asharplibrary.searchartist.domain.Artist
 import com.jbr.asharplibrary.shared.ui.displayTextId
 import com.jbr.asharplibrary.shareddomain.ArtistIdentifier
@@ -16,6 +17,17 @@ data class DisplayableFoundArtistItem(
         name = artist.sortName,
         disambiguatedTypeText = artist.disambiguatedTypeDisplayText(resources)
     )
+}
+
+class DisplayableFoundArtistItemDiffCallback : DiffUtil.ItemCallback<DisplayableFoundArtistItem>() {
+
+    override fun areItemsTheSame(oldItem: DisplayableFoundArtistItem, newItem: DisplayableFoundArtistItem): Boolean {
+        return oldItem.identifier == newItem.identifier
+    }
+
+    override fun areContentsTheSame(oldItem: DisplayableFoundArtistItem, newItem: DisplayableFoundArtistItem): Boolean {
+        return oldItem == newItem
+    }
 }
 
 private fun Artist.disambiguatedTypeDisplayText(resources: Resources): String {

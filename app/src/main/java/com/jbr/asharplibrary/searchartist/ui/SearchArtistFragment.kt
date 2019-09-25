@@ -64,8 +64,8 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
             previousSearchesTextView.isVisible = it
             previousSearchesRecyclerView.isVisible = it
         })
-        viewModel.displayableFoundArtists.observe(viewLifecycleOwner, Observer { foundArtistsListAdapter.artists = it })
-        viewModel.displayablePreviousSearches.observe(viewLifecycleOwner, Observer { previousSearchesListAdapter.artists = it })
+        viewModel.displayableFoundArtists.observe(viewLifecycleOwner, Observer { foundArtistsListAdapter.submitList(it) })
+        viewModel.displayablePreviousSearches.observe(viewLifecycleOwner, Observer { previousSearchesListAdapter.submitList(it) })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

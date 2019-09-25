@@ -4,10 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.util.Consumer
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jbr.asharplibrary.R
 
-class PreviousArtistSearchesListAdapter : RecyclerView.Adapter<FoundArtistViewHolder>() {
+class PreviousArtistSearchesListAdapter : ListAdapter<DisplayableFoundArtistItem, FoundArtistViewHolder>(DisplayableFoundArtistItemDiffCallback()) {
+
+    //region - Properties
+
+    var onArtistTap: Consumer<Int>? = null
+    var onClearArtistTap: Consumer<Int>? = null
 
     val swipeToDeleteCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
@@ -18,28 +24,16 @@ class PreviousArtistSearchesListAdapter : RecyclerView.Adapter<FoundArtistViewHo
         }
     }
 
-    //region - Properties
-
-    var artists: List<DisplayableFoundArtistItem> = emptyList()
-        set(value) {
-            field = value
-
-            notifyDataSetChanged()
-        }
-
-    var onArtistTap: Consumer<Int>? = null
-    var onClearArtistTap: Consumer<Int>? = null
-
     //region - Functions
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoundArtistViewHolder {
         return FoundArtistViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_found_artist, parent, false))
     }
 
-    override fun getItemCount() = artists.size
-
     override fun onBindViewHolder(holder: FoundArtistViewHolder, position: Int) {
-        holder.bind(artists[position], onClear = Runnable {
+        val item = getItem(position)
+
+        holder.bind(item, onClear = Runnable {
             onClearArtistTap?.accept(position)
         })
         holder.itemView.setOnClickListener {
