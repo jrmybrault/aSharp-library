@@ -9,12 +9,13 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jbr.asharplibrary.R
+import com.jbr.asharplibrary.shared.ui.ImageDownloader
 import kotlinx.android.synthetic.main.item_artist_release.view.*
 
-class ArtistReleasesListAdapter :
+class ArtistReleasesListAdapter(private val imageDownloader: ImageDownloader) :
     ListAdapter<DisplayableArtistReleaseItem, ArtistReleasesListAdapter.ViewHolder>(DisplayableArtistReleaseItemDiffCallback()) {
 
-    class ViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView) {
+    class ViewHolder(rootView: View, private val imageDownloader: ImageDownloader) : RecyclerView.ViewHolder(rootView) {
 
         //region - Properties
 
@@ -28,6 +29,8 @@ class ArtistReleasesListAdapter :
             frontCoverImageView.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.cover_the_wall))
             titleTextView.text = item.title
             releaseYearTextView.text = item.releaseYearText
+
+            imageDownloader.downloadImage(item.frontCoverUri, frontCoverImageView, itemView.context)
         }
     }
 
@@ -35,11 +38,8 @@ class ArtistReleasesListAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.item_artist_release,
-                parent,
-                false
-            )
+            LayoutInflater.from(parent.context).inflate(R.layout.item_artist_release, parent, false),
+            imageDownloader
         )
     }
 

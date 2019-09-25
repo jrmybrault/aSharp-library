@@ -20,7 +20,7 @@
         style="@style/DetailsText.Title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginStart="@dimen/large_margin"
         app:layout_constraintBottom_toTopOf="@+id/releaseYearTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

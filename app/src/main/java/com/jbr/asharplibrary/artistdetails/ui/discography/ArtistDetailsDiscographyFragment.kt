@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.artistdetails.ui.ArtistDetailsViewModel
+import com.jbr.asharplibrary.shared.ui.ImageDownloader
 import com.jbr.utils.isDeviceTablet
 import kotlinx.android.synthetic.main.fragment_artist_details_discography.*
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ArtistDetailsDiscographyFragment : Fragment() {
@@ -21,7 +23,9 @@ class ArtistDetailsDiscographyFragment : Fragment() {
 
     private val viewModel: ArtistDetailsViewModel by viewModel()
 
-    private val artistReleasesListAdapter: ArtistReleasesListAdapter by lazyOf(ArtistReleasesListAdapter())
+    private val imageDownloader: ImageDownloader by inject()
+
+    private val artistReleasesListAdapter: ArtistReleasesListAdapter by lazyOf(ArtistReleasesListAdapter(imageDownloader))
 
     //endregion
 

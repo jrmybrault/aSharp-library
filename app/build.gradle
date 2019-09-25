@@ -23,7 +23,9 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+            proguardFile 'proguard/retrofit2.pro'
+            proguardFile 'proguard/glide.pro'
         }
     }
 }
@@ -60,7 +62,6 @@ dependencies {
 
     // NETWORKING
 
-    implementation AndroidLibraries.gson
     implementation AndroidLibraries.retrofit
     implementation AndroidLibraries.retrofitLogging
     implementation AndroidLibraries.retrofitGsonAdapter
@@ -68,6 +69,10 @@ dependencies {
     implementation AndroidLibraries.retrofitCoroutinesAndroid
     implementation AndroidLibraries.retrofitCoroutinesAdapter
 
+    implementation AndroidLibraries.gson
+
+    implementation AndroidLibraries.glide
+    
     // LOGGING
 
     implementation AndroidLibraries.timber

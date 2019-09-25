@@ -29,8 +29,11 @@ object DependencyVersions {
 
     val retrofit = "2.6.1"
     val retrofitLogging = "4.2.0"
+    val retrofitCoroutinesAdapter = "0.9.2"
+
     val gson = "2.8.5"
-    val coroutinesAdapter = "0.9.2"
+
+    val glide = "4.10.0"
 
     // LOGGING
 
@@ -78,20 +81,23 @@ object AndroidLibraries {
 
     // NETWORKING
 
-    val gson = "com.google.code.gson:gson:${DependencyVersions.gson}"
-
     val retrofit = "com.squareup.retrofit2:retrofit:${DependencyVersions.retrofit}"
     val retrofitLogging = "com.squareup.okhttp3:logging-interceptor:${DependencyVersions.retrofitLogging}"
     val retrofitGsonAdapter = "com.squareup.retrofit2:converter-gson:${DependencyVersions.retrofit}"
     val retrofitCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${DependencyVersions.coroutines}"
     val retrofitCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${DependencyVersions.coroutines}"
-    val retrofitCoroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${DependencyVersions.coroutinesAdapter}"
+    val retrofitCoroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${DependencyVersions.retrofitCoroutinesAdapter}"
+
+    val gson = "com.google.code.gson:gson:${DependencyVersions.gson}"
+
+    val glide = "com.github.bumptech.glide:glide:${DependencyVersions.glide}"
 
     // LOGGING
 
     val timber = "com.jakewharton.timber:timber:${DependencyVersions.timber}"
 
     // MISCELLANEOUS
+
     val appCompat = "androidx.appcompat:appcompat:${DependencyVersions.appCompat}"
     val ktx = "androidx.core:core-ktx:${DependencyVersions.ktx}"
 }

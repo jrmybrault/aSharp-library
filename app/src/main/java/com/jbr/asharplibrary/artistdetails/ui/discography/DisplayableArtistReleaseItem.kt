@@ -1,6 +1,8 @@
 package com.jbr.asharplibrary.artistdetails.ui.discography
 
 import android.content.res.Resources
+import android.net.Uri
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.DiffUtil
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.artistdetails.domain.Release
@@ -8,16 +10,28 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-data class DisplayableArtistReleaseItem(val identifier: String, val title: String, val releaseYearText: String) {
+data class DisplayableArtistReleaseItem(
+    val identifier: String,
+    val title: String,
+    val releaseYearText: String,
+    val frontCoverUri: Uri
+) {
 
     constructor(release: Release, resources: Resources) : this(
         identifier = release.identifier,
         title = release.displayTitle(resources),
-        releaseYearText = releaseDateFormatter.format(release.releaseDate)
+        releaseYearText = releaseDateFormatter.format(release.releaseDate),
+        frontCoverUri = frontCoverUri(release.identifier)
     )
 
     companion object {
+
+        private const val frontCoverBaseUrl = "https://coverartarchive.org/release-group/%s/front.jpg-250"
         private val releaseDateFormatter: DateFormat = SimpleDateFormat("yyyy", Locale.getDefault())
+
+        fun frontCoverUri(identifier: String): Uri {
+            return String.format(frontCoverBaseUrl, identifier).toUri()
+        }
     }
 }
 
