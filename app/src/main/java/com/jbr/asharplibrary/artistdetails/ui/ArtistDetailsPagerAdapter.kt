@@ -41,7 +41,7 @@ class ArtistDetailsPagerAdapter(
     //endregion
 }
 
-fun ArtistDetailsPagerAdapter.PageType.displayTextId(): Int {
+private fun ArtistDetailsPagerAdapter.PageType.displayTextId(): Int {
     return when (this) {
         ArtistDetailsPagerAdapter.PageType.ABOUT -> R.string.artist_details_about
         ArtistDetailsPagerAdapter.PageType.DISCOGRAPHY -> R.string.artist_details_discography

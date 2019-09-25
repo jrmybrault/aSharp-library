@@ -23,8 +23,11 @@
 
     <string name="artist_details_about_section_more">Read more…</string>
 
-    <string name="artist_details_release_primary_suffix_single">(Single)</string>
-    <string name="artist_details_release_primary_suffix_ep">(EP)</string>
-    <string name="artist_details_release_secondary_suffix_compilation">(Compilation)</string>
-    <string name="artist_details_release_secondary_suffix_live">(Live)</string>
+    <string name="artist_details_release_primary_type_album">Albums</string>
+    <string name="artist_details_release_primary_type_single">Singles</string>
+    <string name="artist_details_release_primary_type_ep">EPs</string>
+    <string name="artist_details_release_primary_type_other">Others</string>
+    <string name="artist_details_release_secondary_type_compilation">(Compilation)</string>
+    <string name="artist_details_release_secondary_type_live">(Live)</string>
+    <string name="artist_details_release_secondary_type_soundtrack">(Soundtrack)</string>
 </resources>

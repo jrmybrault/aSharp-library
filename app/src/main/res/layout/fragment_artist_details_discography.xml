@@ -11,5 +11,5 @@
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/default_margin"
         tools:itemCount="3"
-        tools:listitem="@layout/item_artist_release" />
+        tools:listitem="@layout/item_release_info" />
 </FrameLayout>

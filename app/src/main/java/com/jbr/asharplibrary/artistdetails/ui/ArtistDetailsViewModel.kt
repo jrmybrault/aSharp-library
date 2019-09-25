@@ -7,7 +7,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.jbr.asharplibrary.artistdetails.ui.about.DisplayableArtistAbout
-import com.jbr.asharplibrary.artistdetails.ui.discography.DisplayableArtistReleaseItem
+import com.jbr.asharplibrary.artistdetails.ui.discography.DisplayableArtistReleaseItemType
+import com.jbr.asharplibrary.artistdetails.ui.discography.DisplayableReleaseCategoryItem
+import com.jbr.asharplibrary.artistdetails.ui.discography.DisplayableReleaseInfoItem
+import com.jbr.asharplibrary.artistdetails.ui.discography.ReleasePrimaryTypeComparator
 import com.jbr.asharplibrary.artistdetails.usecase.ArtistDetailsLoader
 import com.jbr.asharplibrary.shareddomain.ArtistIdentifier
 import kotlinx.coroutines.CoroutineScope
@@ -27,14 +30,25 @@ class ArtistDetailsViewModel(application: Application, private val loader: Artis
         DisplayableArtistAbout(it, application.resources)
     }
 
-    val displayableArtistReleases: LiveData<List<DisplayableArtistReleaseItem>> = Transformations.map(loadedArtist) { artist ->
-        artist.releases
+    val displayableArtistReleases: LiveData<List<DisplayableArtistReleaseItemType>> = Transformations.map(loadedArtist) { artist ->
+        val results = mutableListOf<DisplayableArtistReleaseItemType>()
+
+        val groupedReleases = artist.releases
             .sortedByDescending { it.releaseDate }
-            .map { DisplayableArtistReleaseItem(it, application.resources) }
+            .groupBy { it.primaryType }
+            .toSortedMap(ReleasePrimaryTypeComparator())
+
+        groupedReleases.forEach { entry ->
+            results.add(DisplayableReleaseCategoryItem(entry.key))
+            results.addAll(entry.value.map { DisplayableReleaseInfoItem(it, application.resources) })
+        }
+
+        results
     }
 
-    val randomReleaseCoverUri: LiveData<Uri> = Transformations.map(displayableArtistReleases) {
-        it.random().largeFrontCoverUri
+    val randomReleaseCoverUri: LiveData<Uri> = Transformations.map(loadedArtist) {
+        val randomRelease = it.releases.random()
+        DisplayableReleaseInfoItem(randomRelease, application.resources).largeFrontCoverUri
     }
 
     private val _isLoading = MutableLiveData(false)
