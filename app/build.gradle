@@ -9,6 +9,12 @@ apply plugin: 'androidx.navigation.safeargs'
 
 apply plugin: 'realm-android'
 
+ext {
+    qualimetryDirectory = "$rootDir/qualimetry"
+}
+
+apply from: "$qualimetryDirectory/detekt.gradle"
+
 android {
     compileSdkVersion DependencyVersions.compileSdk
 

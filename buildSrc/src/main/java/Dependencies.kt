@@ -56,6 +56,10 @@ object DependencyVersions {
 
     val testRunner = "1.2.0"
     val espresso = "3.2.0"
+
+    // QUALIMETRY
+
+    val detekt = "1.0.1" // The detekt plugin configuration (in application build.gradle) can't use this constant so do not forget to change it there too
 }
 
 object KotlinLibraries {
