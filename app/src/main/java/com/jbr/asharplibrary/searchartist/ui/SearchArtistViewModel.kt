@@ -67,9 +67,8 @@ class SearchArtistViewModel(
     val shouldDisplayPreviousSearches: LiveData<Boolean>
         get() = _shouldDisplayPreviousSearches
 
-    private val previousSearchesArtists = previousArtistSearchesRepository.searches
-
-    val displayableSearchedArtists: LiveData<List<DisplayableFoundArtistItem>> = Transformations.map(previousSearchesArtists) { searches ->
+    private val previousSearches = previousArtistSearchesRepository.searches
+    val displayablePreviousSearches: LiveData<List<DisplayableFoundArtistItem>> = Transformations.map(previousSearches) { searches ->
         searches
             .sortedByDescending { it.date }
             .map { DisplayableFoundArtistItem(it.artist, application.resources) }
@@ -118,14 +117,15 @@ class SearchArtistViewModel(
     }
 
     fun handleSelectionOfPreviousSearch(index: Int) {
-        val selectedArtistIdentifier = displayableSearchedArtists.value!![index].identifier
+        val selectedArtistIdentifier = displayablePreviousSearches.value!![index].identifier
 
         navigator?.get()?.goToArtistDetails(selectedArtistIdentifier)
     }
 
     fun handleTapOnClearPreviousSearch(index: Int) {
-        val selectedSearch = previousSearchesArtists.value!![index]
-
+        val selectedSearchIdentifier = displayablePreviousSearches.value!![index].identifier
+        val selectedSearch = previousSearches.value?.first { it.identifier == selectedSearchIdentifier }!!
+        
         viewModelScope.launch {
             previousArtistSearchesRepository.remove(selectedSearch)
         }
