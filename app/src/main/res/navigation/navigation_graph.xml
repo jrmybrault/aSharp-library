@@ -9,7 +9,7 @@
         android:name="com.jbr.asharplibrary.searchartist.ui.SearchArtistFragment"
         android:label="SearchArtistFragment">
         <action
-            android:id="@+id/action_searchArtistFragment_to_artistDetailsFragment"
+            android:id="@+id/toDetailsAction"
             app:destination="@id/artistDetailsFragment" />
     </fragment>
     <fragment

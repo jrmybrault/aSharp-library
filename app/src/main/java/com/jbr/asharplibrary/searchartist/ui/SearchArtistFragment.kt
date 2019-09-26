@@ -138,7 +138,7 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
     }
 
     override fun goToArtistDetails(identifier: ArtistIdentifier) {
-        findNavController().navigate(SearchArtistFragmentDirections.actionSearchArtistFragmentToArtistDetailsFragment(identifier))
+        findNavController().navigate(SearchArtistFragmentDirections.toDetailsAction(identifier))
     }
 
     //endregion
