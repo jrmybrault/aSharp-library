@@ -28,7 +28,7 @@ object DependencyVersions {
     // NETWORKING
 
     val retrofit = "2.6.1"
-    val retrofitLogging = "4.2.0"
+    val retrofitLogging = "3.12.1"
     val retrofitCoroutinesAdapter = "0.9.2"
 
     val gson = "2.8.5"
@@ -99,7 +99,7 @@ object AndroidLibraries {
     val gson = "com.google.code.gson:gson:${DependencyVersions.gson}"
 
     val glide = "com.github.bumptech.glide:glide:${DependencyVersions.glide}"
-    
+
     // LOGGING
 
     val timber = "com.jakewharton.timber:timber:${DependencyVersions.timber}"
