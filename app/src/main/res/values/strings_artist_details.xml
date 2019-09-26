@@ -20,9 +20,9 @@
     <string name="artist_details_about_section_ratings">Rating</string>
     <string name="artist_details_ratings_value">%1$s (%2$d votes)</string>
     <string name="artist_details_ratings_none">No rating yet</string>
-
-
-    <string name="artist_details_about_section_more">Read more…</string>
+    
+    <string name="artist_details_about_section_history">History</string>
+    <string name="artist_details_about_section_history_more">Want to learn more ?</string>
 
     <string name="artist_details_release_primary_type_album">Albums</string>
     <string name="artist_details_release_primary_type_single">Singles</string>

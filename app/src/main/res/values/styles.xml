@@ -66,6 +66,16 @@
 
     <!--region View styles -->
 
+    <style name="LinkButton">
+        <item name="android:background">@color/accent</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingStart">@dimen/default_padding</item>
+        <item name="android:paddingEnd">@dimen/default_padding</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
     <style name="HorizontalSeparatorView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>

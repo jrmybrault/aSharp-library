@@ -12,17 +12,24 @@ import com.jbr.asharplibrary.artistdetails.ui.discography.DisplayableReleaseCate
 import com.jbr.asharplibrary.artistdetails.ui.discography.DisplayableReleaseInfoItem
 import com.jbr.asharplibrary.artistdetails.ui.discography.ReleasePrimaryTypeComparator
 import com.jbr.asharplibrary.artistdetails.usecase.ArtistDetailsLoader
+import com.jbr.asharplibrary.artistdetails.usecase.ArtistDetailsNavigator
 import com.jbr.asharplibrary.shareddomain.ArtistIdentifier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.lang.ref.WeakReference
+
 
 class ArtistDetailsViewModel(application: Application, private val loader: ArtistDetailsLoader) : AndroidViewModel(application) {
 
     //region - Properties
 
     private val loadedArtist = loader.artist
+
+    private val _isLoading = MutableLiveData(false)
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
 
     val displayableArtistName: LiveData<String> = Transformations.map(loadedArtist) { it.name }
 
@@ -55,9 +62,7 @@ class ArtistDetailsViewModel(application: Application, private val loader: Artis
         }
     }
 
-    private val _isLoading = MutableLiveData(false)
-    val isLoading: LiveData<Boolean>
-        get() = _isLoading
+    var navigator: WeakReference<ArtistDetailsNavigator>? = null
 
     private val viewModelJob = Job()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -74,6 +79,15 @@ class ArtistDetailsViewModel(application: Application, private val loader: Artis
 
             _isLoading.value = false
         }
+    }
+
+    fun handleTapOnMoreInfo() {
+        launchGoggleQuery()
+    }
+
+    private fun launchGoggleQuery() {
+        val artistName = loadedArtist.value!!.name
+        navigator?.get()?.openArtistWebSearch(artistName)
     }
 
     override fun onCleared() {
