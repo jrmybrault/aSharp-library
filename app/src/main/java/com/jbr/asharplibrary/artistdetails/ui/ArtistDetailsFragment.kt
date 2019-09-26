@@ -23,7 +23,7 @@ class ArtistDetailsFragment : Fragment() {
     private val viewModel: ArtistDetailsViewModel by viewModel()
 
     private val imageDownloader: ImageDownloader by inject()
-
+    
     //endregion
 
     //region - Functions
@@ -47,18 +47,11 @@ class ArtistDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupViewPager()
-        setupCollapse()
     }
 
     private fun setupViewPager() {
-        val adapter = ArtistDetailsPagerAdapter(fragmentManager!!, resources)
-
-        detailsViewPager.adapter = adapter
+        detailsViewPager.adapter = ArtistDetailsPagerAdapter(fragmentManager!!, resources)
         detailsTabLayout.setupWithViewPager(detailsViewPager)
-    }
-
-    private fun setupCollapse() {
-        detailsCollapsingToolbarLayout.isTitleEnabled = true
     }
 
     //endregion

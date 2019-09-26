@@ -3,7 +3,7 @@ package com.jbr.asharplibrary.artistdetails.ui
 import android.content.res.Resources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.artistdetails.ui.about.ArtistDetailsAboutFragment
 import com.jbr.asharplibrary.artistdetails.ui.discography.ArtistDetailsDiscographyFragment
@@ -11,7 +11,7 @@ import com.jbr.asharplibrary.artistdetails.ui.discography.ArtistDetailsDiscograp
 class ArtistDetailsPagerAdapter(
     manager: FragmentManager,
     private val resources: Resources
-) : FragmentPagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+) : FragmentStatePagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     enum class PageType {
 
