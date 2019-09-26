@@ -9,6 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
 import java.lang.reflect.Type
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -69,10 +70,12 @@ private class MBDateDeserializer : JsonDeserializer<Date> {
             }
         }
 
-        throw JsonParseException("Cannot deserialize dateFrom: ${json.asString} : unsupported format.")
+        Timber.e(JsonParseException("Cannot deserialize dateFrom: ${json.asString} : unsupported format."))
+
+        return Date()
     }
 
     companion object {
-        private val dateFormats = listOf("yyyy-MM-dd", "yyyy")
+        private val dateFormats = listOf("yyyy-MM-dd", "yyyy-MM", "yyyy")
     }
 }
