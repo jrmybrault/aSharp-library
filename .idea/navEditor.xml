@@ -31,7 +31,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_searchArtistFragment_to_artistDetailsFragment">
+                            <entry key="toDetailsAction">
                               <value>
                                 <LayoutPositions />
                               </value>
