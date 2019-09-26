@@ -10,7 +10,9 @@
         android:label="SearchArtistFragment">
         <action
             android:id="@+id/toDetailsAction"
-            app:destination="@id/artistDetailsFragment" />
+            app:destination="@id/artistDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/artistDetailsFragment"
