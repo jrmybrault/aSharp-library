@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/content_padding">
+
+    <ImageView
+        android:id="@+id/itemReleaseInfoFrontCoverImageView"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        tools:src="@drawable/cover_the_wall" />
+
+    <TextView
+        android:id="@+id/itemReleaseInfoTitleTextView"
+        style="@style/DetailsText.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="The Wall" />
+
+    <TextView
+        android:id="@+id/itemReleaseInfoReleaseYearTextView"
+        style="@style/DetailsText.Value"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:text="1979" />
+</LinearLayout>

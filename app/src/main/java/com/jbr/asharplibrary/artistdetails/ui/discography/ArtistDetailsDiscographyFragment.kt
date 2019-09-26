@@ -8,9 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.artistdetails.ui.ArtistDetailsViewModel
+import com.jbr.asharplibrary.artistdetails.ui.discography.ArtistReleasesListAdapter.Companion.VIEW_TYPE_CATEGORY_INDEX
+import com.jbr.asharplibrary.artistdetails.ui.discography.ArtistReleasesListAdapter.Companion.VIEW_TYPE_RELEASE_INFO_INDEX
 import com.jbr.asharplibrary.shared.ui.ImageDownloader
+import com.jbr.asharplibrary.sharedui.RecyclerViewDynamicSpanAdapter
 import com.jbr.utils.isDeviceTablet
 import kotlinx.android.synthetic.main.fragment_artist_details_discography.*
 import org.koin.android.ext.android.inject
@@ -47,13 +51,31 @@ class ArtistDetailsDiscographyFragment : Fragment() {
 
     private fun setupRecyclerView() {
         releasesRecyclerView.apply {
+            adapter = artistReleasesListAdapter
+
             layoutManager = if (isDeviceTablet(resources)) {
-                GridLayoutManager(activity, 3)
+                val itemWidth = resources.getDimensionPixelSize(R.dimen.release_item_width)
+                RecyclerViewDynamicSpanAdapter.adapt(releasesRecyclerView, itemWidth)
+
+                createTabletLayoutManage(artistReleasesListAdapter)
             } else {
                 LinearLayoutManager(context)
             }
-            adapter = artistReleasesListAdapter
         }
+    }
+
+    private fun createTabletLayoutManage(adapter: ArtistReleasesListAdapter): RecyclerView.LayoutManager {
+        val gridLayoutManager = GridLayoutManager(activity, 1) // Default span count that will be dynamically updated
+        gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+
+            override fun getSpanSize(position: Int): Int = when (adapter.getItemViewType(position)) {
+                VIEW_TYPE_CATEGORY_INDEX -> gridLayoutManager.spanCount
+                VIEW_TYPE_RELEASE_INFO_INDEX -> 1
+                else -> 1
+            }
+        }
+
+        return gridLayoutManager
     }
 
     //endregion

@@ -93,7 +93,7 @@ class ArtistReleasesListAdapter(private val imageDownloader: ImageDownloader) :
 
     companion object {
 
-        private const val VIEW_TYPE_CATEGORY_INDEX = 0
-        private const val VIEW_TYPE_RELEASE_INFO_INDEX = 1
+        const val VIEW_TYPE_CATEGORY_INDEX = 0
+        const val VIEW_TYPE_RELEASE_INFO_INDEX = 1
     }
 }
