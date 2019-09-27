@@ -14,13 +14,14 @@
     <string name="artist_details_life_span_end_solo">Death:</string>
     <string name="artist_details_life_span_end_band">Dissolution:</string>
     <string name="artist_details_life_span_duration">(%1$d years)</string>
+    <string name="artist_details_about_legal_info">Legal information</string>
     <string name="artist_details_ipi_codes">IPI Codes:</string>
     <string name="artist_details_isni_codes">ISNI Codes:</string>
 
     <string name="artist_details_about_section_ratings">Rating</string>
     <string name="artist_details_ratings_value">%1$s (%2$d votes)</string>
     <string name="artist_details_ratings_none">No rating yet</string>
-    
+
     <string name="artist_details_about_section_history">History</string>
     <string name="artist_details_about_section_history_more">Want to learn more ?</string>
 

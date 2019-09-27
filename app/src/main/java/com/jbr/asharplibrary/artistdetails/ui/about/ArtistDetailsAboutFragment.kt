@@ -58,9 +58,8 @@ class ArtistDetailsAboutFragment : Fragment(), ArtistDetailsNavigator {
 
         detailsCountryTextView.text = displayableArtistAbout.countryText
 
-        detailsIpiCodesLayout.isVisible = displayableArtistAbout.shouldDisplayIpiCodes
+        detailsLegalCodesLayout.isVisible = displayableArtistAbout.shouldDisplayLegalCodes
         detailsIpiCodesTextView.text = displayableArtistAbout.ipiCodesText
-        detailsIsniCodesLayout.isVisible = displayableArtistAbout.shouldDisplayIsniCodes
         detailsIsniCodesTextView.text = displayableArtistAbout.isniCodesText
 
         detailsRatingsTextView.text = displayableArtistAbout.ratingsText

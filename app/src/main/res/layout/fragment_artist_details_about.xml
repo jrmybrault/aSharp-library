@@ -101,51 +101,73 @@
                     android:layout_marginStart="@dimen/default_margin"
                     tools:text="Italy" />
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/detailsIpiCodesLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin">
-
-                <TextView
-                    android:id="@+id/detailsIpiCodesTitleTextView"
-                    style="@style/DetailsText.Title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/artist_details_ipi_codes" />
-
-                <TextView
-                    android:id="@+id/detailsIpiCodesTextView"
-                    style="@style/DetailsText.Value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_margin"
-                    tools:text="00021552128" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/detailsIsniCodesLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin">
-
-                <TextView
-                    android:id="@+id/detailsIsniCodesTitleTextView"
-                    style="@style/DetailsText.Title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/artist_details_isni_codes" />
-
-                <TextView
-                    android:id="@+id/detailsIsniCodesTextView"
-                    style="@style/DetailsText.Value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_margin"
-                    tools:text="0000 0001 2122 5602" />
-            </LinearLayout>
         </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/detailsLegalCodesLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_bottom_padding">
+
+            <TextView
+                android:id="@+id/detailsLegalsSectionTextView"
+                style="@style/SectionTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/section_top_padding"
+                android:text="@string/artist_details_about_legal_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/detailsIpiCodesTitleTextView"
+                style="@style/DetailsText.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/section_top_padding"
+                android:text="@string/artist_details_ipi_codes"
+                app:layout_constraintEnd_toEndOf="@id/informationIpiIsniSeparatorGuideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detailsLegalsSectionTextView" />
+
+            <TextView
+                android:id="@+id/detailsIpiCodesTextView"
+                style="@style/DetailsText.Value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/detailsIpiCodesTitleTextView"
+                app:layout_constraintStart_toStartOf="@id/detailsIpiCodesTitleTextView"
+                app:layout_constraintTop_toBottomOf="@id/detailsIpiCodesTitleTextView"
+                tools:text="00021552128" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/informationIpiIsniSeparatorGuideline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/detailsIsniCodesTitleTextView"
+                style="@style/DetailsText.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:text="@string/artist_details_isni_codes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/informationIpiIsniSeparatorGuideline"
+                app:layout_constraintTop_toTopOf="@id/detailsIpiCodesTitleTextView" />
+
+            <TextView
+                android:id="@+id/detailsIsniCodesTextView"
+                style="@style/DetailsText.Value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/detailsIsniCodesTitleTextView"
+                app:layout_constraintStart_toStartOf="@id/detailsIsniCodesTitleTextView"
+                app:layout_constraintTop_toBottomOf="@id/detailsIsniCodesTitleTextView"
+                tools:text="0000 0001 2122 5602" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/detailsRatingSectionTextView"

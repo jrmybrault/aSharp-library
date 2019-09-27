@@ -20,9 +20,8 @@ data class DisplayableArtistAbout(
     val shouldDisplayLifeSpanEnd: Boolean = !lifeSpanEndTitleText.isNullOrEmpty() && !lifeSpanEndText.isNullOrEmpty(),
     val countryText: String,
     val ipiCodesText: String,
-    val shouldDisplayIpiCodes: Boolean = ipiCodesText.isNotEmpty(),
     val isniCodesText: String,
-    val shouldDisplayIsniCodes: Boolean = isniCodesText.isNotEmpty(),
+    val shouldDisplayLegalCodes: Boolean = ipiCodesText.isNotEmpty() || isniCodesText.isNotEmpty(),
     val wikipediaExtractText: Spanned?,
     val ratingsText: String?
 ) {
@@ -34,8 +33,8 @@ data class DisplayableArtistAbout(
         lifeSpanEndTitleText = artist.lifeSpanEndTitleDisplayText(resources),
         lifeSpanEndText = artist.lifeSpanEndDisplayText(resources, lifeSpanBeginningFormatter),
         countryText = artist.countryName ?: "-",
-        ipiCodesText = artist.ipiCodes.joinToString("\n"),
-        isniCodesText = artist.isniCodes.joinToString("\n"),
+        ipiCodesText = artist.ipiCodesDisplayText(),
+        isniCodesText = artist.isniCodesDisplayText(),
         wikipediaExtractText = artist.wikipediaExtract?.parseAsHtml(),
         ratingsText = artist.ratingsDisplayText(resources)
     )
@@ -118,5 +117,25 @@ fun DetailedArtist.ratingsDisplayText(resources: Resources): String? {
         resources.getString(R.string.artist_details_ratings_none)
     } else {
         resources.getString(R.string.artist_details_ratings_value, String.format("%.1f", rating.averageValue), rating.count)
+    }
+}
+
+fun DetailedArtist.ipiCodesDisplayText(): String {
+    val ipiCodesText = ipiCodes.joinToString("\n")
+
+    return if (ipiCodesText.isEmpty()) {
+        "-"
+    } else {
+        ipiCodesText
+    }
+}
+
+fun DetailedArtist.isniCodesDisplayText(): String {
+    val isniCodesText = isniCodes.joinToString("\n")
+
+    return if (isniCodesText.isEmpty()) {
+        "-"
+    } else {
+        isniCodesText
     }
 }

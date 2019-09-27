@@ -59,7 +59,7 @@ class ArtistDetailsDiscographyFragment : Fragment() {
 
                 createTabletLayoutManage(artistReleasesListAdapter)
             } else {
-                LinearLayoutManager(context)
+                LinearLayoutManager(context) // FIXME: Use Gid layout with span at 1 and without size lookup adaptation)
             }
         }
     }
