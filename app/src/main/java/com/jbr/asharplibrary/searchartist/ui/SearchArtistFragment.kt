@@ -129,7 +129,7 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
         launch {
             delay(DEFAULT_TEXT_EDITION_THROTTLE_DELAY)
 
-            if (text != editedSearchText) {
+            if (text != editedSearchText) { // If the search text has changed since the last delay, do no launch search.
                 return@launch
             }
 

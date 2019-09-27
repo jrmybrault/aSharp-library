@@ -38,6 +38,16 @@ android {
             proguardFile 'proguard/glide.pro'
         }
     }
+
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/sharedTest/java"
+        }
+
+        test {
+            java.srcDirs += "src/sharedTest/java"
+        }
+    }
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
@@ -95,8 +105,12 @@ dependencies {
     // UNIT TEST
 
     testImplementation TestLibraries.junit
+    testImplementation TestLibraries.mockitoKotlin
 
     // INSTRUMENTED Test
+
+    androidTestImplementation TestLibraries.xJunit
+    androidTestImplementation TestLibraries.mockitoKotlin
 
     androidTestImplementation TestLibraries.runner
     androidTestImplementation TestLibraries.espresso
