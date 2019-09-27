@@ -24,9 +24,9 @@ data class MBDetailedArtist(
 
     enum class Gender {
 
-        @SerializedName("male")
+        @SerializedName("Male")
         MALE,
-        @SerializedName("female")
+        @SerializedName("Female")
         FEMALE
     }
 
