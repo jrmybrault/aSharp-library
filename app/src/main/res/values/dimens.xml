@@ -6,8 +6,8 @@
 
     <dimen name="default_margin">8dp</dimen>
     <dimen name="large_margin">16dp</dimen>
-    <dimen name="section_top_padding">24dp</dimen>
-    <dimen name="section_bottom_padding">16dp</dimen>
+    <dimen name="section_top_padding">8dp</dimen>
+    <dimen name="section_bottom_padding">32dp</dimen>
 
     <dimen name="release_item_width">250dp</dimen>
 </resources>

@@ -16,20 +16,16 @@
             style="@style/SectionTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_top_padding"
             android:text="@string/artist_details_about_section_info"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/detailsInformationSectionSeparatorView"
-            style="@style/HorizontalSeparatorView" />
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/section_top_padding"
-            android:paddingBottom="@dimen/section_bottom_padding">
+            android:layout_marginBottom="@dimen/section_bottom_padding"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/detailsGenderTextView"
@@ -156,18 +152,15 @@
             style="@style/SectionTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_top_padding"
             android:text="@string/artist_details_about_section_ratings" />
 
-        <View
-            android:id="@+id/detailsRatingSectionSeparatorView"
-            style="@style/HorizontalSeparatorView" />
-
         <TextView
-            android:id="@+id/detailsRatingsExtractTextView"
+            android:id="@+id/detailsRatingsTextView"
             style="@style/DetailsText.Value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/section_top_padding"
+            android:layout_marginBottom="@dimen/section_bottom_padding"
             tools:text="4.9 (11 votes)" />
 
         <TextView
@@ -175,20 +168,15 @@
             style="@style/SectionTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/section_bottom_padding"
+            android:layout_marginBottom="@dimen/section_top_padding"
             android:text="@string/artist_details_about_section_history" />
-
-        <View
-            android:id="@+id/detailsHistorySectionSeparatorView"
-            style="@style/HorizontalSeparatorView" />
 
         <TextView
             android:id="@+id/detailsWikipediaExtractTextView"
             style="@style/DetailsText.Value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/section_top_padding"
-            android:paddingBottom="@dimen/section_bottom_padding"
+            android:layout_marginBottom="@dimen/section_bottom_padding"
             android:textSize="16sp"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
 
@@ -198,7 +186,6 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/default_margin"
             android:text="@string/artist_details_about_section_history_more"
             android:textSize="16sp"
             android:visibility="gone"

@@ -63,7 +63,7 @@ class ArtistDetailsAboutFragment : Fragment(), ArtistDetailsNavigator {
         detailsIsniCodesLayout.isVisible = displayableArtistAbout.shouldDisplayIsniCodes
         detailsIsniCodesTextView.text = displayableArtistAbout.isniCodesText
 
-        detailsRatingsExtractTextView.text = displayableArtistAbout.ratingsText
+        detailsRatingsTextView.text = displayableArtistAbout.ratingsText
 
         detailsWikipediaExtractTextView.text = displayableArtistAbout.wikipediaExtractText
         detailsMoreInfoLinkButton.isVisible = true
