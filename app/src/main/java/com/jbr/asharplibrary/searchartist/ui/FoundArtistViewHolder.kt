@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_found_artist.view.*
 
+// FIXME: Use mockk to avoid keep FoundArtistViewHolder final
 open class FoundArtistViewHolder(
     rootView: View,
     val nameTextView: TextView = rootView.itemFoundArtistNameTextView,

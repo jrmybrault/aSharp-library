@@ -27,7 +27,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.jbr.asharplibrary.InstrumentedTestRunner"
     }
 
     buildTypes {
@@ -48,12 +48,27 @@ android {
             java.srcDirs += "src/sharedTest/java"
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests {
+            animationsDisabled = true
+        }
+    }
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+}
+
+repositories {
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -102,16 +117,25 @@ dependencies {
     implementation AndroidLibraries.appCompat
     implementation AndroidLibraries.ktx
 
-    // UNIT TEST
+    // TEST
 
     testImplementation TestLibraries.junit
-    testImplementation TestLibraries.mockitoKotlin
-
-    // INSTRUMENTED Test
-
     androidTestImplementation TestLibraries.xJunit
+
+    testImplementation TestLibraries.mockitoKotlin
     androidTestImplementation TestLibraries.mockitoKotlin
+    //androidTestImplementation TestLibraries.mockitoAndroid
+
+    // Use downgraded version of objenesis due to incompatibility with minSdkVersion
+    testImplementation TestLibraries.objenesis
+    androidTestImplementation TestLibraries.objenesis
+    testImplementation(TestLibraries.mockk) { exclude module: 'objenesis' }
+    androidTestImplementation(TestLibraries.mockkAndroid) { exclude module: 'objenesis' }
+
+    androidTestImplementation TestLibraries.dexOpener
 
     androidTestImplementation TestLibraries.runner
-    androidTestImplementation TestLibraries.espresso
+    androidTestImplementation TestLibraries.rules
+    androidTestImplementation TestLibraries.espressoCore
+    androidTestImplementation TestLibraries.espressoContrib
 }

@@ -52,11 +52,15 @@ object DependencyVersions {
 
     val junit = "4.12"
     val mockitoKotlin = "2.2.0"
+    val mockk = "1.9.3"
+    val objenesis = "2.6"
+
+    val dexopener = "2.0.4"
 
     val xJunit = "1.1.1"
     val testRunner = "1.2.0"
     val espresso = "3.2.0"
-    
+
     // QUALIMETRY
 
     val detekt = "1.0.1" // The detekt plugin configuration (in application build.gradle) can't use this constant so do not forget to change it there too
@@ -113,9 +117,16 @@ object AndroidLibraries {
 object TestLibraries {
 
     val junit = "junit:junit:${DependencyVersions.junit}"
-    val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${DependencyVersions.mockitoKotlin}"
-
     val xJunit = "androidx.test.ext:junit:${DependencyVersions.xJunit}"
+
+    val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${DependencyVersions.mockitoKotlin}"
+    val mockk = "io.mockk:mockk:${DependencyVersions.mockk}"
+    val mockkAndroid = "io.mockk:mockk-android:${DependencyVersions.mockk}"
+    val objenesis = "org.objenesis:objenesis:${DependencyVersions.objenesis}"
+    val dexOpener = "com.github.tmurakami:dexopener:${DependencyVersions.dexopener}"
+
     val runner = "androidx.test:runner:${DependencyVersions.testRunner}"
-    val espresso = "androidx.test.espresso:espresso-core:${DependencyVersions.espresso}"
+    val rules = "androidx.test:rules:${DependencyVersions.testRunner}"
+    val espressoCore = "androidx.test.espresso:espresso-core:${DependencyVersions.espresso}"
+    val espressoContrib = "androidx.test.espresso:espresso-contrib:${DependencyVersions.espresso}"
 }

@@ -34,19 +34,18 @@ class SearchArtistViewModel(
             refreshSearch()
         }
 
-    private val foundArtists = finder.results
+    private val _isSearching = MutableLiveData(false)
+    val isSearching: LiveData<Boolean>
+        get() = _isSearching
 
-    val displayableFoundArtists: LiveData<List<DisplayableFoundArtistItem>> = Transformations.map(foundArtists) { artists ->
+    private val results = finder.results
+    val displayableResults: LiveData<List<DisplayableFoundArtistItem>> = Transformations.map(results) { artists ->
         artists
             .sortedWith(ArtistSortComparator())
             .map { DisplayableFoundArtistItem(it, application.resources) }
     }
 
-    private val _isSearching = MutableLiveData(false)
-    val isSearching: LiveData<Boolean>
-        get() = _isSearching
-
-    val searchResultText: LiveData<String> = Transformations.map(foundArtists) { artists ->
+    val searchResultText: LiveData<String> = Transformations.map(results) { artists ->
         if (searchText.isNullOrEmpty()) {
             ""
         } else {
@@ -96,8 +95,8 @@ class SearchArtistViewModel(
     }
 
     fun handleSelectionOfArtist(index: Int) {
-        val selectedArtistIdentifier = displayableFoundArtists.value!![index].identifier
-        val matchingSelectedArtist = foundArtists.value!!.first { it.identifier == selectedArtistIdentifier }
+        val selectedArtistIdentifier = displayableResults.value!![index].identifier
+        val matchingSelectedArtist = results.value!!.first { it.identifier == selectedArtistIdentifier }
 
         viewModelScope.launch {
             previousArtistSearchesRepository.add(PreviousArtistSearch(matchingSelectedArtist))

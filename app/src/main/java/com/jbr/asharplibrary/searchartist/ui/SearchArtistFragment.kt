@@ -30,7 +30,7 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
 
     private val viewModel: SearchArtistViewModel by viewModel()
 
-    private val foundArtistsListAdapter: FoundArtistsListAdapter by lazyOf(FoundArtistsListAdapter())
+    private val resultsListAdapter: FoundArtistsListAdapter by lazyOf(FoundArtistsListAdapter())
     private val previousSearchesListAdapter: PreviousArtistSearchesListAdapter by lazyOf(PreviousArtistSearchesListAdapter())
 
     override val coroutineContext: CoroutineContext = Dispatchers.Main
@@ -60,11 +60,11 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
         viewModel.searchResultText.observe(viewLifecycleOwner, Observer { resultTextView.text = it })
         viewModel.shouldDisplayPreviousSearches.observe(viewLifecycleOwner, Observer {
             resultTextView.isVisible = !it
-            foundArtistsRecyclerView.isVisible = !it
+            resultsRecyclerView.isVisible = !it
             previousSearchesTextView.isVisible = it
             previousSearchesRecyclerView.isVisible = it
         })
-        viewModel.displayableFoundArtists.observe(viewLifecycleOwner, Observer { foundArtistsListAdapter.submitList(it) })
+        viewModel.displayableResults.observe(viewLifecycleOwner, Observer { resultsListAdapter.submitList(it) })
         viewModel.displayablePreviousSearches.observe(viewLifecycleOwner, Observer { previousSearchesListAdapter.submitList(it) })
     }
 
@@ -76,13 +76,13 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
     }
 
     private fun setupSearchResultsRecyclerView() {
-        foundArtistsRecyclerView.apply {
+        resultsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = foundArtistsListAdapter
+            adapter = resultsListAdapter
         }
 
-        foundArtistsListAdapter.onArtistTap = Consumer { viewModel.handleSelectionOfArtist(it) }
-        foundArtistsListAdapter.onReachingListEnd = Runnable { viewModel.handleReachingListEnd() }
+        resultsListAdapter.onArtistTap = Consumer { viewModel.handleSelectionOfArtist(it) }
+        resultsListAdapter.onReachingListEnd = Runnable { viewModel.handleReachingListEnd() }
     }
 
     private fun setupPreviousSearchesRecyclerView() {
