@@ -1,20 +1,13 @@
 package com.jbr.asharplibrary.searchartist.ui
 
-import android.content.res.Resources
-import com.jbr.asharplibrary.utils.RandomArtistGenerator
-import com.jbr.asharplibrary.utils.RandomStringGenerator
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
+import com.jbr.asharplibrary.random.RandomArtistGenerator
+import com.jbr.asharplibrary.random.RandomStringGenerator
+import com.jbr.asharplibrary.random.mockResources
 import junit.framework.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class DisplayableFoundArtistItemDiffCallbackTest {
-
-    private val mockResources = mock<Resources> {
-        on { getString(any()) } doReturn RandomStringGenerator.generate()
-    }
 
     @Test
     fun `items with equal identifiers are the same`() {

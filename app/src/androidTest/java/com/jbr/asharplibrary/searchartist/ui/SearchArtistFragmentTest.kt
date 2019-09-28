@@ -6,13 +6,14 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.swipeRight
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.createRule
-import com.jbr.asharplibrary.utils.RandomDisplayableFoundArtistItemGenerator
-import com.jbr.asharplibrary.utils.RecyclerViewItemCountAssertion.Companion.withItemCount
-import com.jbr.asharplibrary.utils.itemAtPosition
+import com.jbr.asharplibrary.random.RandomDisplayableFoundArtistItemGenerator
+import com.jbr.asharplibrary.random.RecyclerViewItemCountAssertion.Companion.withItemCount
+import com.jbr.asharplibrary.random.itemAtPosition
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -194,6 +195,20 @@ class SearchArtistFragmentTest {
 
         // Assert
         verify { mockViewModel.handleSelectionOfPreviousSearch(eq(itemPosition)) }
+    }
+
+    @Test
+    fun scrollingToLastResultsDelegateToViewModel() {
+        // Act
+        val fakeDisplayables = (0..10).map { RandomDisplayableFoundArtistItemGenerator.generate() }
+
+        fakeDisplayableResults.postValue(fakeDisplayables)
+
+        // Act
+        onView(withId(RESULTS_RECYCLER_VIEW_ID)).perform(scrollToPosition<FoundArtistViewHolder>(fakeDisplayables.size - 1))
+
+        // Assert
+        verify { mockViewModel.handleReachingListEnd() }
     }
 
     //endregion

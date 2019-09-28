@@ -4,13 +4,12 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.view.isVisible
-import com.jbr.asharplibrary.utils.RandomDisplayableFoundArtistItemGenerator
+import com.jbr.asharplibrary.random.RandomDisplayableFoundArtistItemGenerator
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Test
 import org.mockito.ArgumentCaptor
 import kotlin.random.Random
-
 
 class FoundArtistViewHolderTest {
 

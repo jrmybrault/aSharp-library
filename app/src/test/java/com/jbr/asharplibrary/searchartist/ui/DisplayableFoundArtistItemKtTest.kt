@@ -1,30 +1,26 @@
 package com.jbr.asharplibrary.searchartist.ui
 
 import android.content.res.Resources
+import com.jbr.asharplibrary.random.RandomArtistGenerator
+import com.jbr.asharplibrary.random.RandomArtistTagGenerator
+import com.jbr.asharplibrary.random.RandomStringGenerator
+import com.jbr.asharplibrary.random.mockResources
 import com.jbr.asharplibrary.searchartist.domain.Artist
 import com.jbr.asharplibrary.searchartist.domain.ArtistType
-import com.jbr.asharplibrary.utils.RandomArtistGenerator
-import com.jbr.asharplibrary.utils.RandomArtistTagGenerator
-import com.jbr.asharplibrary.utils.RandomStringGenerator
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
+import io.mockk.every
+import io.mockk.mockk
 import org.junit.Assert.*
 import org.junit.Test
 
 class DisplayableFoundArtistItemKtTest {
-
-    private val mockResources = mock<Resources> {
-        on { getString(any()) } doReturn RandomStringGenerator.generate()
-    }
 
     @Test
     fun `type text equals type name when no disambiguation`() {
         // Arrange
         val mockTypeName = RandomStringGenerator.generate()
 
-        val mockResources = mock<Resources> {
-            on { getString(any()) } doReturn mockTypeName
+        val mockResources = mockk<Resources> {
+            every { getString(any()) } returns mockTypeName
         }
 
         val artist = RandomArtistGenerator.generate(type = ArtistType.SOLO, disambiguation = null)
@@ -41,8 +37,8 @@ class DisplayableFoundArtistItemKtTest {
         // Arrange
         val mockTypeName = RandomStringGenerator.generate()
 
-        val mockResources = mock<Resources> {
-            on { getString(any()) } doReturn mockTypeName
+        val mockResources = mockk<Resources> {
+            every { getString(any()) } returns mockTypeName
         }
 
         val disambiguation = RandomStringGenerator.generate()

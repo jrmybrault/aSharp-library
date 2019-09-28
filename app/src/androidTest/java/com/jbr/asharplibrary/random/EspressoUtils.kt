@@ -1,4 +1,4 @@
-package com.jbr.asharplibrary.utils
+package com.jbr.asharplibrary.random
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

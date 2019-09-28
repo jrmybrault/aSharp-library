@@ -19,9 +19,7 @@ interface ArtistFinder {
 class FakeArtistFinder : ArtistFinder {
 
     //region - Properties
-
-    private val fakeDelay = 1500L // In milliseconds // FIXME: Move this into companion
-
+    
     override val results: MutableLiveData<List<Artist>> = MutableLiveData(emptyList())
 
     //endregion
@@ -30,7 +28,7 @@ class FakeArtistFinder : ArtistFinder {
 
     override suspend fun search(text: String?) {
         withContext(Dispatchers.IO) {
-            Thread.sleep(fakeDelay)
+            Thread.sleep(FAKE_DELAY)
 
             val numberOfFakes = Random.nextInt(0, 4)
             val fakeResults = (0..numberOfFakes).map {
@@ -52,4 +50,9 @@ class FakeArtistFinder : ArtistFinder {
     }
 
     //endregion
+
+    private companion object {
+
+        private const val FAKE_DELAY = 1500L // In milliseconds
+    }
 }

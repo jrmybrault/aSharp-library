@@ -1,6 +1,6 @@
 package com.jbr.asharplibrary.searchartist.ui
 
-import com.jbr.asharplibrary.utils.RandomArtistGenerator
+import com.jbr.asharplibrary.random.RandomArtistGenerator
 import org.junit.Assert.assertTrue
 import org.junit.Test
 

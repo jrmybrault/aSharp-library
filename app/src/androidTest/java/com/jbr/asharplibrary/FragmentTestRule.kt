@@ -11,9 +11,11 @@ abstract class FragmentTestRule<F : Fragment> : ActivityTestRule<FragmentActivit
 
     override fun afterActivityLaunched() {
         super.afterActivityLaunched()
+
         activity.runOnUiThread {
-            val fm = activity.supportFragmentManager
-            val transaction = fm.beginTransaction()
+            val fragmentManager = activity.supportFragmentManager
+
+            val transaction = fragmentManager.beginTransaction()
             transaction.replace(
                 android.R.id.content,
                 createFragment()
@@ -23,6 +25,7 @@ abstract class FragmentTestRule<F : Fragment> : ActivityTestRule<FragmentActivit
 
     override fun beforeActivityLaunched() {
         super.beforeActivityLaunched()
+
         val application = InstrumentationRegistry.getInstrumentation()
             .targetContext.applicationContext as KoinTestApplication
         application.injectModule(getModule())

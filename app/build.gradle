@@ -78,7 +78,8 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${DependencyVersions.kotlin}"
 
-    implementation KotlinLibraries.coroutines
+    // COROUTINES
+
     implementation AndroidLibraries.coroutines
 
     // UI
@@ -124,8 +125,6 @@ dependencies {
 
     testImplementation TestLibraries.mockitoKotlin
     androidTestImplementation TestLibraries.mockitoKotlin
-    //androidTestImplementation TestLibraries.mockitoAndroid
-
     // Use downgraded version of objenesis due to incompatibility with minSdkVersion
     testImplementation TestLibraries.objenesis
     androidTestImplementation TestLibraries.objenesis
@@ -138,4 +137,8 @@ dependencies {
     androidTestImplementation TestLibraries.rules
     androidTestImplementation TestLibraries.espressoCore
     androidTestImplementation TestLibraries.espressoContrib
+
+    testImplementation TestLibraries.archXCore
+    testImplementation TestLibraries.liveData
+    testImplementation TestLibraries.coroutines
 }

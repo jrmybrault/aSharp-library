@@ -11,7 +11,9 @@ object DependencyVersions {
     val kotlin = "1.3.41"
     val gradle = "3.5.0"
 
-    val coroutines = "1.0.1"
+    // COROUTINES
+
+    val coroutines = "1.3.2"
 
     // DEPENDENCY INJECTION
 
@@ -61,14 +63,12 @@ object DependencyVersions {
     val testRunner = "1.2.0"
     val espresso = "3.2.0"
 
+    val testArchXCore = "2.1.0"
+    val testLiveData = "1.1.0"
+
     // QUALIMETRY
 
     val detekt = "1.0.1" // The detekt plugin configuration (in application build.gradle) can't use this constant so do not forget to change it there too
-}
-
-object KotlinLibraries {
-
-    val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${DependencyVersions.coroutines}"
 }
 
 object AndroidLibraries {
@@ -123,10 +123,15 @@ object TestLibraries {
     val mockk = "io.mockk:mockk:${DependencyVersions.mockk}"
     val mockkAndroid = "io.mockk:mockk-android:${DependencyVersions.mockk}"
     val objenesis = "org.objenesis:objenesis:${DependencyVersions.objenesis}"
+
     val dexOpener = "com.github.tmurakami:dexopener:${DependencyVersions.dexopener}"
 
     val runner = "androidx.test:runner:${DependencyVersions.testRunner}"
     val rules = "androidx.test:rules:${DependencyVersions.testRunner}"
     val espressoCore = "androidx.test.espresso:espresso-core:${DependencyVersions.espresso}"
     val espressoContrib = "androidx.test.espresso:espresso-contrib:${DependencyVersions.espresso}"
+
+    val archXCore = "androidx.arch.core:core-testing:${DependencyVersions.testArchXCore}"
+    val liveData = "com.jraska.livedata:testing-ktx:${DependencyVersions.testLiveData}"
+    val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${DependencyVersions.coroutines}"
 }
