@@ -1,5 +1,6 @@
 package com.jbr.asharplibrary.searchartist.infra
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -26,14 +27,20 @@ class MBArtistFinder(private val artistAPI: MBArtistAPI) : ArtistRemoteFinder {
             resetPagination()
         }
 
-
     private val _results = MutableLiveData<List<MBArtist>>()
     override val results: LiveData<List<Artist>> = Transformations.map(_results) { mbArtists ->
         mbArtists.map { it.asDomain() } // FIXME: Do this on computation
     }
 
-    private var currentPage = 0
-    private var hasMorePage = true
+    private var _currentPage = 0
+    @VisibleForTesting
+    val currentPage: Int
+        get() = _currentPage
+
+    private var _hasMorePages = true
+    @VisibleForTesting
+    val hasMorePages: Boolean
+        get() = _hasMorePages
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -57,38 +64,38 @@ class MBArtistFinder(private val artistAPI: MBArtistAPI) : ArtistRemoteFinder {
                 return@launch
             }
 
-            val searchArtistPromise = artistAPI.searchAsync(currentSearch, ARTIST_BY_PAGE, ARTIST_BY_PAGE * currentPage)
+            val searchArtistPromise = artistAPI.searchAsync(currentSearch, ARTIST_BY_PAGE, ARTIST_BY_PAGE * _currentPage)
 
             try {
                 val newResults = searchArtistPromise.await()
 
                 _results += newResults.artists
 
-                hasMorePage = _results.value?.size ?: 0 < newResults.count
+                _hasMorePages = _results.value?.size ?: 0 < newResults.count
             } catch (exception: Exception) {
-                Timber.e(exception)
+                Timber.e(exception) // FIXME: Propagate the error properly.
             }
         }
     }
 
     override suspend fun loadNextPage() {
-        if (hasMorePage) {
-            currentPage++
+        if (_hasMorePages) {
+            _currentPage++
 
             loadCurrentPage()
         }
     }
 
-    private fun resetPagination() {
+    fun resetPagination() {
         _results.value = emptyList()
 
-        currentPage = 0
-        hasMorePage = true
+        _currentPage = 0
+        _hasMorePages = true
     }
 
     //endregion
 
-    companion object {
+    private companion object {
 
         private const val ARTIST_BY_PAGE = 15
     }

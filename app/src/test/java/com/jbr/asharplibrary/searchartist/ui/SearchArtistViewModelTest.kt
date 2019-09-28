@@ -40,7 +40,7 @@ class SearchArtistViewModelTest {
     var rule: TestRule = InstantTaskExecutorRule()
 
     @ObsoleteCoroutinesApi
-    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
+    private val mainThreadSurrogate = newSingleThreadContext("Main thread")
 
     private val mockApplication = mockk<Application>(relaxed = true)
 
@@ -143,7 +143,7 @@ class SearchArtistViewModelTest {
         viewModel.searchText = RandomStringGenerator.generate()
 
         // Assert
-        observer.assertValueHistory(false, true) // FIXME: Find a way when searching is reset to false
+        observer.assertValueHistory(false, true) // TODO: Find a way to test when searching is reset to false
     }
 
     @Test

@@ -94,7 +94,7 @@ class FakePreviousArtistSearchesRepository : PreviousArtistSearchesRepository {
     }
 
     override suspend fun remove(search: PreviousArtistSearch) {
-        // TODO:
+        // Nothing to do
     }
 
     //endregion
