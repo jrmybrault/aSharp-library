@@ -4,6 +4,8 @@
     <string name="search_artist_menu_title">Search</string>
     <string name="search_artist_query_hint">Search an artist or a band</string>
 
+    <string name="muscicbrainz_credits">Powered by MusicBrainz</string>
+
     <string name="search_artist_number_of_results_zero">"No match for \"%1$s\""</string>
     <string name="search_artist_number_of_results_one">"One result for \"%1$s\"</string>
     <string name="search_artist_number_of_results_other">"%2$d results for \"%1$s\"</string>

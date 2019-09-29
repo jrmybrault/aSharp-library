@@ -26,6 +26,11 @@ class SearchArtistViewModel(
 
     //region - Search 
 
+    private val _isSearchOpen = MutableLiveData(false)
+    val shouldDisplayCredits: LiveData<Boolean> = Transformations.map(_isSearchOpen) {
+        !it
+    }
+
     var searchText: String? = null
         set(value) {
             field = value
@@ -92,6 +97,14 @@ class SearchArtistViewModel(
 
             _isSearching.value = false
         }
+    }
+
+    fun handleTapOnSearch() {
+        _isSearchOpen.value = true
+    }
+
+    fun handleTapOnCloseSearch() {
+        _isSearchOpen.value = false
     }
 
     fun handleSelectionOfArtist(index: Int) {

@@ -56,6 +56,10 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
     }
 
     private fun setupObservers() {
+        viewModel.shouldDisplayCredits.observe(viewLifecycleOwner, Observer {
+            musicBrainzCreditsImageView.isVisible = it
+            musicBrainzCreditsTextView.isVisible = it
+        })
         viewModel.isSearching.observe(viewLifecycleOwner, Observer { searchProgressBar.isVisible = it })
         viewModel.searchResultText.observe(viewLifecycleOwner, Observer { resultTextView.text = it })
         viewModel.shouldDisplayPreviousSearches.observe(viewLifecycleOwner, Observer {
@@ -110,6 +114,13 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
         MenuItemCompat.setActionView(searchItem, searchView)
 
         searchView.queryHint = resources.getString(R.string.search_artist_query_hint)
+        searchView.setOnSearchClickListener {
+            viewModel.handleTapOnSearch()
+        }
+        searchView.setOnCloseListener {
+            viewModel.handleTapOnCloseSearch()
+            false
+        }
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String): Boolean {
