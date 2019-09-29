@@ -210,4 +210,5 @@ Anyway, I let thoses 3 unfinished test classes in the project just for the sake 
 * Manage no available network
 * Manage networking errors
 * Add more tests
+* Fix the last FIXME / TODO 
 
