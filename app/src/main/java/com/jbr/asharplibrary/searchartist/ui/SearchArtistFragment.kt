@@ -109,6 +109,7 @@ class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
         val searchView = SearchView(activity)
         MenuItemCompat.setActionView(searchItem, searchView)
 
+        searchView.queryHint = resources.getString(R.string.search_artist_query_hint)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String): Boolean {
