@@ -16,7 +16,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.lang.ref.WeakReference
 
-class SearchArtistViewModel(
+internal class SearchArtistViewModel(
     application: Application,
     private val finder: ArtistFinder,
     private val previousArtistSearchesRepository: PreviousArtistSearchesRepository

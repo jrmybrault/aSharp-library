@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_artist_details_discography.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ArtistDetailsDiscographyFragment : Fragment() {
+internal class ArtistDetailsDiscographyFragment : Fragment() {
 
 
     //region - Properties

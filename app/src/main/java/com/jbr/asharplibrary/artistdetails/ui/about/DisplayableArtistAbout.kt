@@ -9,7 +9,7 @@ import com.jbr.coredomain.searchartist.ArtistType
 import java.text.DateFormat
 import java.util.*
 
-data class DisplayableArtistAbout(
+internal data class DisplayableArtistAbout(
     val genderText: String?,
     val shouldDisplayGender: Boolean = genderText != null,
     val lifeSpanBeginningTitleText: String?,

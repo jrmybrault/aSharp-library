@@ -9,7 +9,7 @@ import com.jbr.coredomain.searchartist.PreviousArtistSearchMappable
 import com.jbr.coredomain.searchartist.PreviousArtistSearchesLocalProvider
 import io.realm.Realm
 
-class RealmPreviousArtistSearchesDao : PreviousArtistSearchesLocalProvider {
+internal class RealmPreviousArtistSearchesDao : PreviousArtistSearchesLocalProvider {
 
     //region - Functions
 

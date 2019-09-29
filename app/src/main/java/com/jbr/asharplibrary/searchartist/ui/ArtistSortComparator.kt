@@ -2,7 +2,7 @@ package com.jbr.asharplibrary.searchartist.ui
 
 import com.jbr.coredomain.searchartist.Artist
 
-class ArtistSortComparator : Comparator<Artist> {
+internal class ArtistSortComparator : Comparator<Artist> {
 
     override fun compare(artist1: Artist, artist2: Artist): Int {
         val scoreDifference = artist2.score - artist1.score

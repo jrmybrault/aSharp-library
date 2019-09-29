@@ -6,7 +6,7 @@ import com.jbr.coredomain.ArtistIdentifier
 import com.jbr.coredomain.searchartist.Artist
 import com.jbr.coredomain.searchartist.ArtistType
 
-data class DisplayableFoundArtistItem(
+internal data class DisplayableFoundArtistItem(
     val identifier: ArtistIdentifier,
     val name: String,
     val typeText: String,
@@ -27,7 +27,10 @@ data class DisplayableFoundArtistItem(
         private fun tagsDisplayText(tags: List<Artist.Tag>?, maxTagNumber: Int): String? = if (tags.isNullOrEmpty()) {
             null
         } else {
-            tags.sortedByDescending { it.count }.map { "#${it.name}" }.take(maxTagNumber).joinToString(" ")
+            tags.sortedByDescending { it.count }
+                .map { "#${it.name}" }
+                .take(maxTagNumber)
+                .joinToString(" ")
         }
     }
 }
