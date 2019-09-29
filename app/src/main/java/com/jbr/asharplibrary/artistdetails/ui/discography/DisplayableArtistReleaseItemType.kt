@@ -5,7 +5,7 @@ import android.net.Uri
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.DiffUtil
 import com.jbr.asharplibrary.R
-import com.jbr.asharplibrary.artistdetails.domain.Release
+import com.jbr.coredomain.artistdetails.Release
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*

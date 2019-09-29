@@ -1,7 +1,7 @@
 package com.jbr.asharplibrary.random
 
-import com.jbr.asharplibrary.searchartist.domain.Artist
-import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearch
+import com.jbr.coredomain.searchartist.Artist
+import com.jbr.coredomain.searchartist.PreviousArtistSearch
 import java.util.*
 
 object RandomPreviousArtistSearchGenerator {

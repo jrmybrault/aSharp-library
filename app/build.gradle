@@ -141,4 +141,18 @@ dependencies {
     testImplementation TestLibraries.archXCore
     testImplementation TestLibraries.liveData
     testImplementation TestLibraries.coroutines
+
+    // OTHER MODULES
+
+    implementation project(Modules.coreDomain)
+    testImplementation project(Modules.coreDomain)
+    androidTestImplementation project(Modules.coreDomain)
+
+    implementation project(Modules.sharedFoundation)
+    testImplementation project(Modules.sharedFoundation)
+    androidTestImplementation project(Modules.sharedFoundation)
+
+    implementation project(Modules.musicBrainz)
+    testImplementation project(Modules.musicBrainz)
+    androidTestImplementation project(Modules.musicBrainz)
 }

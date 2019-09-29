@@ -1,0 +1,3 @@
+package com.jbr.coredomain.artistdetails
+
+interface ArtistDetailsRemoteLoader : ArtistDetailsLoader

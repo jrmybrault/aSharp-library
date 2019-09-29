@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/aSharpLibrary.iml" filepath="$PROJECT_DIR$/aSharpLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/buildSrc/buildsrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildsrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coredomain/coredomain.iml" filepath="$PROJECT_DIR$/coredomain/coredomain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/musicbrainz/musicbrainz.iml" filepath="$PROJECT_DIR$/musicbrainz/musicbrainz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sharedfoundation/sharedfoundation.iml" filepath="$PROJECT_DIR$/sharedfoundation/sharedfoundation.iml" />
     </modules>
   </component>
 </project>

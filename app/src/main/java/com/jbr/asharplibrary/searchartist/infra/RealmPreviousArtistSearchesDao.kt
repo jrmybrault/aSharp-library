@@ -1,12 +1,12 @@
 package com.jbr.asharplibrary.searchartist.infra
 
 import androidx.lifecycle.LiveData
-import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearch
-import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearchMappable
-import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearchesLocalProvider
 import com.jbr.asharplibrary.searchartist.infra.RealmPreviousArtistSearch.Companion.PRIMARY_KEY_NAME
-import com.jbr.asharplibrary.shareddomain.SearchIdentifier
 import com.jbr.asharplibrary.sharedinfra.asLiveData
+import com.jbr.coredomain.SearchIdentifier
+import com.jbr.coredomain.searchartist.PreviousArtistSearch
+import com.jbr.coredomain.searchartist.PreviousArtistSearchMappable
+import com.jbr.coredomain.searchartist.PreviousArtistSearchesLocalProvider
 import io.realm.Realm
 
 class RealmPreviousArtistSearchesDao : PreviousArtistSearchesLocalProvider {

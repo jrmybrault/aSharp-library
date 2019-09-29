@@ -5,8 +5,8 @@ import com.jbr.asharplibrary.random.RandomArtistGenerator
 import com.jbr.asharplibrary.random.RandomArtistTagGenerator
 import com.jbr.asharplibrary.random.RandomStringGenerator
 import com.jbr.asharplibrary.random.mockResources
-import com.jbr.asharplibrary.searchartist.domain.Artist
-import com.jbr.asharplibrary.searchartist.domain.ArtistType
+import com.jbr.coredomain.searchartist.Artist
+import com.jbr.coredomain.searchartist.ArtistType
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Assert.*

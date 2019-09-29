@@ -1,8 +1,8 @@
 package com.jbr.asharplibrary.random
 
-import com.jbr.asharplibrary.searchartist.domain.Artist
-import com.jbr.asharplibrary.searchartist.domain.ArtistType
-import com.jbr.asharplibrary.shareddomain.ArtistIdentifier
+import com.jbr.coredomain.ArtistIdentifier
+import com.jbr.coredomain.searchartist.Artist
+import com.jbr.coredomain.searchartist.ArtistType
 import kotlin.random.Random
 
 object RandomArtistGenerator {

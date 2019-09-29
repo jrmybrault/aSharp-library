@@ -6,10 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.jbr.asharplibrary.R
-import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearch
-import com.jbr.asharplibrary.searchartist.usecase.ArtistFinder
-import com.jbr.asharplibrary.searchartist.usecase.PreviousArtistSearchesRepository
-import com.jbr.asharplibrary.searchartist.usecase.SearchArtistNavigator
+import com.jbr.asharplibrary.searchartist.navigation.SearchArtistNavigator
+import com.jbr.coredomain.searchartist.ArtistFinder
+import com.jbr.coredomain.searchartist.PreviousArtistSearch
+import com.jbr.coredomain.searchartist.PreviousArtistSearchesRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

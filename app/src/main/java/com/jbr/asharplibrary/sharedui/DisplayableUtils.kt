@@ -1,7 +1,7 @@
 package com.jbr.asharplibrary.shared.ui
 
 import com.jbr.asharplibrary.R
-import com.jbr.asharplibrary.searchartist.domain.ArtistType
+import com.jbr.coredomain.searchartist.ArtistType
 
 fun ArtistType.displayTextId(): Int {
     return when (this) {

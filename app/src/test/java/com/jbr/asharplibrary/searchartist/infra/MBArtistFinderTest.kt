@@ -1,7 +1,7 @@
 package com.jbr.asharplibrary.searchartist.infra
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.jbr.asharplibrary.musicbrainz.api.MBArtistAPI
+import com.jbr.musicbrainz.api.MBArtistAPI
 import io.mockk.clearMocks
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers

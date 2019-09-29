@@ -4,12 +4,11 @@ import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import com.jbr.asharplibrary.musicbrainz.api.MBArtistAPI
-import com.jbr.asharplibrary.musicbrainz.dto.MBArtist
-import com.jbr.asharplibrary.musicbrainz.dto.asDomain
-import com.jbr.asharplibrary.searchartist.domain.Artist
-import com.jbr.asharplibrary.searchartist.domain.ArtistRemoteFinder
-import com.jbr.asharplibrary.sharedfoundation.plusAssign
+import com.jbr.coredomain.searchartist.Artist
+import com.jbr.coredomain.searchartist.ArtistRemoteFinder
+import com.jbr.musicbrainz.api.MBArtistAPI
+import com.jbr.musicbrainz.model.asDomain
+import com.jbr.sharedfoundation.plusAssign
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -27,7 +26,7 @@ class MBArtistFinder(private val artistAPI: MBArtistAPI) : ArtistRemoteFinder {
             resetPagination()
         }
 
-    private val _results = MutableLiveData<List<MBArtist>>()
+    private val _results = MutableLiveData<List<com.jbr.musicbrainz.model.MBArtist>>()
     override val results: LiveData<List<Artist>> = Transformations.map(_results) { mbArtists ->
         mbArtists.map { it.asDomain() } // FIXME: Do this on computation
     }

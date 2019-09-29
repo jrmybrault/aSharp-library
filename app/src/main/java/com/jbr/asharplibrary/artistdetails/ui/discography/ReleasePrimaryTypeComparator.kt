@@ -1,6 +1,6 @@
 package com.jbr.asharplibrary.artistdetails.ui.discography
 
-import com.jbr.asharplibrary.artistdetails.domain.Release
+import com.jbr.coredomain.artistdetails.Release
 
 class ReleasePrimaryTypeComparator : Comparator<Release.PrimaryType> {
 

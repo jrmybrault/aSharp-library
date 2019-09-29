@@ -2,10 +2,10 @@ package com.jbr.asharplibrary.artistdetails.infra
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.jbr.asharplibrary.artistdetails.domain.ArtistDetailsRemoteLoader
-import com.jbr.asharplibrary.artistdetails.domain.DetailedArtist
-import com.jbr.asharplibrary.musicbrainz.api.MBArtistAPI
-import com.jbr.asharplibrary.musicbrainz.dto.asDomain
+import com.jbr.coredomain.artistdetails.ArtistDetailsRemoteLoader
+import com.jbr.coredomain.artistdetails.DetailedArtist
+import com.jbr.musicbrainz.api.MBArtistAPI
+import com.jbr.musicbrainz.model.asDomain
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion DependencyVersions.compileSdk
+
+    defaultConfig {
+        minSdkVersion DependencyVersions.minSdk
+        targetSdkVersion DependencyVersions.targetSdk
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // KOTLIN
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${DependencyVersions.kotlin}"
+
+    // COROUTINES
+
+    implementation AndroidLibraries.coroutines
+
+    // UI
+
+    implementation AndroidLibraries.lifecycle
+
+    // LOGGING
+
+    implementation AndroidLibraries.timber
+
+    // TEST
+
+    testImplementation TestLibraries.junit
+
+    testImplementation TestLibraries.mockitoKotlin
+    // Use downgraded version of objenesis due to incompatibility with minSdkVersion
+    testImplementation TestLibraries.objenesis
+    testImplementation(TestLibraries.mockk) { exclude module: 'objenesis' }
+
+    testImplementation TestLibraries.archXCore
+    testImplementation TestLibraries.liveData
+    testImplementation TestLibraries.coroutines
+
+    // OTHER MODULES
+
+    implementation project(Modules.sharedFoundation)
+    testImplementation project(Modules.sharedFoundation)
+}

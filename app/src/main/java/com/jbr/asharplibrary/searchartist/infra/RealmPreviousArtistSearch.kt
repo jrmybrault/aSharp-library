@@ -1,8 +1,8 @@
 package com.jbr.asharplibrary.searchartist.infra
 
-import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearch
-import com.jbr.asharplibrary.searchartist.domain.PreviousArtistSearchMappable
-import com.jbr.asharplibrary.shareddomain.SearchIdentifier
+import com.jbr.coredomain.SearchIdentifier
+import com.jbr.coredomain.searchartist.PreviousArtistSearch
+import com.jbr.coredomain.searchartist.PreviousArtistSearchMappable
 import io.realm.RealmObject
 import io.realm.annotations.Index
 import io.realm.annotations.PrimaryKey

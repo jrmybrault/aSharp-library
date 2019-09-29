@@ -1,6 +1,6 @@
 package com.jbr.asharplibrary.searchartist.ui
 
-import com.jbr.asharplibrary.searchartist.domain.Artist
+import com.jbr.coredomain.searchartist.Artist
 
 class ArtistSortComparator : Comparator<Artist> {
 

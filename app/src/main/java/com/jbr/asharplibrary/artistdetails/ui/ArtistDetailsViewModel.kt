@@ -6,14 +6,14 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.jbr.asharplibrary.artistdetails.navigation.ArtistDetailsNavigator
 import com.jbr.asharplibrary.artistdetails.ui.about.DisplayableArtistAbout
 import com.jbr.asharplibrary.artistdetails.ui.discography.DisplayableArtistReleaseItemType
 import com.jbr.asharplibrary.artistdetails.ui.discography.DisplayableReleaseCategoryItem
 import com.jbr.asharplibrary.artistdetails.ui.discography.DisplayableReleaseInfoItem
 import com.jbr.asharplibrary.artistdetails.ui.discography.ReleasePrimaryTypeComparator
-import com.jbr.asharplibrary.artistdetails.usecase.ArtistDetailsLoader
-import com.jbr.asharplibrary.artistdetails.usecase.ArtistDetailsNavigator
-import com.jbr.asharplibrary.shareddomain.ArtistIdentifier
+import com.jbr.coredomain.ArtistIdentifier
+import com.jbr.coredomain.artistdetails.ArtistDetailsLoader
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

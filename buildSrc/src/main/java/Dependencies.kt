@@ -135,3 +135,11 @@ object TestLibraries {
     val liveData = "com.jraska.livedata:testing-ktx:${DependencyVersions.testLiveData}"
     val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${DependencyVersions.coroutines}"
 }
+
+object Modules {
+    val coreDomain = ":coredomain"
+
+    val sharedFoundation = ":sharedfoundation"
+
+    val musicBrainz = ":musicbrainz"
+}

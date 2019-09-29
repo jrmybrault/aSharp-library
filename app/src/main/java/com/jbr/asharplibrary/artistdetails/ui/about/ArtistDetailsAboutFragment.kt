@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.artistdetails.ui.ArtistDetailsViewModel
-import com.jbr.asharplibrary.artistdetails.usecase.ArtistDetailsNavigator
+import com.jbr.asharplibrary.artistdetails.navigation.ArtistDetailsNavigator
 import kotlinx.android.synthetic.main.fragment_artist_details_about.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.lang.ref.WeakReference
