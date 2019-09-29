@@ -293,9 +293,9 @@ class SearchArtistViewModelTest {
     fun `handle selection of previous searches delegates to navigator`() {
         // Arrange
         val previousSearches = listOf(
-            RandomPreviousArtistSearchGenerator.generate(date = GregorianCalendar().dateFrom(2019, 1, 1)),
+            RandomPreviousArtistSearchGenerator.generate(date = GregorianCalendar().dateFrom(2019, 11, 1)),
             RandomPreviousArtistSearchGenerator.generate(date = GregorianCalendar().dateFrom(2019, 6, 1)),
-            RandomPreviousArtistSearchGenerator.generate(date = GregorianCalendar().dateFrom(2019, 11, 1))
+            RandomPreviousArtistSearchGenerator.generate(date = GregorianCalendar().dateFrom(2019, 1, 1))
         )
 
         fakePreviousSearches.value = previousSearches
@@ -309,7 +309,7 @@ class SearchArtistViewModelTest {
         viewModel.handleSelectionOfPreviousSearch(fakeSelectionIndex)
 
         // Assert
-        verify { mockNavigator.goToArtistDetails(previousSearches[fakeSelectionIndex].identifier) }
+        verify { mockNavigator.goToArtistDetails(previousSearches[fakeSelectionIndex].artist.identifier) }
     }
 
     @Test
