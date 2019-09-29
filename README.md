@@ -45,6 +45,7 @@ As required, the application features:
 * An header displays the name and a random full-width front cover
 * The header will collapse when scrolling to give more space to the elements below
 * A discography tab displays a list of all the release groups with the small front cover, the title and the release date
+* The discography is grouped by `primary type`, although there a not many artists that have anything else than albums ("Pink" has some singles)
 * On tablet, discography will be displayed as grid instead of a list, with a dynamic number of items by line (notably more items will be displayed on a line in landscape than in portrait)
 * An about tab displays sections of information such as the gender, the date of birth / foundation, the date of death / dissolution, the country, the legal IPI and ISNI codes, the overall rating, a wikipedia extract and a "learn more" button that will open a navigator query with the artist name.
 * On tablet the about tab sections are organized slightly differently in order to use the space more efficiently
@@ -206,6 +207,7 @@ Anyway, I let thoses 3 unfinished test classes in the project just for the sake 
 ### Should-haves (but no more time :'()
 
 * Ideally, the `searchartist` and `artistdetails` should have been packaged into separated modules, along with their respective tests. This would have allows to make a lot of things `internal` instead of `public` thus being sure there will be no future coupling between. 
+* Manage no available network
 * Manage networking errors
 * Add more tests
 
