@@ -10,7 +10,6 @@ import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 
-
 /**
  * Check element at specific position in RecyclerView.
  */
