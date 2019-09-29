@@ -24,22 +24,29 @@ class RealmPreviousArtistSearchesDao : PreviousArtistSearchesLocalProvider {
         return previousSearches.asLiveData() as LiveData<List<PreviousArtistSearchMappable>>
     }
 
-    override fun add(search: PreviousArtistSearch) {
-        Realm.getDefaultInstance().use { realm ->
+    override fun get(identifier: SearchIdentifier): PreviousArtistSearch? {
+        val realm = Realm.getDefaultInstance()
 
-            realm.beginTransaction()
-            realm.insertOrUpdate(RealmPreviousArtistSearch.from(search))
-            realm.commitTransaction()
-        }
+        return realm.where(RealmPreviousArtistSearch::class.java)
+            .equalTo(PRIMARY_KEY_NAME, identifier)
+            .findFirst()
+            ?.asDomain()
+    }
+
+    override fun add(search: PreviousArtistSearch) {
+        val realm = Realm.getDefaultInstance()
+
+        realm.beginTransaction()
+        realm.insertOrUpdate(RealmPreviousArtistSearch.from(search))
+        realm.commitTransaction()
     }
 
     override fun remove(search: PreviousArtistSearch) {
-        Realm.getDefaultInstance().use { realm ->
+        val realm = Realm.getDefaultInstance()
 
-            realm.beginTransaction()
-            get(search.identifier, realm)?.deleteFromRealm()
-            realm.commitTransaction()
-        }
+        realm.beginTransaction()
+        get(search.identifier, realm)?.deleteFromRealm()
+        realm.commitTransaction()
     }
 
     private fun get(identifier: SearchIdentifier, realm: Realm): RealmPreviousArtistSearch? {
