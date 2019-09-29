@@ -12,5 +12,9 @@
         <item quantity="other">@string/search_artist_number_of_results_other</item>
     </plurals>
 
+    <string name="artist_type_solo">Artist</string>
+    <string name="artist_type_band">Band</string>
+    <string name="artist_type_other">Other</string>
+
     <string name="search_artist_previous_searches">Previous searches</string>
 </resources>
