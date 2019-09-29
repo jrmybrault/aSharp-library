@@ -54,5 +54,19 @@ class ArtistDetailsFragment : Fragment() {
         detailsTabLayout.setupWithViewPager(detailsViewPager)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        // Hide the action bar to enjoy the collapsing toolbar a little more
+        (activity as AppCompatActivity).supportActionBar?.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        // Show the action bar back
+        (activity as AppCompatActivity).supportActionBar?.show()
+    }
+
     //endregion
 }
