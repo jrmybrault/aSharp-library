@@ -13,7 +13,7 @@ import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.artistdetails.ui.ArtistDetailsViewModel
 import com.jbr.asharplibrary.artistdetails.ui.discography.ArtistReleasesListAdapter.Companion.VIEW_TYPE_CATEGORY_INDEX
 import com.jbr.asharplibrary.artistdetails.ui.discography.ArtistReleasesListAdapter.Companion.VIEW_TYPE_RELEASE_INFO_INDEX
-import com.jbr.asharplibrary.shared.ui.ImageDownloader
+import com.jbr.asharplibrary.shared.ui.ReleaseCoverImageDownloader
 import com.jbr.asharplibrary.sharedui.RecyclerViewDynamicSpanAdapter
 import com.jbr.utils.isDeviceTablet
 import kotlinx.android.synthetic.main.fragment_artist_details_discography.*
@@ -27,9 +27,9 @@ class ArtistDetailsDiscographyFragment : Fragment() {
 
     private val viewModel: ArtistDetailsViewModel by viewModel()
 
-    private val imageDownloader: ImageDownloader by inject()
+    private val mReleaseCoverImageDownloader: ReleaseCoverImageDownloader by inject()
 
-    private val artistReleasesListAdapter: ArtistReleasesListAdapter by lazyOf(ArtistReleasesListAdapter(imageDownloader))
+    private val artistReleasesListAdapter: ArtistReleasesListAdapter by lazyOf(ArtistReleasesListAdapter(mReleaseCoverImageDownloader))
 
     //endregion
 

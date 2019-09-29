@@ -1,9 +1,10 @@
 package com.jbr.asharplibrary.searchartist.ui
 
 import android.content.res.Resources
-import com.jbr.asharplibrary.shared.ui.displayTextId
+import com.jbr.asharplibrary.R
 import com.jbr.coredomain.ArtistIdentifier
 import com.jbr.coredomain.searchartist.Artist
+import com.jbr.coredomain.searchartist.ArtistType
 
 data class DisplayableFoundArtistItem(
     val identifier: ArtistIdentifier,
@@ -31,6 +32,14 @@ data class DisplayableFoundArtistItem(
     }
 }
 
+private fun ArtistType.displayTextId(): Int {
+    return when (this) {
+        ArtistType.SOLO -> R.string.artist_type_solo
+        ArtistType.BAND -> R.string.artist_type_band
+        ArtistType.OTHER -> R.string.artist_type_other
+    }
+}
+
 private fun Artist.disambiguatedTypeDisplayText(resources: Resources): String {
     val typeStringId = type.displayTextId()
     val typeStringText = resources.getString(typeStringId)
@@ -41,4 +50,3 @@ private fun Artist.disambiguatedTypeDisplayText(resources: Resources): String {
         typeStringText
     }
 }
-

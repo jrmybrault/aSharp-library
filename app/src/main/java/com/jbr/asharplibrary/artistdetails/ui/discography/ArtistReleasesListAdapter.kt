@@ -9,11 +9,12 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jbr.asharplibrary.R
-import com.jbr.asharplibrary.shared.ui.ImageDownloader
+import com.jbr.asharplibrary.shared.ui.ImageDownloadOptions
+import com.jbr.asharplibrary.shared.ui.ReleaseCoverImageDownloader
 import kotlinx.android.synthetic.main.item_release_category.view.*
 import kotlinx.android.synthetic.main.item_release_info.view.*
 
-class ArtistReleasesListAdapter(private val imageDownloader: ImageDownloader) :
+class ArtistReleasesListAdapter(private val releaseCoverImageDownloader: ReleaseCoverImageDownloader) :
     ListAdapter<DisplayableArtistReleaseItemType, ArtistReleasesListAdapter.ViewHolder>(DisplayableArtistReleaseItemTypeDiffCallback()) {
 
     //region - ViewHolder
@@ -33,7 +34,7 @@ class ArtistReleasesListAdapter(private val imageDownloader: ImageDownloader) :
             }
         }
 
-        class ReleaseInfoViewHolder(rootView: View, private val imageDownloader: ImageDownloader) : ViewHolder(rootView) {
+        class ReleaseInfoViewHolder(rootView: View, private val releaseCoverImageDownloader: ReleaseCoverImageDownloader) : ViewHolder(rootView) {
 
             //region - Properties
 
@@ -48,7 +49,13 @@ class ArtistReleasesListAdapter(private val imageDownloader: ImageDownloader) :
                 titleTextView.text = item.title
                 releaseYearTextView.text = item.releaseYearText
 
-                imageDownloader.downloadImage(item.smallFrontCoverUri, frontCoverImageView, itemView.context)
+                releaseCoverImageDownloader.downloadImage(
+                    item.smallFrontCoverUri, frontCoverImageView, itemView.context,
+                    ImageDownloadOptions(
+                        R.drawable.loading_animation,
+                        R.drawable.ic_broken_image
+                    )
+                )
             }
         }
     }
@@ -71,7 +78,7 @@ class ArtistReleasesListAdapter(private val imageDownloader: ImageDownloader) :
             )
             VIEW_TYPE_RELEASE_INFO_INDEX -> ViewHolder.ReleaseInfoViewHolder(
                 LayoutInflater.from(parent.context).inflate(R.layout.item_release_info, parent, false),
-                imageDownloader
+                releaseCoverImageDownloader
             )
             else -> throw IllegalStateException("Could not create view holder for view type \"$viewType\".")
         }

@@ -6,9 +6,9 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jbr.asharplibrary.shared.ui.ImageDownloadOptions
-import com.jbr.asharplibrary.shared.ui.ImageDownloader
+import com.jbr.asharplibrary.shared.ui.ReleaseCoverImageDownloader
 
-class GlideImageDownloader : ImageDownloader {
+class GlideImageDownloader : ReleaseCoverImageDownloader {
 
     override fun downloadImage(uri: Uri, imageView: ImageView, context: Context, options: ImageDownloadOptions?) {
         Glide.with(context)
