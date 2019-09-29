@@ -16,6 +16,7 @@ class FoundArtistsListAdapterTest {
     }
 
     // FIXME: The following test does not work because the viewHolder's itemView is not properly mocked...
+    // A simple solution could be to attach the click listener to the view holder itself instead of its itemView
     @Test
     fun testBindingViewHolderDelegatesToViewHolder() {
         // Arrange
