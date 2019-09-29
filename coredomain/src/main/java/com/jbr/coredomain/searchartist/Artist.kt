@@ -2,7 +2,6 @@ package com.jbr.coredomain.searchartist
 
 import com.jbr.coredomain.ArtistIdentifier
 
-// FIXME: Rename in SearchedArtist and rename DetailedArtist in just Artist
 data class Artist(
     val identifier: ArtistIdentifier,
     val name: String,

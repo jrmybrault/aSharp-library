@@ -72,7 +72,7 @@ class MBArtistFinder(private val artistAPI: MBArtistAPI) : ArtistRemoteFinder {
 
                 _hasMorePages = _results.value?.size ?: 0 < newResults.count
             } catch (exception: Exception) {
-                Timber.e(exception) // FIXME: Propagate the error properly.
+                Timber.e(exception) // TODO: Propagate the error properly.
             }
         }
     }

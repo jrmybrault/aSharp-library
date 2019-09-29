@@ -9,7 +9,7 @@ import org.koin.dsl.module
 val localDataModule = module {
 
     single<PreviousArtistSearchesLocalProvider> {
-        Realm.init(androidApplication()) // TODO: Shouldn't be there
+        Realm.init(androidApplication()) // TODO: Should be initialized in a more global scope
 
         RealmPreviousArtistSearchesDao()
     }

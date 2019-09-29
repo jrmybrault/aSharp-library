@@ -14,8 +14,6 @@ class FakeArtistDetailsLoader : ArtistDetailsLoader {
 
     //region - Properties
 
-    private val fakeDelay = 1500L // In milliseconds // FIXME: Move this into companion
-
     override val artist = MutableLiveData<DetailedArtist>()
 
     //endregion
@@ -24,7 +22,7 @@ class FakeArtistDetailsLoader : ArtistDetailsLoader {
 
     override suspend fun loadArtist(identifier: String) {
         withContext(Dispatchers.IO) {
-            Thread.sleep(fakeDelay)
+            Thread.sleep(FAKE_DELAY)
 
             val fakeArtist = DetailedArtist(
                 identifier = "artistId",
@@ -101,5 +99,12 @@ class FakeArtistDetailsLoader : ArtistDetailsLoader {
 
             artist.postValue(fakeArtist)
         }
+    }
+
+    //endregion
+
+    private companion object {
+
+        private const val FAKE_DELAY = 1500L // In milliseconds
     }
 }
