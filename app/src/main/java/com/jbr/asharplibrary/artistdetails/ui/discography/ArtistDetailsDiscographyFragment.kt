@@ -13,8 +13,8 @@ import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.artistdetails.ui.ArtistDetailsViewModel
 import com.jbr.asharplibrary.artistdetails.ui.discography.ArtistReleasesListAdapter.Companion.VIEW_TYPE_CATEGORY_INDEX
 import com.jbr.asharplibrary.artistdetails.ui.discography.ArtistReleasesListAdapter.Companion.VIEW_TYPE_RELEASE_INFO_INDEX
-import com.jbr.asharplibrary.shared.ui.ReleaseCoverImageDownloader
 import com.jbr.asharplibrary.sharedui.RecyclerViewDynamicSpanAdapter
+import com.jbr.coredomain.coverdownload.ReleaseCoverImageDownloader
 import com.jbr.utils.isDeviceTablet
 import kotlinx.android.synthetic.main.fragment_artist_details_discography.*
 import org.koin.android.ext.android.inject

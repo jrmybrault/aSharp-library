@@ -10,10 +10,10 @@ import kotlinx.android.synthetic.main.item_found_artist.view.*
 // FIXME: Use Dexopener to avoid making FoundArtistViewHolder final and move to FoundArtistViewHolderTest to instrumented test
 open class FoundArtistViewHolder(
     rootView: View,
-    val nameTextView: TextView = rootView.itemFoundArtistNameTextView,
-    val typeTextView: TextView = rootView.itemFoundArtistTypeTextView,
-    val tagsTextView: TextView = rootView.itemFoundArtistTagsTextView,
-    val clearButton: ImageButton = rootView.itemFoundArtistClearButton
+    private val nameTextView: TextView = rootView.itemFoundArtistNameTextView,
+    private val typeTextView: TextView = rootView.itemFoundArtistTypeTextView,
+    private val tagsTextView: TextView = rootView.itemFoundArtistTagsTextView,
+    private val clearButton: ImageButton = rootView.itemFoundArtistClearButton
 ) : RecyclerView.ViewHolder(rootView) {
 
     //region - Functions

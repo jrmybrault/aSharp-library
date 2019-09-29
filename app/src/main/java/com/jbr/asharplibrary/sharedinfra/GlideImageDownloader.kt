@@ -5,8 +5,8 @@ import android.net.Uri
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.jbr.asharplibrary.shared.ui.ImageDownloadOptions
-import com.jbr.asharplibrary.shared.ui.ReleaseCoverImageDownloader
+import com.jbr.coredomain.coverdownload.ImageDownloadOptions
+import com.jbr.coredomain.coverdownload.ReleaseCoverImageDownloader
 
 class GlideImageDownloader : ReleaseCoverImageDownloader {
 

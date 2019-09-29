@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.jbr.asharplibrary.R
-import com.jbr.asharplibrary.shared.ui.ReleaseCoverImageDownloader
+import com.jbr.coredomain.coverdownload.ReleaseCoverImageDownloader
 import kotlinx.android.synthetic.main.fragment_artist_details.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel

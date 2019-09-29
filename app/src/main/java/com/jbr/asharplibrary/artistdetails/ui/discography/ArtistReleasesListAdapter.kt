@@ -9,8 +9,8 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jbr.asharplibrary.R
-import com.jbr.asharplibrary.shared.ui.ImageDownloadOptions
-import com.jbr.asharplibrary.shared.ui.ReleaseCoverImageDownloader
+import com.jbr.coredomain.coverdownload.ImageDownloadOptions
+import com.jbr.coredomain.coverdownload.ReleaseCoverImageDownloader
 import kotlinx.android.synthetic.main.item_release_category.view.*
 import kotlinx.android.synthetic.main.item_release_info.view.*
 

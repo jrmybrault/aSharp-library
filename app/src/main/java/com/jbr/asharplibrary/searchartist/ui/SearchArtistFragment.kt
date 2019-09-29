@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.searchartist.navigation.SearchArtistNavigator
-import com.jbr.asharplibrary.shared.ui.DEFAULT_TEXT_EDITION_THROTTLE_DELAY
+import com.jbr.asharplibrary.sharedui.DEFAULT_TEXT_EDITION_THROTTLE_DELAY
 import com.jbr.coredomain.ArtistIdentifier
 import kotlinx.android.synthetic.main.fragment_search_artist.*
 import kotlinx.coroutines.CoroutineScope

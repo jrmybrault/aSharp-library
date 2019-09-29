@@ -25,7 +25,7 @@ data class MBReleaseGroup(
         @SerializedName("Other")
         OTHER
     }
-
+    
     enum class SecondaryType {
 
         @SerializedName("Compilation")

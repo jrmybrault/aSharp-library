@@ -18,16 +18,16 @@ data class DisplayableFoundArtistItem(
         identifier = artist.identifier,
         name = artist.sortName,
         typeText = artist.disambiguatedTypeDisplayText(resources),
-        tagsText = tagsDisplayText(artist.tags, MAX_TAG_NUMBER)
+        tagsText = tagsDisplayText(artist.tags)
     )
 
     private companion object {
         private const val MAX_TAG_NUMBER = 5
 
-        private fun tagsDisplayText(tags: List<Artist.Tag>?, maxTagNumber: Int): String? = if (tags.isNullOrEmpty()) {
+        private fun tagsDisplayText(tags: List<Artist.Tag>?): String? = if (tags.isNullOrEmpty()) {
             null
         } else {
-            tags.sortedByDescending { it.count }.map { "#${it.name}" }.take(maxTagNumber).joinToString(" ")
+            tags.sortedByDescending { it.count }.map { "#${it.name}" }.take(MAX_TAG_NUMBER).joinToString(" ")
         }
     }
 }

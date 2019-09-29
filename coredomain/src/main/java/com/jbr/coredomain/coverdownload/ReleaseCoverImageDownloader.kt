@@ -1,4 +1,4 @@
-package com.jbr.asharplibrary.shared.ui
+package com.jbr.coredomain.coverdownload
 
 import android.content.Context
 import android.net.Uri
