@@ -6,7 +6,7 @@ import androidx.core.util.Consumer
 import androidx.recyclerview.widget.ListAdapter
 import com.jbr.asharplibrary.R
 
-internal class FoundArtistsListAdapter : ListAdapter<DisplayableFoundArtistItem, FoundArtistViewHolder>(DisplayableFoundArtistItemDiffCallback()) {
+class FoundArtistsListAdapter : ListAdapter<DisplayableFoundArtistItem, FoundArtistViewHolder>(DisplayableFoundArtistItemDiffCallback()) {
 
     //region - Properties
 

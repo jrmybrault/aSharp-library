@@ -14,7 +14,7 @@ import com.jbr.asharplibrary.shared.ui.ReleaseCoverImageDownloader
 import kotlinx.android.synthetic.main.item_release_category.view.*
 import kotlinx.android.synthetic.main.item_release_info.view.*
 
-internal class ArtistReleasesListAdapter(private val releaseCoverImageDownloader: ReleaseCoverImageDownloader) :
+class ArtistReleasesListAdapter(private val releaseCoverImageDownloader: ReleaseCoverImageDownloader) :
     ListAdapter<DisplayableArtistReleaseItemType, ArtistReleasesListAdapter.ViewHolder>(DisplayableArtistReleaseItemTypeDiffCallback()) {
 
     //region - ViewHolder

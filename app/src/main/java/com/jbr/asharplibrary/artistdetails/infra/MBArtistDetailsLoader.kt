@@ -12,7 +12,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-internal class MBArtistDetailsLoader(private val artistAPI: MBArtistAPI) : ArtistDetailsRemoteLoader {
+class MBArtistDetailsLoader(private val artistAPI: MBArtistAPI) : ArtistDetailsRemoteLoader {
 
     //region - Properties
 

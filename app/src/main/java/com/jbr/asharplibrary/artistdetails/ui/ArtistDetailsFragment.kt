@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_artist_details.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-internal class ArtistDetailsFragment : Fragment() {
+class ArtistDetailsFragment : Fragment() {
 
     //region - Properties
 

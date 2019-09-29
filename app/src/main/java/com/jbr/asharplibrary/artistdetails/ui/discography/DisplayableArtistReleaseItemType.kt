@@ -12,9 +12,9 @@ import java.util.*
 
 //region - DisplayableArtistReleaseItemType
 
-internal sealed class DisplayableArtistReleaseItemType
+sealed class DisplayableArtistReleaseItemType
 
-internal class DisplayableArtistReleaseItemTypeDiffCallback : DiffUtil.ItemCallback<DisplayableArtistReleaseItemType>() {
+class DisplayableArtistReleaseItemTypeDiffCallback : DiffUtil.ItemCallback<DisplayableArtistReleaseItemType>() {
 
     override fun areItemsTheSame(oldItem: DisplayableArtistReleaseItemType, newItem: DisplayableArtistReleaseItemType): Boolean {
         return if (oldItem is DisplayableReleaseCategoryItem && newItem is DisplayableReleaseCategoryItem) {
@@ -41,7 +41,7 @@ internal class DisplayableArtistReleaseItemTypeDiffCallback : DiffUtil.ItemCallb
 
 //region - DisplayableReleaseCategoryItem
 
-internal data class DisplayableReleaseCategoryItem(val categoryNameId: Int) : DisplayableArtistReleaseItemType() {
+data class DisplayableReleaseCategoryItem(val categoryNameId: Int) : DisplayableArtistReleaseItemType() {
 
     constructor(type: Release.PrimaryType) : this(categoryNameId = type.displayNameId())
 }
@@ -59,7 +59,7 @@ private fun Release.PrimaryType.displayNameId(): Int {
 
 //region - DisplayableReleaseInfoItem
 
-internal data class DisplayableReleaseInfoItem(
+data class DisplayableReleaseInfoItem(
     val identifier: String,
     val title: String,
     val releaseYearText: String,

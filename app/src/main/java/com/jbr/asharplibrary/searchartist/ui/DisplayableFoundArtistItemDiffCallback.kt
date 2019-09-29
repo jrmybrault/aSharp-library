@@ -2,7 +2,7 @@ package com.jbr.asharplibrary.searchartist.ui
 
 import androidx.recyclerview.widget.DiffUtil
 
-internal class DisplayableFoundArtistItemDiffCallback : DiffUtil.ItemCallback<DisplayableFoundArtistItem>() {
+class DisplayableFoundArtistItemDiffCallback : DiffUtil.ItemCallback<DisplayableFoundArtistItem>() {
 
     override fun areItemsTheSame(oldItem: DisplayableFoundArtistItem, newItem: DisplayableFoundArtistItem): Boolean {
         return oldItem.identifier == newItem.identifier

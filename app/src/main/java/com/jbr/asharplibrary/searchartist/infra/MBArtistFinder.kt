@@ -15,7 +15,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-internal class MBArtistFinder(private val artistAPI: MBArtistAPI) : ArtistRemoteFinder {
+class MBArtistFinder(private val artistAPI: MBArtistAPI) : ArtistRemoteFinder {
 
     //region - Properties
 

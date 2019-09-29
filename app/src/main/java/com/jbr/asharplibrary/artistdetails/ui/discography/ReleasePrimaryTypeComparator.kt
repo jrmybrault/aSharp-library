@@ -2,7 +2,7 @@ package com.jbr.asharplibrary.artistdetails.ui.discography
 
 import com.jbr.coredomain.artistdetails.Release
 
-internal class ReleasePrimaryTypeComparator : Comparator<Release.PrimaryType> {
+class ReleasePrimaryTypeComparator : Comparator<Release.PrimaryType> {
 
     override fun compare(type1: Release.PrimaryType, type2: Release.PrimaryType): Int {
         return type1.sortIndex() - type2.sortIndex()

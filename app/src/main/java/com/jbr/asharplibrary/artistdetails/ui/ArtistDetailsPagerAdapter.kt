@@ -8,7 +8,7 @@ import com.jbr.asharplibrary.R
 import com.jbr.asharplibrary.artistdetails.ui.about.ArtistDetailsAboutFragment
 import com.jbr.asharplibrary.artistdetails.ui.discography.ArtistDetailsDiscographyFragment
 
-internal class ArtistDetailsPagerAdapter(
+class ArtistDetailsPagerAdapter(
     manager: FragmentManager,
     private val resources: Resources
 ) : FragmentStatePagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {

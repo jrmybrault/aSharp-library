@@ -24,7 +24,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import java.lang.ref.WeakReference
 import kotlin.coroutines.CoroutineContext
 
-internal class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
+class SearchArtistFragment : Fragment(), CoroutineScope, SearchArtistNavigator {
 
     //region - Properties
 

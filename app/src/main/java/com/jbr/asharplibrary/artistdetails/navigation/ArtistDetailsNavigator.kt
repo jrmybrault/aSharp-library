@@ -1,6 +1,6 @@
 package com.jbr.asharplibrary.artistdetails.navigation
 
-internal interface ArtistDetailsNavigator {
+interface ArtistDetailsNavigator {
 
     fun openArtistWebSearch(artistNameQuery: String)
 }
