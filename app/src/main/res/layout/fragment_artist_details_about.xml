@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/content_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/detailsInformationSectionTextView"
+            style="@style/SectionTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_top_padding"
+            android:text="@string/artist_details_about_section_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_bottom_padding"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/detailsGenderTextView"
+                style="@style/DetailsText.Value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_gender"
+                android:drawablePadding="4dp"
+                tools:text="Male" />
+
+            <LinearLayout
+                android:id="@+id/detailsLifeSpanBeginLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin">
+
+                <TextView
+                    android:id="@+id/detailsLifeSpanBeginTitleTextView"
+                    style="@style/DetailsText.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Birth:" />
+
+                <TextView
+                    android:id="@+id/detailsLifeSpanBeginTextView"
+                    style="@style/DetailsText.Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    tools:text="1928-11-10, in Rome" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detailsLifeSpanEndLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin">
+
+                <TextView
+                    android:id="@+id/detailsLifeSpanEndTitleTextView"
+                    style="@style/DetailsText.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Death:" />
+
+                <TextView
+                    android:id="@+id/detailsLifeSpanEndTextView"
+                    style="@style/DetailsText.Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    tools:text="Not yet" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detailsCountryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin">
+
+                <TextView
+                    android:id="@+id/detailsCountryTitleTextView"
+                    style="@style/DetailsText.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/artist_details_country" />
+
+                <TextView
+                    android:id="@+id/detailsCountryTextView"
+                    style="@style/DetailsText.Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    tools:text="Italy" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/detailsLegalCodesLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_bottom_padding">
+
+            <TextView
+                android:id="@+id/detailsLegalsSectionTextView"
+                style="@style/SectionTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/section_top_padding"
+                android:text="@string/artist_details_about_legal_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/detailsIpiCodesTitleTextView"
+                style="@style/DetailsText.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/section_top_padding"
+                android:text="@string/artist_details_ipi_codes"
+                app:layout_constraintEnd_toEndOf="@id/informationIpiIsniSeparatorGuideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detailsLegalsSectionTextView" />
+
+            <TextView
+                android:id="@+id/detailsIpiCodesTextView"
+                style="@style/DetailsText.Value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/detailsIpiCodesTitleTextView"
+                app:layout_constraintStart_toStartOf="@id/detailsIpiCodesTitleTextView"
+                app:layout_constraintTop_toBottomOf="@id/detailsIpiCodesTitleTextView"
+                tools:text="00021552128" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/informationIpiIsniSeparatorGuideline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/detailsIsniCodesTitleTextView"
+                style="@style/DetailsText.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:text="@string/artist_details_isni_codes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/informationIpiIsniSeparatorGuideline"
+                app:layout_constraintTop_toTopOf="@id/detailsIpiCodesTitleTextView" />
+
+            <TextView
+                android:id="@+id/detailsIsniCodesTextView"
+                style="@style/DetailsText.Value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/detailsIsniCodesTitleTextView"
+                app:layout_constraintStart_toStartOf="@id/detailsIsniCodesTitleTextView"
+                app:layout_constraintTop_toBottomOf="@id/detailsIsniCodesTitleTextView"
+                tools:text="0000 0001 2122 5602" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/detailsRatingSectionTextView"
+            style="@style/SectionTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_top_padding"
+            android:text="@string/artist_details_about_section_ratings" />
+
+        <TextView
+            android:id="@+id/detailsRatingsTextView"
+            style="@style/DetailsText.Value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_bottom_padding"
+            tools:text="4.9 (11 votes)" />
+
+        <TextView
+            android:id="@+id/detailsHistorySectionTextView"
+            style="@style/SectionTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_top_padding"
+            android:text="@string/artist_details_about_section_history" />
+
+        <TextView
+            android:id="@+id/detailsWikipediaExtractTextView"
+            style="@style/DetailsText.Value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/section_bottom_padding"
+            android:textSize="16sp"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+
+        <Button
+            android:id="@+id/detailsMoreInfoLinkButton"
+            style="@style/LinkButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/artist_details_about_section_history_more"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

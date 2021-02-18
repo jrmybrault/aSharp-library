@@ -1,0 +1,158 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'androidx.navigation.safeargs'
+
+apply plugin: 'realm-android'
+
+ext {
+    qualimetryDirectory = "$rootDir/qualimetry"
+}
+
+apply from: "$qualimetryDirectory/detekt.gradle"
+
+android {
+    compileSdkVersion DependencyVersions.compileSdk
+
+    defaultConfig {
+        applicationId "com.jbr.asharplibrary"
+
+        minSdkVersion DependencyVersions.minSdk
+        targetSdkVersion DependencyVersions.targetSdk
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "com.jbr.asharplibrary.InstrumentedTestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+            proguardFile 'proguard/retrofit2.pro'
+            proguardFile 'proguard/glide.pro'
+        }
+    }
+
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/sharedTest/java"
+        }
+
+        test {
+            java.srcDirs += "src/sharedTest/java"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests {
+            animationsDisabled = true
+        }
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // KOTLIN
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${DependencyVersions.kotlin}"
+
+    // COROUTINES
+
+    implementation AndroidLibraries.coroutines
+
+    // UI
+
+    implementation AndroidLibraries.recyclerView
+    implementation AndroidLibraries.constraintLayout
+    implementation AndroidLibraries.navigationFragment
+    implementation AndroidLibraries.navigationUI
+    implementation AndroidLibraries.lifecycle
+
+    // DEPENDENCY INJECTION
+
+    implementation AndroidLibraries.koinCore
+    implementation AndroidLibraries.koinScope
+    implementation AndroidLibraries.koinViewModel
+
+    // NETWORKING
+
+    implementation AndroidLibraries.retrofit
+    implementation AndroidLibraries.retrofitLogging
+    implementation AndroidLibraries.retrofitGsonAdapter
+    implementation AndroidLibraries.retrofitCoroutinesCore
+    implementation AndroidLibraries.retrofitCoroutinesAndroid
+    implementation AndroidLibraries.retrofitCoroutinesAdapter
+
+    implementation AndroidLibraries.gson
+
+    implementation AndroidLibraries.glide
+
+    // LOGGING
+
+    implementation AndroidLibraries.timber
+
+    // MISCELLANEOUS
+
+    implementation AndroidLibraries.appCompat
+    implementation AndroidLibraries.ktx
+
+    // TEST
+
+    testImplementation TestLibraries.junit
+    androidTestImplementation TestLibraries.xJunit
+
+    testImplementation TestLibraries.mockitoKotlin
+    androidTestImplementation TestLibraries.mockitoKotlin
+    // Use downgraded version of objenesis due to incompatibility with minSdkVersion
+    testImplementation TestLibraries.objenesis
+    androidTestImplementation TestLibraries.objenesis
+    testImplementation(TestLibraries.mockk) { exclude module: 'objenesis' }
+    androidTestImplementation(TestLibraries.mockkAndroid) { exclude module: 'objenesis' }
+
+    androidTestImplementation TestLibraries.dexOpener
+
+    androidTestImplementation TestLibraries.runner
+    androidTestImplementation TestLibraries.rules
+    androidTestImplementation TestLibraries.espressoCore
+    androidTestImplementation TestLibraries.espressoContrib
+
+    testImplementation TestLibraries.archXCore
+    testImplementation TestLibraries.liveData
+    testImplementation TestLibraries.coroutines
+
+    // OTHER MODULES
+
+    implementation project(Modules.coreDomain)
+    testImplementation project(Modules.coreDomain)
+    androidTestImplementation project(Modules.coreDomain)
+
+    implementation project(Modules.sharedFoundation)
+    testImplementation project(Modules.sharedFoundation)
+    androidTestImplementation project(Modules.sharedFoundation)
+
+    implementation project(Modules.musicBrainz)
+    testImplementation project(Modules.musicBrainz)
+    androidTestImplementation project(Modules.musicBrainz)
+}

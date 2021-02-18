@@ -1,0 +1,38 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.41'
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:${DependencyVersions.gradle}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${DependencyVersions.kotlin}"
+
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:${DependencyVersions.safeArgs}"
+
+        classpath "io.realm:realm-gradle-plugin:${DependencyVersions.realm}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+
+
+}
+
+plugins {
+    id("io.gitlab.arturbosch.detekt").version("1.0.1")
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

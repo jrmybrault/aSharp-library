@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="search_artist_menu_title">Search</string>
+    <string name="search_artist_query_hint">Search an artist or a band</string>
+
+    <string name="muscicbrainz_credits">Powered by MusicBrainz</string>
+
+    <string name="search_artist_number_of_results_zero">"No match for \"%1$s\""</string>
+    <string name="search_artist_number_of_results_one">"One result for \"%1$s\"</string>
+    <string name="search_artist_number_of_results_other">"%2$d results for \"%1$s\"</string>
+    <plurals name="search_artist_number_of_results">
+        <item quantity="zero">@string/search_artist_number_of_results_zero</item>
+        <item quantity="one">@string/search_artist_number_of_results_one</item>
+        <item quantity="other">@string/search_artist_number_of_results_other</item>
+    </plurals>
+
+    <string name="artist_type_solo">Artist</string>
+    <string name="artist_type_band">Band</string>
+    <string name="artist_type_other">Other</string>
+
+    <string name="search_artist_previous_searches">Previous searches</string>
+</resources>
